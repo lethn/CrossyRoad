@@ -1,4 +1,4 @@
-# Crossy Road Game ( ͡° ͜ʖ ͡°)
+# Crossy Road Game
 # Group 5
   + Trương Nhật Ánh
   + Lê Võ Đức Anh
