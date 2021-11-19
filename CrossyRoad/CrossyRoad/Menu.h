@@ -18,4 +18,6 @@ public:
 	void Nocursortype();
 	void UnNocursortype();
 	void txtColor(int color);
+
+	void logo();
 };

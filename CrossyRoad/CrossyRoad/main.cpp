@@ -6,6 +6,7 @@ int main() {
 	UI.resizeConsole(1000, 600);
 	UI.FixConsoleWindow();
 	
+	UI.logo();
 	cout << "\n\n\n\n";
 
 	return 0;
