@@ -7,6 +7,7 @@ int main() {
 	UI.FixConsoleWindow();
 	
 	UI.logo();
+	UI.menu();
 	cout << "\n\n\n\n";
 
 	return 0;

@@ -93,3 +93,35 @@ void UserInterface::logo() {
 		cout << VERTICAL_BLACK_PIECE;
 	}
 }
+
+void UserInterface::menu() {
+	txtColor(15);
+	int x = 54;
+	int y = 18;
+	gotoxy(x + 1, y);
+	for (int i = 0; i < 20; ++i)
+		cout << UP_BLACK_PIECE;
+	for (int i = y; i < y + 9; ++i)
+	{
+		gotoxy(x, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = y; i < y + 9; ++i)
+	{
+		gotoxy(x + 21, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	gotoxy(x + 1, y + 8);
+	for (int i = 0; i < 20; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	txtColor(15);
+	gotoxy(x + 7, y + 1);
+	cout << "NEW GAME";
+	gotoxy(x + 5, y + 3);
+	cout << "LOADING GAME";
+	gotoxy(x + 7, y + 5);
+	cout << "SETTINGS";
+	gotoxy(x + 9, y + 7);
+	cout << "EXIT";
+}

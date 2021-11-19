@@ -20,4 +20,5 @@ public:
 	void txtColor(int color);
 
 	void logo();
+	void menu();
 };
