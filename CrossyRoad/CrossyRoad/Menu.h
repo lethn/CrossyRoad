@@ -10,7 +10,7 @@
 #define DOWN_LEFT_CORNER_PALE_PIECE char(200);
 #define DOWN_RIGHT_CORNER_PALE_PIECE char(188);
 
-class UserInterFace {
+class UserInterface {
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();

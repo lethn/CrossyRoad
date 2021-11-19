@@ -1,3 +1,5 @@
+#include "Menu.h"
+
 void UserInterface::resizeConsole(int width, int height) {
 	HWND console = GetConsoleWindow();
 	RECT edge;
