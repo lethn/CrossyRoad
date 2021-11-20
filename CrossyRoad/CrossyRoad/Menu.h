@@ -10,6 +10,11 @@
 #define DOWN_LEFT_CORNER_PALE_PIECE char(200);
 #define DOWN_RIGHT_CORNER_PALE_PIECE char(188);
 
+#define KEY_DOWN 80
+#define KEY_UP 72
+#define KEY_ESC 27
+#define KEY_ENTER 13
+
 class UserInterface {
 public:
 	void resizeConsole(int width, int height);

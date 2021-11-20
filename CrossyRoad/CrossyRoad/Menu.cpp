@@ -30,10 +30,10 @@ void UserInterface::Nocursortype() {
 }
 
 void UserInterface::UnNocursortype() {
-	CONSOLE_CURSOR_INFO Info;
-	Info.bVisible = TRUE;
-	Info.dwSize = 20;
-	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
+CONSOLE_CURSOR_INFO Info;
+Info.bVisible = TRUE;
+Info.dwSize = 20;
+SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
 }
 
 void UserInterface::txtColor(int color) {
@@ -42,6 +42,7 @@ void UserInterface::txtColor(int color) {
 }
 
 void UserInterface::logo() {
+	Nocursortype();
 	txtColor(15);
 	int x = 19;
 	int y = 4;
@@ -95,6 +96,7 @@ void UserInterface::logo() {
 }
 
 void UserInterface::menu() {
+	Nocursortype();
 	txtColor(15);
 	int x = 54;
 	int y = 18;
@@ -116,12 +118,67 @@ void UserInterface::menu() {
 		cout << DOWN_BLACK_PIECE;
 
 	txtColor(15);
-	gotoxy(x + 7, y + 1);
-	cout << "NEW GAME";
-	gotoxy(x + 5, y + 3);
-	cout << "LOADING GAME";
-	gotoxy(x + 7, y + 5);
-	cout << "SETTINGS";
-	gotoxy(x + 9, y + 7);
-	cout << "EXIT";
+	gotoxy(x + 7, y + 1); cout << "NEW GAME";
+	gotoxy(x + 5, y + 3); cout << "LOADING GAME";
+	gotoxy(x + 7, y + 5); cout << "SETTINGS";
+	gotoxy(x + 9, y + 7); cout << "EXIT";
+
+	int cnt = 0;
+	while (true)
+	{
+		char choice = _getch();
+		txtColor(15);
+		gotoxy(x + 6, y + 1); cout << " NEW GAME ";
+		gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
+		gotoxy(x + 6, y + 5); cout << " SETTINGS ";
+		gotoxy(x + 8, y + 7); cout << " EXIT ";
+
+		if (choice == KEY_DOWN){
+			cnt++;
+			if (cnt > 4)
+				cnt = 1;
+		}
+		if (choice == KEY_UP) {
+			cnt--;
+			if (cnt < 1)
+				cnt = 4;
+		}
+		if (choice == KEY_ESC) {
+			system("cls");
+			exit(0);
+		}
+
+		if (cnt == 1) {
+			txtColor(240);
+			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
+			if (choice == KEY_ENTER) {
+
+			}
+		}
+		if (cnt == 2) {
+			txtColor(240);
+			gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
+			if (choice == KEY_ENTER) {
+
+			}
+		}
+		if (cnt == 3) {
+			txtColor(240);
+			gotoxy(x + 6, y + 5); cout << " SETTINGS ";
+			if (choice == KEY_ENTER) {
+
+			}
+		}
+		if (cnt == 4) {
+			txtColor(240);
+			gotoxy(x + 8, y + 7); cout << " EXIT ";
+			if (choice == KEY_ENTER) {
+				txtColor(15);
+				system("cls");
+				exit(0);
+			}
+		}
+
+		
+	}
 }

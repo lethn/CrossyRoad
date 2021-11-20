@@ -2,8 +2,8 @@
 #define _LIBRARY_H_
 
 #include <iostream>
-#include <Windows.h>
-
+#include <windows.h>
+#include <conio.h>
 using namespace std;
 
 
