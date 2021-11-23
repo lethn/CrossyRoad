@@ -44,7 +44,7 @@ void UserInterface::txtColor(int color) {
 void UserInterface::logo() {
 	Nocursortype();
 	txtColor(15);
-	int x = 19;
+	int x = 38;
 	int y = 4;
 	gotoxy(x - 1, y);		cout << " _______  ______    _______  _______  _______  __   __      ______    _______  _______  ______  " << endl;
 	gotoxy(x - 1, y + 1);	cout << "|       ||    _ |  |       ||       ||       ||  | |  |    |    _ |  |       ||   _   ||      | " << endl;
@@ -98,7 +98,7 @@ void UserInterface::logo() {
 void UserInterface::menu() {
 	Nocursortype();
 	txtColor(15);
-	int x = 54;
+	int x = 74;
 	int y = 18;
 	gotoxy(x + 1, y);
 	for (int i = 0; i < 20; ++i)

@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
 	UserInterface UI;
-	UI.resizeConsole(1000, 600);
+	UI.resizeConsole(1280, 720);
 	UI.FixConsoleWindow();
 	
 	UI.logo();
