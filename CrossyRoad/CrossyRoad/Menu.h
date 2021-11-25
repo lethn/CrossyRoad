@@ -19,11 +19,11 @@ class UserInterface {
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();
-	void gotoxy(int x, int y);
-	void Nocursortype();
-	void UnNocursortype();
-	void txtColor(int color);
-
 	void logo();
 	void menu();
 };
+
+void gotoxy(int x, int y);
+void Nocursortype();
+void UnNocursortype();
+void txtColor(int color);

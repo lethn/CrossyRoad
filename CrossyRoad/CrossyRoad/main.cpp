@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Map.h"
 using namespace std;
 
 int main() {
@@ -9,6 +10,10 @@ int main() {
 	UI.logo();
 	UI.menu();
 	cout << "\n\n\n\n";
+
+	//Map map;
+	//map.printMapScreen();
+
 
 	return 0;
 }
