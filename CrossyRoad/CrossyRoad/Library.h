@@ -4,6 +4,7 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#pragma comment (lib, "winmm.lib")
 using namespace std;
 
 

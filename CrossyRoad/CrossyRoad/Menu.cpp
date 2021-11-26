@@ -96,6 +96,7 @@ void UserInterface::logo() {
 }
 
 void UserInterface::menu() {
+	PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	Nocursortype();
 	txtColor(15);
 	int x = 74;
@@ -120,9 +121,11 @@ void UserInterface::menu() {
 	txtColor(15);
 	gotoxy(x + 7, y + 1); cout << "NEW GAME";
 	gotoxy(x + 5, y + 3); cout << "LOADING GAME";
-	gotoxy(x + 7, y + 5); cout << "SETTINGS";
+	gotoxy(x + 6, y + 5); cout << "SOUND:";
+	gotoxy(x + 13, y + 5); cout << "ON";
 	gotoxy(x + 9, y + 7); cout << "EXIT";
 
+	bool sound = true;
 	int cnt = 0;
 	while (true)
 	{
@@ -130,7 +133,7 @@ void UserInterface::menu() {
 		txtColor(15);
 		gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 		gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
-		gotoxy(x + 6, y + 5); cout << " SETTINGS ";
+		gotoxy(x + 6, y + 5); cout << "SOUND:";
 		gotoxy(x + 8, y + 7); cout << " EXIT ";
 
 		if (choice == KEY_DOWN){
@@ -164,9 +167,23 @@ void UserInterface::menu() {
 		}
 		if (cnt == 3) {
 			txtColor(240);
-			gotoxy(x + 6, y + 5); cout << " SETTINGS ";
+			gotoxy(x + 6, y + 5); cout << "SOUND:";
 			if (choice == KEY_ENTER) {
+				if (sound == true)
+					sound = false;
+				else
+					sound = true;
 
+				if (sound == true) {
+					txtColor(15);
+					gotoxy(x + 13, y + 5); cout << "ON ";
+					PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+				}
+				else {
+					txtColor(15);
+					gotoxy(x + 13, y + 5); cout << "OFF";
+					PlaySound(NULL, NULL, SND_ASYNC);
+				}
 			}
 		}
 		if (cnt == 4) {
