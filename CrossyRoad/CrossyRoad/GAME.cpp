@@ -1,4 +1,4 @@
-#include "Menu.h"
+#include "GAME.h"
 
 void gotoxy(int x, int y) {
 	static HANDLE h = NULL;
@@ -27,21 +27,21 @@ void txtColor(int color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-void UserInterface::resizeConsole(int width, int height) {
+void GAME::resizeConsole(int width, int height) {
 	HWND console = GetConsoleWindow();
 	RECT edge;
 	GetWindowRect(console, &edge);
 	MoveWindow(console, edge.left, edge.top, width, height, TRUE);
 }
 
-void UserInterface::FixConsoleWindow() {
+void GAME::FixConsoleWindow() {
 	HWND consoleWindow = GetConsoleWindow();
 	LONG style = GetWindowLong(consoleWindow, GWL_STYLE);
 	style = style & ~(WS_MAXIMIZEBOX) & ~(WS_THICKFRAME);
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
-void UserInterface::logo() {
+void GAME::logo() {
 	Nocursortype();
 	txtColor(15);
 	int x = 38;
@@ -95,8 +95,8 @@ void UserInterface::logo() {
 	}
 }
 
-void UserInterface::menu() {
-	PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+void GAME::menu() {
+	//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	Nocursortype();
 	txtColor(15);
 	int x = 74;
@@ -155,7 +155,12 @@ void UserInterface::menu() {
 			txtColor(240);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 			if (choice == KEY_ENTER) {
-
+				txtColor(15);
+				system("cls");
+				map.printMapScreen();
+				map.printSubMapScreen();
+				_getch();
+				break;
 			}
 		}
 		if (cnt == 2) {

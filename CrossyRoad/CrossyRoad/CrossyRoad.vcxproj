@@ -140,13 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="GAME.cpp" />
+    <ClCompile Include="MAP.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="MAP.h" />
     <ClInclude Include="Library.h" />
-    <ClInclude Include="Menu.h" />
+    <ClInclude Include="GAME.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

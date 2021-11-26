@@ -1,4 +1,7 @@
+#ifndef _GAME_H_
+#define _GAME_H_
 #include "Library.h"
+#include "MAP.h"
 #define DOWN_BLACK_PIECE char(220);
 #define UP_BLACK_PIECE char(223);
 #define VERTICAL_BLACK_PIECE char(219);
@@ -15,7 +18,9 @@
 #define KEY_ESC 27
 #define KEY_ENTER 13
 
-class UserInterface {
+class GAME {
+private:
+	MAP map;
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();
@@ -27,3 +32,6 @@ void gotoxy(int x, int y);
 void Nocursortype();
 void UnNocursortype();
 void txtColor(int color);
+
+
+#endif

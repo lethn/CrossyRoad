@@ -1,17 +1,17 @@
-#include "Menu.h"
-#include "Map.h"
+#include "GAME.h"
+#include "MAP.h"
 using namespace std;
 
 int main() {
-	UserInterface UI;
-	UI.resizeConsole(1280, 720);
-	UI.FixConsoleWindow();
+	GAME game;
+	game.resizeConsole(1280, 720);
+	game.FixConsoleWindow();
 	
-	UI.logo();
-	UI.menu();
+	game.logo();
+	game.menu();
 	cout << "\n\n\n\n";
 
-	//Map map;
+	//MAP map;
 	//map.printMapScreen();
 
 

@@ -1,11 +1,17 @@
+#ifndef _MAP_H_
+#define _MAP_H_
 #include "Library.h"
 
-class Map {
+class MAP {
 private:
 	int width;	// 115
 	int height;	// 36
 	char map[38][116];
 public:
-	Map();
+	MAP();
 	void printMapScreen();
+	void printSubMapScreen();
 };
+
+
+#endif
