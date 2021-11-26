@@ -41,7 +41,7 @@ void GAME::FixConsoleWindow() {
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
-void GAME::logo() {
+void GAME::logoCrossyRoad() {
 	Nocursortype();
 	txtColor(15);
 	int x = 38;
@@ -96,7 +96,7 @@ void GAME::logo() {
 }
 
 void GAME::menu() {
-	//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	Nocursortype();
 	txtColor(15);
 	int x = 74;
@@ -155,11 +155,7 @@ void GAME::menu() {
 			txtColor(240);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 			if (choice == KEY_ENTER) {
-				txtColor(15);
-				system("cls");
-				map.printMapScreen();
-				map.printSubMapScreen();
-				_getch();
+				newGame();
 				break;
 			}
 		}
@@ -167,7 +163,8 @@ void GAME::menu() {
 			txtColor(240);
 			gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
 			if (choice == KEY_ENTER) {
-
+				loadGame();
+				break;
 			}
 		}
 		if (cnt == 3) {
@@ -200,7 +197,101 @@ void GAME::menu() {
 				exit(0);
 			}
 		}
-
-		
 	}
+}
+
+void GAME::newGame() {
+	Nocursortype();
+	txtColor(15);
+	system("cls");
+	map.printMapScreen();
+	map.printSubMapScreen();
+	_getch();
+}
+
+void GAME::logoLoadGame() {
+	Nocursortype();
+	txtColor(15);
+	system("cls");
+	int x = 38;
+	int y = 4;
+
+	gotoxy(x - 2, y);		cout << " ___      _______  _______  ______   ___   __    _  _______    _______  _______  __   __  _______ " << endl;
+	gotoxy(x - 2, y + 1);	cout << "|   |    |       ||   _   ||      | |   | |  |  | ||       |  |       ||   _   ||  |_|  ||       |" << endl;
+	gotoxy(x - 2, y + 2);	cout << "|   |    |   _   ||  |_|  ||  _    ||   | |   |_| ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 3);	cout << "|   |    |  | |  ||       || | |   ||   | |       ||   | __   |   | __ |       ||       ||   |___ " << endl;
+	gotoxy(x - 2, y + 4);	cout << "|   |___ |  |_|  ||       || |_|   ||   | |  _    ||   ||  |  |   ||  ||       ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 5);	cout << "|       ||       ||   _   ||       ||   | | | |   ||   |_| |  |   |_| ||   _   || ||_|| ||   |___ " << endl;
+	gotoxy(x - 2, y + 6);	cout << "|_______||_______||__| |__||______| |___| |_|  |__||_______|  |_______||__| |__||_|   |_||_______|" << endl;
+
+	gotoxy(x - 8, y - 2);
+	for (int i = 0; i < 110; ++i)
+		cout << DOWN_BLACK_PIECE;
+	gotoxy(x - 5, y - 1);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 5, y + 8);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 8, 13);
+	for (int i = 0; i < 110; ++i)
+		cout << UP_BLACK_PIECE;
+
+	gotoxy(x - 6, y - 1);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	gotoxy(x - 6, y + 8);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	gotoxy(x + 99, y - 1);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	gotoxy(x + 99, y + 8);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x - 6, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x + 99, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x - 8, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x + 101, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+}
+
+void GAME::loadGame() {
+	logoLoadGame();
+
+	gotoxy(34, 19);
+	cout << "Type here: ";
+
+	gotoxy(33, 18);
+	for (int i = 0; i < 68; ++i)
+		cout << char(205);
+
+	gotoxy(33, 20);
+	for (int i = 0; i < 68; ++i)
+		cout << char(205);
+
+	gotoxy(32, 18);
+	cout << char(201);
+	gotoxy(32, 20);
+	cout << char(200);
+
+	gotoxy(101, 18);
+	cout << char(187);
+	gotoxy(101, 20);
+	cout << char(188);
+
+	gotoxy(32, 19);
+	cout << char(186);
+	gotoxy(101, 19);
+	cout << char(186);
+	_getch();
 }

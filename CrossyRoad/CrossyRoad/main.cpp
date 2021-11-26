@@ -7,13 +7,8 @@ int main() {
 	game.resizeConsole(1280, 720);
 	game.FixConsoleWindow();
 	
-	game.logo();
+	game.logoCrossyRoad();
 	game.menu();
-	cout << "\n\n\n\n";
-
-	//MAP map;
-	//map.printMapScreen();
-
 
 	return 0;
 }

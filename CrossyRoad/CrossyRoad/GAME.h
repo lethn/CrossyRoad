@@ -24,8 +24,11 @@ private:
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();
-	void logo();
+	void logoCrossyRoad();
 	void menu();
+	void newGame();
+	void logoLoadGame();
+	void loadGame();
 };
 
 void gotoxy(int x, int y);
