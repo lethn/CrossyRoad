@@ -1,7 +1,9 @@
 #ifndef _GAME_H_
 #define _GAME_H_
+
 #include "Library.h"
 #include "MAP.h"
+
 #define DOWN_BLACK_PIECE char(220);
 #define UP_BLACK_PIECE char(223);
 #define VERTICAL_BLACK_PIECE char(219);
@@ -35,6 +37,7 @@ void gotoxy(int x, int y);
 void Nocursortype();
 void UnNocursortype();
 void txtColor(int color);
+void clrscr();
 
 
 #endif
