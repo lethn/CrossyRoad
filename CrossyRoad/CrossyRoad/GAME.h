@@ -3,6 +3,8 @@
 
 #include "Library.h"
 #include "MAP.h"
+#include "PLAYER.h"
+#include "ENEMY.h"
 
 #define DOWN_BLACK_PIECE char(220)
 #define UP_BLACK_PIECE char(223)

@@ -1,6 +1,6 @@
-#include "PEOPLE.h"
+#include "PLAYER.h"
 
-PEOPLE::PEOPLE() {
+PLAYER::PLAYER() {
 	checkDead = false;
 	x = 34;
 	y = 28;
@@ -9,7 +9,7 @@ PEOPLE::PEOPLE() {
 	createPlayer();
 }
 
-PEOPLE::PEOPLE(int x, int y) {
+PLAYER::PLAYER(int x, int y) {
 	checkDead = false;
 
 	player = new char* [3];
@@ -20,7 +20,7 @@ PEOPLE::PEOPLE(int x, int y) {
 	createPlayer();
 }
 
-PEOPLE::~PEOPLE() {
+PLAYER::~PLAYER() {
 	for (int i = 0; i < 3; i++) {
 		delete[] player[i];
 		delete[] shapelessPlayer[i];
@@ -29,7 +29,7 @@ PEOPLE::~PEOPLE() {
 	delete[] shapelessPlayer;
 }
 
-void PEOPLE::createShapelessPlayer() {
+void PLAYER::createShapelessPlayer() {
 	shapelessPlayer = new char* [3];
 	for (int i = 0; i < 3; i++)
 		shapelessPlayer[i] = new char[5];
@@ -42,7 +42,7 @@ void PEOPLE::createShapelessPlayer() {
 	}
 }
 
-void PEOPLE::createPlayer() {
+void PLAYER::createPlayer() {
 	player = new char* [3];
 	for (int i = 0; i < 3; i++)
 		player[i] = new char[5];
@@ -70,42 +70,58 @@ void PEOPLE::createPlayer() {
 	player[2][4] = ' ';
 }
 
-int PEOPLE::getHeight() {
+int PLAYER::getHeight() {
 	return height;
 }
 
-int PEOPLE::getWidth() {
+int PLAYER::getWidth() {
 	return width;
 }
 
-int PEOPLE::getX() {
+int PLAYER::getX() {
 	return x;
 }
 
-int PEOPLE::getY() {
+int PLAYER::getY() {
 	return y;
 }
 
-void PEOPLE::Up() {
+void PLAYER::Up() {
 	if (getX() <= 3)
 		return;
 	x = x - 3;
 }
 
-void PEOPLE::Down() {
+void PLAYER::Down() {
 	if (getX() + 3 >= 34)
 		return;
 	x = x + 3;
 }
 
-void PEOPLE::Left() {
+void PLAYER::Left() {
 	if (getY() <= LEFT_MAP)
 		return;
 	y = y - 1;
 }
 
-void PEOPLE::Right() {
+void PLAYER::Right() {
 	if (getY() + 2 >= RIGHT_MAP)
 		return;
 	y = y + 1;
 }
+
+char** PLAYER::getPlayer() {
+	return player;
+}
+
+char** PLAYER::getShapelessPlayer() {
+	return shapelessPlayer;
+}
+
+void PLAYER::setCheckDead() {
+	checkDead = true;
+}
+bool PLAYER::getCheckDead() {
+	return checkDead;
+}
+

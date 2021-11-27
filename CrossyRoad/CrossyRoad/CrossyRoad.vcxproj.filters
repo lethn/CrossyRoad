@@ -27,7 +27,7 @@
     <ClCompile Include="ENEMY.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PEOPLE.cpp">
+    <ClCompile Include="PLAYER.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="ENEMY.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PEOPLE.h">
+    <ClInclude Include="PLAYER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

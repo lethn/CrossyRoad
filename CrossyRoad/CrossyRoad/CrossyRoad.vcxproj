@@ -143,11 +143,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="MAP.cpp" />
-    <ClCompile Include="PEOPLE.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ENEMY.h" />
-    <ClInclude Include="PEOPLE.h" />
+    <ClInclude Include="PLAYER.h" />
     <ClInclude Include="LEVEL.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Library.h" />

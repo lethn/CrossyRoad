@@ -222,7 +222,6 @@ void GAME::newGame() {
 	txtColor(15);
 	clrscr();
 	map.printMapScreen();
-	map.printSubMapScreen();
 	_getch();
 }
 

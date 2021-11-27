@@ -4,6 +4,10 @@
 MAP::MAP() {
 	width = 115;
 	height = 36;
+	initializeMap();
+}
+
+void MAP::initializeMap() {
 	for (int i = 0; i <= width; i++) {
 		map[0][i] = DOWN_BLACK_PIECE;			// First row
 		map[height + 1][i] = UP_BLACK_PIECE;	// Last row
@@ -29,10 +33,7 @@ void MAP::printMapScreen() {
 		}
 		cout << endl;
 	}
-}
 
-void MAP::printSubMapScreen() {
-	txtColor(15);
 	gotoxy(119, 6);
 	for (int i = 0; i < 35; ++i)
 		cout << DOWN_BLACK_PIECE;
@@ -60,4 +61,28 @@ void MAP::printSubMapScreen() {
 	gotoxy(127, 19); cout << "L: LOAD GAME" << endl;
 	gotoxy(127, 20); cout << "P: PAUSE GAME" << endl;
 }
+
+int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
+	if (y > w || (y + w <= 0))
+		return 0;
+
+	for (int i = 0; i < h; ++i) {
+		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
+			gotoxy(y + j, x + i);
+			cout << shape[i][j - max(1, y)];
+		}
+	}
+	return 1;
+}
+
+void MAP::drawPlayer() {
+	int live = drawFromPosition(player.getX(), player.getY(), player.getPlayer(), player.getWidth(), player.getHeight());
+	if (live == -1)
+		player.setCheckDead();
+}
+
+void MAP::resetPlayer() {
+	drawFromPosition(player.getX(), player.getY(), player.getShapelessPlayer(), player.getWidth(), player.getHeight());
+}
+
 

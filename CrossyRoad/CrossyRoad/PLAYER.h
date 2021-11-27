@@ -1,5 +1,5 @@
-#ifndef _PEOPLE_H_
-#define _PEOPLE_H_
+#ifndef _PLAYER_H_
+#define _PLAYER_H_
 
 #include "Library.h"
 #include "GAME.h"
@@ -8,7 +8,7 @@
 #define LEFT_MAP 2
 #define RIGHT_MAP 58
 
-class PEOPLE {
+class PLAYER {
 private:
 	int x, y; // position
 	int height = 3;
@@ -18,9 +18,9 @@ private:
 	bool checkDead;
 
 public:
-	PEOPLE();
-	PEOPLE(int x, int y);
-	~PEOPLE();
+	PLAYER();
+	PLAYER(int x, int y);
+	~PLAYER();
 	void createShapelessPlayer();
 	void createPlayer();
 	int getHeight();
@@ -31,6 +31,10 @@ public:
 	void Down();
 	void Left();
 	void Right();
+	char** getPlayer();
+	char** getShapelessPlayer();
+	void setCheckDead();
+	bool getCheckDead();
 };
 
 
