@@ -3,7 +3,7 @@
 PLAYER::PLAYER() {
 	checkDead = false;
 	x = 34;
-	y = 28;
+	y = 30;
 
 	createShapelessPlayer();
 	createPlayer();
@@ -11,10 +11,6 @@ PLAYER::PLAYER() {
 
 PLAYER::PLAYER(int x, int y) {
 	checkDead = false;
-
-	player = new char* [3];
-	for (int i = 0; i < 3; i++)
-		player[i] = new char[5];
 
 	createShapelessPlayer();
 	createPlayer();
@@ -93,7 +89,7 @@ void PLAYER::Up() {
 }
 
 void PLAYER::Down() {
-	if (getX() + 3 >= 34)
+	if (getX() + 3 >= 37)
 		return;
 	x = x + 3;
 }

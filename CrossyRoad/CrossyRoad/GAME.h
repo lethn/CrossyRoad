@@ -33,7 +33,7 @@ public:
 	void FixConsoleWindow();
 	void logoCrossyRoad();
 	void menu();
-	void newGame();
+	bool newGame();
 	void logoLoadGame();
 	void loadGame();
 };

@@ -63,8 +63,8 @@ void MAP::printMapScreen() {
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
-	if (y > w || (y + w <= 0))
-		return 0;
+	/*if (y > w || (y + w <= 0))
+		return 0;*/
 
 	for (int i = 0; i < h; ++i) {
 		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
@@ -100,4 +100,7 @@ void MAP::updatePosPlayer(char key) {
 		return;
 }
 
+bool MAP::checkEndMap() {
+	return player.getCheckDead();
+}
 

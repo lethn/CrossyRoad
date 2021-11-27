@@ -172,8 +172,10 @@ void GAME::menu() {
 			txtColor(240);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 			if (choice == KEY_ENTER) {
-				newGame();
-				break;
+				if (newGame() == true) {
+
+					break;
+				}
 			}
 		}
 		if (cnt == 2) {
@@ -217,45 +219,50 @@ void GAME::menu() {
 	}
 }
 
-void GAME::newGame() {
+bool GAME::newGame() {
 	Nocursortype();
 	txtColor(15);
 	clrscr();
 	map.printMapScreen();
-	while (true){
-		txtColor(15);
-		char key = _getch();
+	map.drawPlayer();
 
-		if (key == 'H' || key == 'h') {
-			// save game
-		}
-		if (key == 'L' || key == 'l') {
-			// load game
-		}
-		if (key == 'P' || key == 'p') {
-			// pause game
-		}
+	while (!map.checkEndMap()){
 
-		if (key == 'W' || key == 'W') {
-			if (checkPauseGame == false)
-				map.updatePosPlayer('W');
-		}
-		if (key == 'S' || key == 's') {
-			if (checkPauseGame == false)
-				map.updatePosPlayer('S');
-		}
-		if (key == 'A' || key == 'a') {
-			if (checkPauseGame == false)
-				map.updatePosPlayer('A');
-		}
-		if (key == 'D' || key == 'd') {
-			if (checkPauseGame == false)
-				map.updatePosPlayer('D');
-		}
+		while (true) {
+			char key = _getch();
 
-		map.drawPlayer();
+			if (key == 'H' || key == 'h') {
+				// save game
+			}
+			if (key == 'L' || key == 'l') {
+				// load game
+			}
+			if (key == 'P' || key == 'p') {
+				// pause game
+			}
+
+			if (key == 'W' || key == 'w') {
+				if (checkPauseGame == false)
+					map.updatePosPlayer('W');
+			}
+			if (key == 'S' || key == 's') {
+				if (checkPauseGame == false)
+					map.updatePosPlayer('S');
+			}
+			if (key == 'A' || key == 'a') {
+				if (checkPauseGame == false)
+					map.updatePosPlayer('A');
+			}
+			if (key == 'D' || key == 'd') {
+				if (checkPauseGame == false)
+					map.updatePosPlayer('D');
+			}
+
+			map.drawPlayer();
+		}
+		
 	}
-	cout << "hi";
+	return false;
 }
 
 void GAME::logoLoadGame() {

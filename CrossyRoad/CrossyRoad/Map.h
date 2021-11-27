@@ -17,6 +17,7 @@ public:
 	void drawPlayer();
 	void resetPlayer();
 	void updatePosPlayer(char key);
+	bool checkEndMap();
 };
 
 
