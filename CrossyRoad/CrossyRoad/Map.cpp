@@ -44,17 +44,17 @@ void MAP::printSubMapScreen() {
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
-	txtColor(14);	gotoxy(125, 8); cout << char(254) << " ROUND: ";
+	txtColor(14);	gotoxy(125, 8); cout << MIDDLE_SMALL_BLACKE_PIECE << " ROUND: ";
 	cout << "1";
 
-	txtColor(12);	gotoxy(125, 10); cout << char(254) << " MOVING KEYBOARD " << endl;
+	txtColor(12);	gotoxy(125, 10); cout << MIDDLE_SMALL_BLACKE_PIECE << " MOVING KEYBOARD " << endl;
 	txtColor(15);
 	gotoxy(127, 11); cout << "W: UP" << endl;
 	gotoxy(127, 12); cout << "S: DOWN" << endl;
 	gotoxy(127, 13); cout << "A: LEFT" << endl;
 	gotoxy(127, 14); cout << "D: RIGHT" << endl;
 
-	txtColor(12); gotoxy(125, 17); cout << char(254) << " COMMAND KEYBOARD " << endl;
+	txtColor(12); gotoxy(125, 17); cout << MIDDLE_SMALL_BLACKE_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
 	gotoxy(127, 18); cout << "H: SAVE GAME" << endl;
 	gotoxy(127, 19); cout << "L: LOAD GAME" << endl;

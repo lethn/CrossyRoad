@@ -1,4 +1,4 @@
-#include "EMNEMY.h"
+#include "ENEMY.h"
 
 ENEMY::ENEMY() : outOfMap(false) 
 {
