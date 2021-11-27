@@ -222,7 +222,40 @@ void GAME::newGame() {
 	txtColor(15);
 	clrscr();
 	map.printMapScreen();
-	_getch();
+	while (true){
+		txtColor(15);
+		char key = _getch();
+
+		if (key == 'H' || key == 'h') {
+			// save game
+		}
+		if (key == 'L' || key == 'l') {
+			// load game
+		}
+		if (key == 'P' || key == 'p') {
+			// pause game
+		}
+
+		if (key == 'W' || key == 'W') {
+			if (checkPauseGame == false)
+				map.updatePosPlayer('W');
+		}
+		if (key == 'S' || key == 's') {
+			if (checkPauseGame == false)
+				map.updatePosPlayer('S');
+		}
+		if (key == 'A' || key == 'a') {
+			if (checkPauseGame == false)
+				map.updatePosPlayer('A');
+		}
+		if (key == 'D' || key == 'd') {
+			if (checkPauseGame == false)
+				map.updatePosPlayer('D');
+		}
+
+		map.drawPlayer();
+	}
+	cout << "hi";
 }
 
 void GAME::logoLoadGame() {

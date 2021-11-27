@@ -8,7 +8,7 @@ private:
 	int width;	// 115
 	int height;	// 36
 	char map[38][116];
-	/*PLAYER player;*/
+	PLAYER player;
 public:
 	MAP();
 	void initializeMap();
@@ -16,6 +16,7 @@ public:
 	int drawFromPosition(int x, int y, char** shape, int w, int h);
 	void drawPlayer();
 	void resetPlayer();
+	void updatePosPlayer(char key);
 };
 
 

@@ -51,7 +51,7 @@ void PLAYER::createPlayer() {
 	// Head
 	player[0][0] = ' ';
 	player[0][1] = ' ';
-	player[0][2] = MIDDLE_SMALL_BLACKE_PIECE;
+	player[0][2] = MIDDLE_SMALL_BLACK_PIECE;
 	player[0][3] = ' ';
 	player[0][4] = ' ';
 

@@ -9,7 +9,7 @@
 #define DOWN_BLACK_PIECE char(220)
 #define UP_BLACK_PIECE char(223)
 #define VERTICAL_BLACK_PIECE char(219)
-#define MIDDLE_SMALL_BLACKE_PIECE char(254)
+#define MIDDLE_SMALL_BLACK_PIECE char(254)
 
 #define HORIZONTAL_PALE_PIECE char(205);
 #define VERTICAL_PALE_PIECE char(186);
@@ -26,6 +26,8 @@
 class GAME {
 private:
 	MAP map;
+	bool checkLoadGame;
+	bool checkPauseGame;
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();

@@ -45,44 +45,59 @@ void MAP::printMapScreen() {
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
-	txtColor(14);	gotoxy(125, 8); cout << MIDDLE_SMALL_BLACKE_PIECE << " ROUND: ";
+	txtColor(14);	gotoxy(125, 8); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
 	cout << "1";
 
-	txtColor(12);	gotoxy(125, 10); cout << MIDDLE_SMALL_BLACKE_PIECE << " MOVING KEYBOARD " << endl;
+	txtColor(12);	gotoxy(125, 10); cout << MIDDLE_SMALL_BLACK_PIECE << " MOVING KEYBOARD " << endl;
 	txtColor(15);
 	gotoxy(127, 11); cout << "W: UP" << endl;
 	gotoxy(127, 12); cout << "S: DOWN" << endl;
 	gotoxy(127, 13); cout << "A: LEFT" << endl;
 	gotoxy(127, 14); cout << "D: RIGHT" << endl;
 
-	txtColor(12); gotoxy(125, 17); cout << MIDDLE_SMALL_BLACKE_PIECE << " COMMAND KEYBOARD " << endl;
+	txtColor(12); gotoxy(125, 17); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
 	gotoxy(127, 18); cout << "H: SAVE GAME" << endl;
 	gotoxy(127, 19); cout << "L: LOAD GAME" << endl;
 	gotoxy(127, 20); cout << "P: PAUSE GAME" << endl;
 }
 
-//int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
-//	if (y > w || (y + w <= 0))
-//		return 0;
-//
-//	for (int i = 0; i < h; ++i) {
-//		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
-//			gotoxy(y + j, x + i);
-//			cout << shape[i][j - max(1, y)];
-//		}
-//	}
-//	return 1;
-//}
-//
-//void MAP::drawPlayer() {
-//	int live = drawFromPosition(player.getX(), player.getY(), player.getPlayer(), player.getWidth(), player.getHeight());
-//	if (live == -1)
-//		player.setCheckDead();
-//}
-//
-//void MAP::resetPlayer() {
-//	drawFromPosition(player.getX(), player.getY(), player.getShapelessPlayer(), player.getWidth(), player.getHeight());
-//}
+int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
+	if (y > w || (y + w <= 0))
+		return 0;
+
+	for (int i = 0; i < h; ++i) {
+		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
+			gotoxy(y + j, x + i);
+			cout << shape[i][j - max(1, y)];
+		}
+	}
+	return 1;
+}
+
+void MAP::drawPlayer() {
+	int live = drawFromPosition(player.getX(), player.getY(), player.getPlayer(), player.getWidth(), player.getHeight());
+	if (live == -1)
+		player.setCheckDead();
+}
+
+void MAP::resetPlayer() {
+	drawFromPosition(player.getX(), player.getY(), player.getShapelessPlayer(), player.getWidth(), player.getHeight());
+}
+
+void MAP::updatePosPlayer(char key) {
+	resetPlayer();
+
+	if (key == 'W' || key == 'w')
+		player.Up();
+	else if (key == 'S' || key == 's')
+		player.Down();
+	else if (key == 'A' || key == 'a')
+		player.Left();
+	else if (key == 'D' || key == 'd')
+		player.Right();
+	else
+		return;
+}
 
 
