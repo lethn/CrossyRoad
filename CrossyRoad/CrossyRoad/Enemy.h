@@ -3,17 +3,17 @@
 
 #include "Library.h"
 
-class Enemy
+class ENEMY
 {
     protected:
         char **shape;
         int x, y;
-        bool outMap;
+        bool outOfMap;
 
     public:
-        Enemy();
-        Enemy(int x, int y);
-        ~Enemy();
+        ENEMY();
+        ENEMY(int x, int y);
+        ~ENEMY();
         void setShape(char **shape);
                 
 

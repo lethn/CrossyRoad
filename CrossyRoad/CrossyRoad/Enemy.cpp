@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : outMap(false) 
+ENEMY::ENEMY() : outOfMap(false) 
 {
     shape = new char*[3]();
 
@@ -8,7 +8,7 @@ Enemy::Enemy() : outMap(false)
         shape[i] = new char[6]();
 }
 
-Enemy::Enemy(int x, int y) : x(x), y(y), outMap(false)
+ENEMY::ENEMY(int x, int y) : x(x), y(y), outOfMap(false)
 {
     shape = new char*[3]();
 
@@ -16,7 +16,7 @@ Enemy::Enemy(int x, int y) : x(x), y(y), outMap(false)
         shape[i] = new char[6]();
 }
 
-Enemy::~Enemy()
+ENEMY::~ENEMY()
 {
     for (int i = 0; i < 3; ++i)
         delete [] shape[i];
