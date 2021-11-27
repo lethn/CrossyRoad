@@ -24,6 +24,9 @@
     <ClCompile Include="MAP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ENEMY.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.h">
@@ -33,6 +36,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MAP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LEVEL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ENEMY.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,7 @@ MAP::MAP() {
 		map[i][width] = VERTICAL_BLACK_PIECE;
 
 		for (int j = 1; j < width; ++j) {
-			map[i][j] = '0';	// Inside MAP
+			map[i][j] = ' ';	// Inside MAP
 		}
 	}
 }
@@ -44,19 +44,20 @@ void MAP::printSubMapScreen() {
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
-	gotoxy(125, 8); cout << "ROUND: " << endl;
+	txtColor(14);	gotoxy(125, 8); cout << char(254) << " ROUND: ";
+	cout << "1";
 
-	txtColor(240);	gotoxy(125, 10); cout << " MOVING KEYBOARD " << endl;
+	txtColor(12);	gotoxy(125, 10); cout << char(254) << " MOVING KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(125, 11); cout << "[ W ]: UP" << endl;
-	gotoxy(125, 12); cout << "[ S ]: DOWN" << endl;
-	gotoxy(125, 13); cout << "[ A ]: LEFT" << endl;
-	gotoxy(125, 14); cout << "[ D ]: RIGHT" << endl;
+	gotoxy(127, 11); cout << "W: UP" << endl;
+	gotoxy(127, 12); cout << "S: DOWN" << endl;
+	gotoxy(127, 13); cout << "A: LEFT" << endl;
+	gotoxy(127, 14); cout << "D: RIGHT" << endl;
 
-	txtColor(240); gotoxy(125, 17); cout << " COMMAND KEYBOARD " << endl;
+	txtColor(12); gotoxy(125, 17); cout << char(254) << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(125, 18); cout << "[ H ]: SAVE GAME" << endl;
-	gotoxy(125, 19); cout << "[ L ]: LOAD GAME" << endl;
-	gotoxy(125, 20); cout << "[ P ]: PAUSE GAME" << endl;
+	gotoxy(127, 18); cout << "H: SAVE GAME" << endl;
+	gotoxy(127, 19); cout << "L: LOAD GAME" << endl;
+	gotoxy(127, 20); cout << "P: PAUSE GAME" << endl;
 }
 

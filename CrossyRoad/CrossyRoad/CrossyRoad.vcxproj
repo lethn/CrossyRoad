@@ -139,11 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="MAP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ENEMY.h" />
+    <ClInclude Include="LEVEL.h" />
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="GAME.h" />

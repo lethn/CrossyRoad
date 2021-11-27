@@ -113,7 +113,7 @@ void GAME::logoCrossyRoad() {
 }
 
 void GAME::menu() {
-	PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	Nocursortype();
 	txtColor(15);
 	int x = 74;
@@ -164,7 +164,7 @@ void GAME::menu() {
 				cnt = 4;
 		}
 		if (choice == KEY_ESC) {
-			system("cls");
+			clrscr();
 			exit(0);
 		}
 
@@ -210,7 +210,7 @@ void GAME::menu() {
 			gotoxy(x + 8, y + 7); cout << " EXIT ";
 			if (choice == KEY_ENTER) {
 				txtColor(15);
-				system("cls");
+				clrscr();
 				exit(0);
 			}
 		}
@@ -220,7 +220,7 @@ void GAME::menu() {
 void GAME::newGame() {
 	Nocursortype();
 	txtColor(15);
-	system("cls");
+	clrscr();
 	map.printMapScreen();
 	map.printSubMapScreen();
 	_getch();
@@ -229,7 +229,7 @@ void GAME::newGame() {
 void GAME::logoLoadGame() {
 	Nocursortype();
 	txtColor(15);
-	system("cls");
+	clrscr();
 	int x = 38;
 	int y = 4;
 
@@ -284,31 +284,38 @@ void GAME::logoLoadGame() {
 
 void GAME::loadGame() {
 	logoLoadGame();
+	int x = 51;
+	int y = 18;
 
-	gotoxy(34, 19);
-	cout << "Type here: ";
-
-	gotoxy(33, 18);
+	gotoxy(x, y);
 	for (int i = 0; i < 68; ++i)
-		cout << char(205);
+		cout << HORIZONTAL_PALE_PIECE;
 
-	gotoxy(33, 20);
+	gotoxy(x, y + 2);
 	for (int i = 0; i < 68; ++i)
-		cout << char(205);
+		cout << HORIZONTAL_PALE_PIECE;
 
-	gotoxy(32, 18);
-	cout << char(201);
-	gotoxy(32, 20);
-	cout << char(200);
+	gotoxy(x - 1, y);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	gotoxy(x - 1, y + 2);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
 
-	gotoxy(101, 18);
-	cout << char(187);
-	gotoxy(101, 20);
-	cout << char(188);
+	gotoxy(x + 68, y);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	gotoxy(x + 68, y + 2);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
 
-	gotoxy(32, 19);
-	cout << char(186);
-	gotoxy(101, 19);
-	cout << char(186);
-	_getch();
+	gotoxy(x - 1, y + 1);
+	cout << VERTICAL_PALE_PIECE;
+	gotoxy(x + 68, y + 1);
+	cout << VERTICAL_PALE_PIECE;
+
+	gotoxy(x + 1, y + 1);
+	cout << "Enter your file here: ";
+	
+	UnNocursortype();
+	string file;
+	cin >> file;
+	
+	Nocursortype();
 }
