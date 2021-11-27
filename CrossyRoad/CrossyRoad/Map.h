@@ -8,7 +8,7 @@ private:
 	int width;	// 115
 	int height;	// 36
 	char map[38][116];
-	PLAYER player;
+	/*PLAYER player;*/
 public:
 	MAP();
 	void initializeMap();

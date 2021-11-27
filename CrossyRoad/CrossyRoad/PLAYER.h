@@ -2,11 +2,13 @@
 #define _PLAYER_H_
 
 #include "Library.h"
-#include "GAME.h"
+
 
 #define DOWN_MAP 34
 #define LEFT_MAP 2
 #define RIGHT_MAP 58
+#define VERTICAL_BLACK_PIECE char(219)
+#define MIDDLE_SMALL_BLACKE_PIECE char(254)
 
 class PLAYER {
 private:
