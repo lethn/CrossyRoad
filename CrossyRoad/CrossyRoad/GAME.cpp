@@ -153,12 +153,12 @@ void GAME::menu() {
 		gotoxy(x + 6, y + 5); cout << "SOUND:";
 		gotoxy(x + 8, y + 7); cout << " EXIT ";
 
-		if (choice == KEY_DOWN){
+		if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
 			cnt++;
 			if (cnt > 4)
 				cnt = 1;
 		}
-		if (choice == KEY_UP) {
+		if (choice == KEY_UP || choice == 'W' || choice == 'w') {
 			cnt--;
 			if (cnt < 1)
 				cnt = 4;
@@ -171,7 +171,7 @@ void GAME::menu() {
 		if (cnt == 1) {
 			txtColor(240);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
-			if (choice == KEY_ENTER) {
+			if (choice == KEY_ENTER ) {
 				if (newGame() == true) {
 
 					break;
