@@ -1,4 +1,4 @@
-#ifdef _CAR_H_
+#ifndef _CAR_H_
 #define _CAR_H_
 
 #include <ENEMY.h>
@@ -10,7 +10,8 @@ class CAR : public ENEMY
     private:
 
     public:
-}
+        
+};
 
 
 #endif
