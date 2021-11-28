@@ -6,7 +6,16 @@
 
 class LANE
 {
-    vector<ENEMY*> enemies;
+    private: 
+        vector<ENEMY*> enemies;
+        bool direction;
+        bool redLight;
+        int speed;
+
+    public:
+        LANE();
+        LANE();
+
 };
 
 #endif
