@@ -5,7 +5,6 @@ CAR::CAR()
     for (int i = 0; i < 3; ++i)
         shape[i] = new char[11];
 
-<<<<<<< HEAD
     shape[0][0] = ' ';
     shape[0][1] = ' ';
     shape[0][2] = ' ';
@@ -41,11 +40,6 @@ CAR::CAR()
     shape[2][8] = '-';
     shape[2][9] = '\'';
     shape[2][10] = '\0';
-=======
-  /*  shape[0] = "   ___    ";
-    shape[1] = " _/  L\\__ ";
-    shape[2] = "'=o----o-'";*/
->>>>>>> 1cfe2042b4ed73e6b88092e059dbc5329d400d42
 }
 
 CAR::CAR(int x, int y) : ENEMY(x, y)
