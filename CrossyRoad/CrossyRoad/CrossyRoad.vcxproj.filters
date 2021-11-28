@@ -30,6 +30,15 @@
     <ClCompile Include="PLAYER.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CAR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LANE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TRUCK.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.h">
@@ -48,6 +57,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PLAYER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CAR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LANE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TRUCK.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
