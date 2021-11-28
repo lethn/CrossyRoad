@@ -14,7 +14,6 @@ class LANE
 
     public:
         LANE();
-        LANE();
 
 };
 

@@ -7,7 +7,7 @@ class MAP {
 private:
 	int width;	// 115
 	int height;	// 36
-	char map[38][116];
+	char map[40][125];
 	PLAYER player;
 public:
 	MAP();
