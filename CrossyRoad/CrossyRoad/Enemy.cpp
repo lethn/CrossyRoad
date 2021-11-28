@@ -1,14 +1,8 @@
 #include "ENEMY.h"
 
-ENEMY::ENEMY() : shape(NULL), outOfMap(false) {}
+ENEMY::ENEMY() : shape(new char*[3]()), outOfMap(false) {}
 
-ENEMY::ENEMY(int x, int y) : x(x), y(y), outOfMap(false)
-{
-    shape = new char*[3]();
-
-    for (int i = 0; i < 3; ++i)
-        shape[i] = new char[6]();
-}
+ENEMY::ENEMY(int x, int y) : shape(shape = new char*[3]()), x(x), y(y), outOfMap(false) {}
 
 ENEMY::~ENEMY()
 {

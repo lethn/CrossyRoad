@@ -10,6 +10,8 @@ class CAR : public ENEMY
     private:
 
     public:
+        CAR();
+
         
 };
 

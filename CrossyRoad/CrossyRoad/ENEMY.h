@@ -12,8 +12,7 @@ class ENEMY
 
     public:
         ENEMY();
-        ENEMY(int w, int h);
-        ENEMY(int w, int h, int x, int y);
+        ENEMY(int x, int y);
         ~ENEMY();
         void setShape(char **shape);
                 
