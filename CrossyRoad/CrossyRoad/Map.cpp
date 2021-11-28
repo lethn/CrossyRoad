@@ -8,7 +8,7 @@ MAP::MAP() {
 }
 
 void MAP::initializeMap() {
-	for (int i = 0; i <= width; i++) {
+	for (int i = 0; i <= width; ++i) {
 		map[0][i] = DOWN_BLACK_PIECE;			// First row
 		map[height + 1][i] = UP_BLACK_PIECE;	// Last row
 	}
@@ -21,6 +21,8 @@ void MAP::initializeMap() {
 			map[i][j] = ' ';	// Inside MAP
 		}
 	}
+	for (int i = 0; i <= height + 1; ++i)
+		map[i][width + 1] = 'A';	// Right Light
 }
 
 void MAP::printMapScreen() {
@@ -28,7 +30,7 @@ void MAP::printMapScreen() {
 	gotoxy(0, 0);
 	for (int i = 0; i <= height + 1; ++i) {
 		cout << "   ";
-		for (int j = 0; j <= width; ++j) {
+		for (int j = 0; j <= width + 1; ++j) {
 			cout << map[i][j];
 		}
 		cout << endl;
@@ -69,10 +71,12 @@ void MAP::printMapScreen() {
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
+	if ((y + w <= 0) || (y > width))
+		return 0;
 	for (int i = 0; i < h; ++i) {
-		for (int j = max(1, x); j <= min(width, x + w - 1); ++j) {
-			gotoxy(x + j, y + i);
-			cout << shape[i][j - max(1, x)];
+		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
+			gotoxy(y + j, x + i);
+			cout << shape[i][j - max(1, y)];
 		}
 	}
 	return 1;
