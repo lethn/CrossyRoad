@@ -18,7 +18,6 @@ private:
 	char** shapelessPlayer;	// shapeless player
 	char** player;			// player
 	bool checkDead;
-
 public:
 	PLAYER();
 	PLAYER(int x, int y);
