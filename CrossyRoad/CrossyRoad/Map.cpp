@@ -34,38 +34,41 @@ void MAP::printMapScreen() {
 		cout << endl;
 	}
 
-	gotoxy(119, 6);
+	int x = 127;
+	int y = 6;
+	gotoxy(x, y);
 	for (int i = 0; i < 35; ++i)
 		cout << DOWN_BLACK_PIECE;
 	for (int i = 7; i < 22; ++i) {
-		gotoxy(153, i);
+		gotoxy(x, i);
 		cout << VERTICAL_BLACK_PIECE;
 	}
-	gotoxy(119, 22);
+	for (int i = 7; i < 22; ++i) {
+		gotoxy(x + 34, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	gotoxy(x, y + 16);
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
-	txtColor(14);	gotoxy(125, 8); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
+	txtColor(14);	gotoxy(x + 6, y + 2); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
 	cout << "1";
 
-	txtColor(12);	gotoxy(125, 10); cout << MIDDLE_SMALL_BLACK_PIECE << " MOVING KEYBOARD " << endl;
+	txtColor(12);	gotoxy(x + 6, y + 4); cout << MIDDLE_SMALL_BLACK_PIECE << " MOVING KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(127, 11); cout << "W: UP" << endl;
-	gotoxy(127, 12); cout << "S: DOWN" << endl;
-	gotoxy(127, 13); cout << "A: LEFT" << endl;
-	gotoxy(127, 14); cout << "D: RIGHT" << endl;
+	gotoxy(x + 8, 11); cout << "W: UP" << endl;
+	gotoxy(x + 8, 12); cout << "S: DOWN" << endl;
+	gotoxy(x + 8, 13); cout << "A: LEFT" << endl;
+	gotoxy(x + 8, 14); cout << "D: RIGHT" << endl;
 
-	txtColor(12); gotoxy(125, 17); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
+	txtColor(12); gotoxy(x + 6, y + 11); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(127, 18); cout << "H: SAVE GAME" << endl;
-	gotoxy(127, 19); cout << "L: LOAD GAME" << endl;
-	gotoxy(127, 20); cout << "P: PAUSE GAME" << endl;
+	gotoxy(x + 8, 18); cout << "H: SAVE GAME" << endl;
+	gotoxy(x + 8, 19); cout << "L: LOAD GAME" << endl;
+	gotoxy(x + 8, 20); cout << "P: PAUSE GAME" << endl;
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
-	/*if (x > w || (x + w <= 0))
-		return 0;*/
-
 	for (int i = 0; i < h; ++i) {
 		for (int j = max(1, x); j <= min(width, x + w - 1); ++j) {
 			gotoxy(x + j, y + i);

@@ -242,8 +242,10 @@ bool GAME::newGame() {
 			}
 
 			if (key == 'W' || key == 'w') {
-				if (checkPauseGame == false)
+				if (checkPauseGame == false) {
 					map.updatePosPlayer('W');
+				}
+					
 			}
 			if (key == 'S' || key == 's') {
 				if (checkPauseGame == false)
