@@ -18,8 +18,6 @@ class LANE
         LANE();
         LANE(bool direction, bool redLight, int speed);
         
-        void draw();
-
 };
 
 #endif

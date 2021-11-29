@@ -14,9 +14,8 @@ class ENEMY
         ENEMY();
         ENEMY(int x, int y);
         ~ENEMY();
-        void setShape(char **shape);
+        virtual void renderShape() = 0;
                 
-    friend class LANE;
 };
 
 
