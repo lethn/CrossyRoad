@@ -16,7 +16,7 @@ class ENEMY
         ~ENEMY();
         void setShape(char **shape);
                 
-
+    friend class LANE;
 };
 
 

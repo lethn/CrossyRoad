@@ -4,6 +4,8 @@
 #include "Library.h"
 #include "ENEMY.h"
 
+//First Lane x = 4, y = 31
+
 class LANE
 {
     private: 
@@ -14,6 +16,9 @@ class LANE
 
     public:
         LANE();
+        LANE(bool direction, bool redLight, int speed);
+        
+        void draw();
 
 };
 
