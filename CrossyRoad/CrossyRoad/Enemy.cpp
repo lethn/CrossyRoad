@@ -3,7 +3,7 @@
 
 ENEMY::ENEMY() : shape(new char*[3]()), outOfMap(false) {}
 
-ENEMY::ENEMY(int x, int y) : shape(shape = new char*[3]()), x(x), y(y), outOfMap(false) {}
+ENEMY::ENEMY(int x, int y) : shape(new char*[3]()), x(x), y(y), outOfMap(false) {}
 
 ENEMY::~ENEMY()
 {
