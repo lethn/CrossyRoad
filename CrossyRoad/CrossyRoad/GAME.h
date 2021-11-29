@@ -24,6 +24,11 @@
 #define KEY_ESC 27
 #define KEY_ENTER 13
 
+#define LEFT_BORDER 4
+#define RIGHT_BORDER 117
+#define TOP_BORDER 1
+#define BOTTOM_BORDER 36
+
 class GAME {
 private:
 	MAP map;

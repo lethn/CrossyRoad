@@ -14,7 +14,7 @@ class ENEMY
         ENEMY();
         ENEMY(int x, int y);
         ~ENEMY();
-        virtual void renderShape() = 0;
+        void renderShape();
                 
 };
 

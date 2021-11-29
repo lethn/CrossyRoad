@@ -226,9 +226,9 @@ bool GAME::newGame() {
 	map.printMapScreen();
 	map.drawPlayer();
 
-	// ENEMY *e = new CAR(116, 31);
-	// e -> renderShape();
-	// delete e;
+	ENEMY *e = new CAR(116, 31);
+	e -> renderShape();
+	delete e;	
 
 	while (!map.checkEndMap()){
 

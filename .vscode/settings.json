@@ -2,6 +2,7 @@
     "files.associations": {
         "iosfwd": "cpp",
         "type_traits": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "iostream": "cpp"
     }
 }
