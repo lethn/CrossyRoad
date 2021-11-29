@@ -3,13 +3,14 @@
 
 #include "ENEMY.h"
 
+//Starting x position for the car is -6
+
 class CAR : public ENEMY
 {
     public:
         CAR();
         CAR(int x, int y);
-        
-        void renderShape();
+    
     
 };
 

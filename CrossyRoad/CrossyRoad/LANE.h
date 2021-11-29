@@ -18,6 +18,7 @@ class LANE
         LANE();
         LANE(bool direction, bool redLight, int speed);
         
+        
 };
 
 #endif

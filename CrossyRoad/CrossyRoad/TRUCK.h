@@ -3,6 +3,8 @@
 
 #include "ENEMY.h"
 
+//Starting x position for the truck is -7
+
 class TRUCK : public ENEMY
 {
     private:

@@ -6,6 +6,7 @@
 #include "PLAYER.h"
 #include "ENEMY.h"
 #include "CAR.h"
+#include "TRUCK.h"
 
 #define DOWN_BLACK_PIECE char(220)
 #define UP_BLACK_PIECE char(223)
