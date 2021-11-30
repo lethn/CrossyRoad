@@ -18,7 +18,7 @@ class ENEMY
 
     friend class LANE;
     friend class GAME;
-    
+    friend class PLAYER;
 };
 
 

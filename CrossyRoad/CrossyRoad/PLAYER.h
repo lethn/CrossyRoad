@@ -2,7 +2,7 @@
 #define _PLAYER_H_
 
 #include "Library.h"
-
+#include "ENEMY.h"
 
 #define DOWN_MAP 34
 #define LEFT_MAP 2
@@ -36,6 +36,8 @@ public:
 	char** getShapelessPlayer();
 	void setCheckDead();
 	bool getCheckDead();
+
+	bool checkCollision(ENEMY enemy);
 };
 
 
