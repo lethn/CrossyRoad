@@ -227,19 +227,6 @@ bool GAME::newGame() {
 	map.printMapScreen();
 	map.drawPlayer();
 
-	// int l1 = 31;
-	// LANE lane1;
-	// lane1.enemies.push_back(new CAR(-7, l1));
-	// lane1.enemies.push_back(new TRUCK(-20, l1));
-	
-	// int t = 120;
-	// while (t--)
-	// 	lane1.moveEnemies();
-
-	// // ENEMY *e = new CAR(1, 31);
-	// // e -> renderShape();
-	// // delete e;
-
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
 			// Create State Continuously
@@ -297,6 +284,15 @@ bool GAME::newGame() {
 				}
 			}
 		}
+
+		// int l1 = 31;
+		// LANE lane1;
+		// lane1.enemies.push_back(new CAR(-7, l1));
+		// lane1.enemies.push_back(new TRUCK(-20, l1));
+		
+		// int t = 120;
+		// while (t--)
+		// 	lane1.moveEnemies();
 
 		if (kbhit()) {
 			char key = _getch();
