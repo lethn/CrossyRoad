@@ -112,6 +112,118 @@ void GAME::logoCrossyRoad() {
 	}
 }
 
+void GAME::logoLoadGame() {
+	Nocursortype();
+	txtColor(15);
+	clrscr();
+	int x = 38;
+	int y = 4;
+
+	gotoxy(x - 2, y);		cout << " ___      _______  _______  ______   ___   __    _  _______    _______  _______  __   __  _______ " << endl;
+	gotoxy(x - 2, y + 1);	cout << "|   |    |       ||   _   ||      | |   | |  |  | ||       |  |       ||   _   ||  |_|  ||       |" << endl;
+	gotoxy(x - 2, y + 2);	cout << "|   |    |   _   ||  |_|  ||  _    ||   | |   |_| ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 3);	cout << "|   |    |  | |  ||       || | |   ||   | |       ||   | __   |   | __ |       ||       ||   |___ " << endl;
+	gotoxy(x - 2, y + 4);	cout << "|   |___ |  |_|  ||       || |_|   ||   | |  _    ||   ||  |  |   ||  ||       ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 5);	cout << "|       ||       ||   _   ||       ||   | | | |   ||   |_| |  |   |_| ||   _   || ||_|| ||   |___ " << endl;
+	gotoxy(x - 2, y + 6);	cout << "|_______||_______||__| |__||______| |___| |_|  |__||_______|  |_______||__| |__||_|   |_||_______|" << endl;
+
+	gotoxy(x - 8, y - 2);
+	for (int i = 0; i < 110; ++i)
+		cout << DOWN_BLACK_PIECE;
+	gotoxy(x - 5, y - 1);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 5, y + 8);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 8, 13);
+	for (int i = 0; i < 110; ++i)
+		cout << UP_BLACK_PIECE;
+
+	gotoxy(x - 6, y - 1);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	gotoxy(x - 6, y + 8);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	gotoxy(x + 99, y - 1);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	gotoxy(x + 99, y + 8);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x - 6, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x + 99, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x - 8, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x + 101, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+}
+
+void GAME::logoSaveGame() {
+	Nocursortype();
+	txtColor(15);
+	clrscr();
+	int x = 38;
+	int y = 4;
+
+	gotoxy(x - 2, y);		cout << " _______  _______  __   __  _______    _______  _______  __   __  _______ " << endl;
+	gotoxy(x - 2, y + 1);	cout << "|       ||   _   ||  | |  ||       |  |       ||   _   ||  |_|  ||       |" << endl;
+	gotoxy(x - 2, y + 2);	cout << "|  _____||  |_|  ||  |_|  ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 3);	cout << "| |_____ |       ||       ||   |___   |   | __ |       ||       ||   |___ " << endl;
+	gotoxy(x - 2, y + 4);	cout << "|_____  ||       ||       ||    ___|  |   ||  ||       ||       ||    ___|" << endl;
+	gotoxy(x - 2, y + 5);	cout << " _____| ||   _   | |     | |   |___   |   |_| ||   _   || ||_|| ||   |___ " << endl;
+	gotoxy(x - 2, y + 6);	cout << "|_______||__| |__|  |___|  |_______|  |_______||__| |__||_|   |_||_______|" << endl;
+
+	gotoxy(x - 8, y - 2);
+	for (int i = 0; i < 110; ++i)
+		cout << DOWN_BLACK_PIECE;
+	gotoxy(x - 5, y - 1);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 5, y + 8);
+	for (int i = 0; i < 105; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+	gotoxy(x - 8, 13);
+	for (int i = 0; i < 110; ++i)
+		cout << UP_BLACK_PIECE;
+
+	gotoxy(x - 6, y - 1);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	gotoxy(x - 6, y + 8);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	gotoxy(x + 99, y - 1);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	gotoxy(x + 99, y + 8);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x - 6, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 4; i < 12; ++i) {
+		gotoxy(x + 99, i);
+		cout << VERTICAL_PALE_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x - 8, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 3; i < 13; ++i) {
+		gotoxy(x + 101, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+}
+
 void GAME::menu() {
 	//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	Nocursortype();
@@ -304,11 +416,17 @@ bool GAME::newGame() {
 			if (key == 'H' || key == 'h') {
 				checkPauseGame = true;
 				// save game
+				saveGame();
+				clrscr();
+				map.printMapScreen();
 				checkPauseGame = false;
 			}
 			if (key == 'L' || key == 'l') {
 				checkPauseGame = true;
 				// load game
+				loadGame();
+				clrscr();
+				map.printMapScreen();
 				checkPauseGame = false;
 			}
 			if (key == 'p') {
@@ -333,62 +451,6 @@ bool GAME::newGame() {
 
 	}
 	return false;
-}
-
-void GAME::logoLoadGame() {
-	Nocursortype();
-	txtColor(15);
-	clrscr();
-	int x = 38;
-	int y = 4;
-
-	gotoxy(x - 2, y);		cout << " ___      _______  _______  ______   ___   __    _  _______    _______  _______  __   __  _______ " << endl;
-	gotoxy(x - 2, y + 1);	cout << "|   |    |       ||   _   ||      | |   | |  |  | ||       |  |       ||   _   ||  |_|  ||       |" << endl;
-	gotoxy(x - 2, y + 2);	cout << "|   |    |   _   ||  |_|  ||  _    ||   | |   |_| ||    ___|  |    ___||  |_|  ||       ||    ___|" << endl;
-	gotoxy(x - 2, y + 3);	cout << "|   |    |  | |  ||       || | |   ||   | |       ||   | __   |   | __ |       ||       ||   |___ " << endl;
-	gotoxy(x - 2, y + 4);	cout << "|   |___ |  |_|  ||       || |_|   ||   | |  _    ||   ||  |  |   ||  ||       ||       ||    ___|" << endl;
-	gotoxy(x - 2, y + 5);	cout << "|       ||       ||   _   ||       ||   | | | |   ||   |_| |  |   |_| ||   _   || ||_|| ||   |___ " << endl;
-	gotoxy(x - 2, y + 6);	cout << "|_______||_______||__| |__||______| |___| |_|  |__||_______|  |_______||__| |__||_|   |_||_______|" << endl;
-
-	gotoxy(x - 8, y - 2);
-	for (int i = 0; i < 110; ++i)
-		cout << DOWN_BLACK_PIECE;
-	gotoxy(x - 5, y - 1);
-	for (int i = 0; i < 105; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	gotoxy(x - 5, y + 8);
-	for (int i = 0; i < 105; ++i)
-		cout << HORIZONTAL_PALE_PIECE;
-	gotoxy(x - 8, 13);
-	for (int i = 0; i < 110; ++i)
-		cout << UP_BLACK_PIECE;
-
-	gotoxy(x - 6, y - 1);
-	cout << UP_LEFT_CORNER_PALE_PIECE;
-	gotoxy(x - 6, y + 8);
-	cout << DOWN_LEFT_CORNER_PALE_PIECE;
-
-	gotoxy(x + 99, y - 1);
-	cout << UP_RIGHT_CORNER_PALE_PIECE;
-	gotoxy(x + 99, y + 8);
-	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
-
-	for (int i = 4; i < 12; ++i) {
-		gotoxy(x - 6, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 4; i < 12; ++i) {
-		gotoxy(x + 99, i);
-		cout << VERTICAL_PALE_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		gotoxy(x - 8, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-	for (int i = 3; i < 13; ++i) {
-		gotoxy(x + 101, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
 }
 
 void GAME::loadGame() {
@@ -428,3 +490,42 @@ void GAME::loadGame() {
 	
 	Nocursortype();
 }
+
+void GAME::saveGame() {
+	logoSaveGame();
+	int x = 51;
+	int y = 18;
+
+	gotoxy(x, y);
+	for (int i = 0; i < 68; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+
+	gotoxy(x, y + 2);
+	for (int i = 0; i < 68; ++i)
+		cout << HORIZONTAL_PALE_PIECE;
+
+	gotoxy(x - 1, y);
+	cout << UP_LEFT_CORNER_PALE_PIECE;
+	gotoxy(x - 1, y + 2);
+	cout << DOWN_LEFT_CORNER_PALE_PIECE;
+
+	gotoxy(x + 68, y);
+	cout << UP_RIGHT_CORNER_PALE_PIECE;
+	gotoxy(x + 68, y + 2);
+	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
+
+	gotoxy(x - 1, y + 1);
+	cout << VERTICAL_PALE_PIECE;
+	gotoxy(x + 68, y + 1);
+	cout << VERTICAL_PALE_PIECE;
+
+	gotoxy(x + 1, y + 1);
+	cout << "Enter your file here: ";
+
+	UnNocursortype();
+	string file;
+	cin >> file;
+
+	Nocursortype();
+}
+
