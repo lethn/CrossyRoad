@@ -10,15 +10,15 @@ class LANE
 {
     private: 
         vector<ENEMY*> enemies;
-        bool direction;
+        short direction;
         bool redLight;
         int speed;
 
     public:
         LANE();
-        LANE(bool direction, bool redLight, int speed);
+        LANE(short direction, bool redLight, int speed);
         
-        
+        ~LANE();
 };
 
 #endif
