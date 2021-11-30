@@ -41,15 +41,15 @@ void MAP::printMapScreen() {
 	gotoxy(x, y);
 	for (int i = 0; i < 35; ++i)
 		cout << DOWN_BLACK_PIECE;
-	for (int i = 7; i < 22; ++i) {
+	for (int i = 7; i < 21; ++i) {
 		gotoxy(x, i);
 		cout << VERTICAL_BLACK_PIECE;
 	}
-	for (int i = 7; i < 22; ++i) {
+	for (int i = 7; i < 21; ++i) {
 		gotoxy(x + 34, i);
 		cout << VERTICAL_BLACK_PIECE;
 	}
-	gotoxy(x, y + 16);
+	gotoxy(x, y + 15);
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
@@ -63,11 +63,11 @@ void MAP::printMapScreen() {
 	gotoxy(x + 8, 13); cout << "A: LEFT" << endl;
 	gotoxy(x + 8, 14); cout << "D: RIGHT" << endl;
 
-	txtColor(12); gotoxy(x + 6, y + 11); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
+	txtColor(12); gotoxy(x + 6, y + 10); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(x + 8, 18); cout << "H: SAVE GAME" << endl;
-	gotoxy(x + 8, 19); cout << "L: LOAD GAME" << endl;
-	gotoxy(x + 8, 20); cout << "P: PAUSE GAME" << endl;
+	gotoxy(x + 8, 17); cout << "H: SAVE GAME" << endl;
+	gotoxy(x + 8, 18); cout << "L: LOAD GAME" << endl;
+	gotoxy(x + 8, 19); cout << "P: PAUSE GAME" << endl;
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {

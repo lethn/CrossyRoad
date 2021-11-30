@@ -222,6 +222,7 @@ void GAME::menu() {
 bool GAME::newGame() {
 	Nocursortype();
 	txtColor(15);
+	checkPauseGame = false;
 	clrscr();
 	map.printMapScreen();
 	map.drawPlayer();
@@ -239,43 +240,97 @@ bool GAME::newGame() {
 	// // e -> renderShape();
 	// // delete e;
 
-	while (!map.checkEndMap()){
+	while (!map.checkEndMap()) {
+		if (checkPauseGame == false) {
+			// Create State Continuously
+		}
+		else if (checkPauseGame == true) {
+			txtColor(12); gotoxy(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
+			txtColor(15);
+			gotoxy(134, 25); cout << " RESUME " << endl;
+			gotoxy(134, 27); cout << "  EXIT  " << endl;
 
-		while (true) {
+			int temp = 0;
+			while (true) {
+				char choice = _getch();
+				txtColor(15);
+				gotoxy(134, 25); cout << " RESUME " << endl;
+				gotoxy(134, 27); cout << "  EXIT  " << endl;
+
+				if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
+					temp++;
+					if (temp > 2)
+						temp = 1;
+				}
+				if (choice == KEY_UP || choice == 'W' || choice == 'w') {
+					temp--;
+					if (temp < 1)
+						temp = 2;
+				}
+				if (temp == 1) {
+					txtColor(240);
+					gotoxy(134, 25); cout << " RESUME " << endl;
+					if (choice == KEY_ENTER) {
+						checkPauseGame = false;
+						txtColor(0);
+						gotoxy(133, 23); cout << "             " << endl;
+						gotoxy(134, 25); cout << "        " << endl;
+						gotoxy(134, 27); cout << "        " << endl;
+						txtColor(15);
+						break;
+					}
+				}
+				if (temp == 2) {
+					txtColor(240);
+					gotoxy(134, 27); cout << "  EXIT  " << endl;
+					if (choice == KEY_ENTER) {
+						// Load menu again
+
+						checkPauseGame = false;
+						txtColor(0);
+						gotoxy(133, 23); cout << "             " << endl;
+						gotoxy(134, 25); cout << "        " << endl;
+						gotoxy(134, 27); cout << "        " << endl;
+						txtColor(15);
+						return true;
+					}
+				}
+			}
+		}
+
+		if (kbhit()) {
 			char key = _getch();
 
 			if (key == 'H' || key == 'h') {
+				checkPauseGame = true;
 				// save game
+				checkPauseGame = false;
 			}
 			if (key == 'L' || key == 'l') {
+				checkPauseGame = true;
 				// load game
+				checkPauseGame = false;
 			}
-			if (key == 'P' || key == 'p') {
-				// pause game
+			if (key == 'p') {
+				checkPauseGame = true;
 			}
 
 			if (key == 'W' || key == 'w') {
-				if (checkPauseGame == false) {
-					map.updatePosPlayer('W');
-				}
-					
+				map.updatePosPlayer('W');
 			}
 			if (key == 'S' || key == 's') {
-				if (checkPauseGame == false)
-					map.updatePosPlayer('S');
+				map.updatePosPlayer('S');
 			}
 			if (key == 'A' || key == 'a') {
-				if (checkPauseGame == false)
-					map.updatePosPlayer('A');
+				map.updatePosPlayer('A');
 			}
 			if (key == 'D' || key == 'd') {
-				if (checkPauseGame == false)
-					map.updatePosPlayer('D');
+				map.updatePosPlayer('D');
 			}
 
 			map.drawPlayer();
 		}
-		
+
 	}
 	return false;
 }
