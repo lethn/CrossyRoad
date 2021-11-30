@@ -172,7 +172,7 @@ void GAME::logoSaveGame() {
 	Nocursortype();
 	txtColor(15);
 	clrscr();
-	int x = 38;
+	int x = 50;
 	int y = 4;
 
 	gotoxy(x - 2, y);		cout << " _______  _______  __   __  _______    _______  _______  __   __  _______ " << endl;
@@ -184,16 +184,16 @@ void GAME::logoSaveGame() {
 	gotoxy(x - 2, y + 6);	cout << "|_______||__| |__|  |___|  |_______|  |_______||__| |__||_|   |_||_______|" << endl;
 
 	gotoxy(x - 8, y - 2);
-	for (int i = 0; i < 110; ++i)
+	for (int i = 0; i < 86; ++i)
 		cout << DOWN_BLACK_PIECE;
 	gotoxy(x - 5, y - 1);
-	for (int i = 0; i < 105; ++i)
+	for (int i = 0; i < 81; ++i)
 		cout << HORIZONTAL_PALE_PIECE;
 	gotoxy(x - 5, y + 8);
-	for (int i = 0; i < 105; ++i)
+	for (int i = 0; i < 81; ++i)
 		cout << HORIZONTAL_PALE_PIECE;
 	gotoxy(x - 8, 13);
-	for (int i = 0; i < 110; ++i)
+	for (int i = 0; i < 86; ++i)
 		cout << UP_BLACK_PIECE;
 
 	gotoxy(x - 6, y - 1);
@@ -201,9 +201,9 @@ void GAME::logoSaveGame() {
 	gotoxy(x - 6, y + 8);
 	cout << DOWN_LEFT_CORNER_PALE_PIECE;
 
-	gotoxy(x + 99, y - 1);
+	gotoxy(x + 75, y - 1);
 	cout << UP_RIGHT_CORNER_PALE_PIECE;
-	gotoxy(x + 99, y + 8);
+	gotoxy(x + 75, y + 8);
 	cout << DOWN_RIGHT_CORNER_PALE_PIECE;
 
 	for (int i = 4; i < 12; ++i) {
@@ -211,7 +211,7 @@ void GAME::logoSaveGame() {
 		cout << VERTICAL_PALE_PIECE;
 	}
 	for (int i = 4; i < 12; ++i) {
-		gotoxy(x + 99, i);
+		gotoxy(x + 75, i);
 		cout << VERTICAL_PALE_PIECE;
 	}
 	for (int i = 3; i < 13; ++i) {
@@ -219,7 +219,7 @@ void GAME::logoSaveGame() {
 		cout << VERTICAL_BLACK_PIECE;
 	}
 	for (int i = 3; i < 13; ++i) {
-		gotoxy(x + 101, i);
+		gotoxy(x + 77, i);
 		cout << VERTICAL_BLACK_PIECE;
 	}
 }
