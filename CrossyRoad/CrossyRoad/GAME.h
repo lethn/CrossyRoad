@@ -40,10 +40,12 @@ public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();
 	void logoCrossyRoad();
+	void logoLoadGame();
+	void logoSaveGame();
 	void menu();
 	bool newGame();
-	void logoLoadGame();
 	void loadGame();
+	void saveGame();
 };
 
 void gotoxy(int x, int y);
