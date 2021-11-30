@@ -17,8 +17,12 @@ class LANE
     public:
         LANE();
         LANE(short direction, bool redLight, int speed);
-        
         ~LANE();
+
+        void initEnemies();
+        void moveEnemies();
+
+    friend class GAME;
 };
 
 #endif

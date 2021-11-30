@@ -226,9 +226,18 @@ bool GAME::newGame() {
 	map.printMapScreen();
 	map.drawPlayer();
 
-	ENEMY *e = new TRUCK(20, 31);
-	e -> renderShape();
-	delete e;	
+	// int l1 = 31;
+	// LANE lane1;
+	// lane1.enemies.push_back(new CAR(-7, l1));
+	// lane1.enemies.push_back(new TRUCK(-20, l1));
+	
+	// int t = 120;
+	// while (t--)
+	// 	lane1.moveEnemies();
+
+	// // ENEMY *e = new CAR(1, 31);
+	// // e -> renderShape();
+	// // delete e;
 
 	while (!map.checkEndMap()){
 

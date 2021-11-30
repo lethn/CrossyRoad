@@ -4,6 +4,7 @@
 #include "Library.h"
 #include "MAP.h"
 #include "PLAYER.h"
+#include "LANE.h"
 #include "ENEMY.h"
 #include "CAR.h"
 #include "TRUCK.h"

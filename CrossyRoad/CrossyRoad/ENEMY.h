@@ -16,7 +16,9 @@ class ENEMY
         ~ENEMY();
         void renderShape();
 
-    friend class GAME;        
+    friend class LANE;
+    friend class GAME;
+    
 };
 
 

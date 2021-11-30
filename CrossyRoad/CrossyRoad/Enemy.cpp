@@ -15,15 +15,14 @@ ENEMY::~ENEMY()
 
 void ENEMY::renderShape()
 {
-    int pos = x;
     int leftMost = x < LEFT_BORDER ? LEFT_BORDER - x : 0;
 
-    if (x < 0)
-        pos = LEFT_BORDER;
-    else if (x < LEFT_BORDER)
-        pos = LEFT_BORDER - x;
+    int pos = x < LEFT_BORDER ? LEFT_BORDER : x;
 
-    int rightMost = x + strlen(shape[0]) > RIGHT_BORDER ? RIGHT_BORDER - x + 1 : strlen(shape[0]) + 1;
+    int rightMost = x + (int)strlen(shape[0]) > RIGHT_BORDER ? RIGHT_BORDER - x + 1 : strlen(shape[0]) + 1;
+
+    if (leftMost >= rightMost)
+        return;
 
     for (int i = 0; i < 3; ++i) 
     {
