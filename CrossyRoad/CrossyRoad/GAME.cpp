@@ -444,7 +444,7 @@ bool GAME::newGame() {
 
 			map.drawPlayer();
 			
-			// for (ENEMY *enemy : lane1.enemies) 
+			// for (ENEMY *&enemy : lane1.enemies) 
 			// {
 			// 	if (map.player.checkCollision(*enemy))
 			// 		exit(0);

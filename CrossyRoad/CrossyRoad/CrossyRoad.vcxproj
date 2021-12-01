@@ -142,6 +142,7 @@
     <ClCompile Include="CAR.cpp" />
     <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="LANE.cpp" />
+    <ClCompile Include="LEVEL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="MAP.cpp" />

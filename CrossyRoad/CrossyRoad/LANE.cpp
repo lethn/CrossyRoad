@@ -20,10 +20,10 @@ void LANE::moveEnemies(int frameTime)
     if (redLight)
         return;
     
-    if (frameTime % speed != 0)
+    if (frameTime % 800 != 0)
         return;
 
-    for (ENEMY *enemy : enemies)
+    for (ENEMY *&enemy : enemies)
     {
         enemy -> x += direction;
         enemy -> renderShape();

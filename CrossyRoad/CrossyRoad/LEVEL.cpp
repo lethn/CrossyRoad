@@ -96,10 +96,10 @@ ENEMY * LEVEL::randNewEnemy(cPosition pos, short direction) {
 int LEVEL::randSpeed()
 {
 	int k = maxSpeed - minSpeed + ;
-	return rand % minSpeed + k ;
+	return rand() % minSpeed + k ;
 
 }
 
 void LEVEL::decNEnemy(int d) {
-	nEnemy -= d;
+	curEnemy -= d;
 }

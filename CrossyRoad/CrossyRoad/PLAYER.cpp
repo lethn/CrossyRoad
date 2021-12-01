@@ -123,17 +123,12 @@ bool PLAYER::getCheckDead() {
 
 bool PLAYER::checkCollision(ENEMY enemy)
 {
-	if (x != enemy.x)
-		return 0;
-	
-	bool xCollision = 0;
-	bool yCollision = 0;
+	// if (y != enemy.y)
+	// 	return false;
 
 	if ((enemy.x + 1 <= x && x <= enemy.x + strlen(enemy.shape[0])) || (enemy.x + 1 <= x + 5 && x + 5 <= enemy.x + strlen(enemy.shape[0])))
-		xCollision = 1;
-	
-	if ((enemy.y <= y && y <= enemy.y + 3) || (enemy.y <= y + 3 && y + 3 <= enemy.y + 3))
-		yCollision = 1;
+		if ((enemy.y <= y && y <= enemy.y + 3) || (enemy.y <= y + 3 && y + 3 <= enemy.y + 3))
+			return true;
 
-	return xCollision && yCollision;
+	return false;
 }
