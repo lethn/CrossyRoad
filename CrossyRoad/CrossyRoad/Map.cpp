@@ -71,12 +71,10 @@ void MAP::printMapScreen() {
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
-	if ((y + w <= 0) || (y > width))
-		return 0;
 	for (int i = 0; i < h; ++i) {
-		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
-			gotoxy(y + j, x + i);
-			cout << shape[i][j - max(1, y)];
+		for (int j = 0; j < w; ++j) {
+			gotoxy(x + j, y + i);
+			cout << shape[i][j];
 		}
 	}
 	return 1;

@@ -62,40 +62,40 @@ bool LEVEL::nextLevel() {
 	return true;
 }
 
-ENEMY * LEVEL::randNewEnemy(cPosition pos, short direction) {
-	if (curEnemy == maxEnemy) return NULL;
-	if (curEnemy < (maxEnemy)) {
-		++curEnemy;
-		ENEMY * pEnemy = NULL;
-		switch (direction)
-		{
-		case -1: {
-			int k = rand() % 2;
-			if( k == 0 ) {
-				pEnemy = new DOG(pos);
-			} /*else
-				pEnemy = new BAT(pos); */ // Wait for BAT class
-			break;
-		}
-		default:
-			int k = rand() % 3;
-			if( k == 0 ) {
-				pEnemy = new TRUCK(pos);
-			} else if( k == 1 ) {
-				pEnemy = new CAR(pos);
-			} /* else {
-				pEnemy = new something // wait for Duc Anh
-			}*/
-			break;
-		}
-		return pEnemy;
-	}
-	return NULL;
-}
+//ENEMY * LEVEL::randNewEnemy(cPosition pos, short direction) {
+//	if (curEnemy == maxEnemy) return NULL;
+//	if (curEnemy < (maxEnemy)) {
+//		++curEnemy;
+//		ENEMY * pEnemy = NULL;
+//		switch (direction)
+//		{
+//		case -1: {
+//			int k = rand() % 2;
+//			if( k == 0 ) {
+//				pEnemy = new DOG(pos);
+//			} /*else
+//				pEnemy = new BAT(pos); */ // Wait for BAT class
+//			break;
+//		}
+//		default:
+//			int k = rand() % 3;
+//			if( k == 0 ) {
+//				pEnemy = new TRUCK(pos);
+//			} else if( k == 1 ) {
+//				pEnemy = new CAR(pos);
+//			} /* else {
+//				pEnemy = new something // wait for Duc Anh
+//			}*/
+//			break;
+//		}
+//		return pEnemy;
+//	}
+//	return NULL;
+//}
 
 int LEVEL::randSpeed()
 {
-	int k = maxSpeed - minSpeed + ;
+	int k = maxSpeed - minSpeed;
 	return rand() % minSpeed + k ;
 
 }

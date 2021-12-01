@@ -5,8 +5,8 @@
 #include "ENEMY.h"
 
 #define DOWN_MAP 34
-#define LEFT_MAP 2
-#define RIGHT_MAP 58
+#define LEFT_MAP 4
+#define RIGHT_MAP 113
 #define VERTICAL_BLACK_PIECE char(219)
 #define MIDDLE_SMALL_BLACK_PIECE char(254)
 

@@ -2,8 +2,8 @@
 
 PLAYER::PLAYER() {
 	checkDead = false;
-	x = 34;
-	y = 30;
+	x = 30;
+	y = 34;
 
 	createShapelessPlayer();
 	createPlayer();
@@ -83,27 +83,27 @@ int PLAYER::getY() {
 }
 
 void PLAYER::Up() {
-	if (getX() <= 3)
+	if (getY() <= 3)
 		return;
-	x = x - 3;
+	y = y - 3;
 }
 
 void PLAYER::Down() {
-	if (getX() + 3 >= 37)
+	if (getY() + 3 >= 37)
 		return;
-	x = x + 3;
+	y = y + 3;
 }
 
 void PLAYER::Left() {
-	if (getY() <= LEFT_MAP)
+	if (getX() <= LEFT_MAP)
 		return;
-	y = y - 1;
+	x = x - 2;
 }
 
 void PLAYER::Right() {
-	if (getY() + 2 >= RIGHT_MAP)
+	if (getX() >= RIGHT_MAP)
 		return;
-	y = y + 1;
+	x = x + 2;
 }
 
 char** PLAYER::getPlayer() {
