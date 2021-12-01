@@ -336,7 +336,7 @@ bool GAME::newGame() {
 	txtColor(15);
 	checkPauseGame = false;
 	clrscr();
-	map.printMapScreen();
+	map.printMap();
 	map.drawPlayer();
 
 	int l1 = 31;
@@ -414,7 +414,7 @@ bool GAME::newGame() {
 				// save game
 				saveGame();
 				clrscr();
-				map.printMapScreen();
+				map.printMap();
 				checkPauseGame = false;
 			}
 			if (key == 'L' || key == 'l') {
@@ -422,7 +422,7 @@ bool GAME::newGame() {
 				// load game
 				loadGame();
 				clrscr();
-				map.printMapScreen();
+				map.printMap();
 				checkPauseGame = false;
 			}
 			if (key == 'p') {
