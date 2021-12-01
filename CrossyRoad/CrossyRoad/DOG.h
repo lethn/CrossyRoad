@@ -1,12 +1,12 @@
-#pragma once
+#ifndef _DOG_H_
+#define _DOG_H_
 
 #include "ENEMY.h"
 
-class DOG : public ENEMY
-{
-private:
-
+class DOG : public ENEMY{
 public:
     DOG();
     DOG(int x, int y);
 };
+
+#endif
