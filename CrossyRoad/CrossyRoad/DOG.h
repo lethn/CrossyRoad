@@ -6,7 +6,7 @@
 class DOG : public ENEMY{
 public:
     DOG();
-    DOG(int x, int y);
+    DOG(int x, int y, bool type);
 };
 
 #endif

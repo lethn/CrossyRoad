@@ -11,7 +11,7 @@ DOG::DOG() {
 	shape[2] = new char[11];
 	strcpy(shape[2], s.c_str());
 }
-DOG::DOG(int x ,int y):ENEMY(x,y) {
+DOG::DOG(int x ,int y, bool type): ENEMY(x, y, 0) {
 	shape[0] = new char[11];
 	string s = "o'')}____//";
 	strcpy(shape[0], s.c_str());

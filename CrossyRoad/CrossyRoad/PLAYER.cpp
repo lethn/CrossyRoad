@@ -2,8 +2,8 @@
 
 PLAYER::PLAYER() {
 	checkDead = false;
-	x = 34;
-	y = 30;
+	x = 60;
+	y = 34;
 
 	createShapelessPlayer();
 	createPlayer();
@@ -83,27 +83,27 @@ int PLAYER::getY() {
 }
 
 void PLAYER::Up() {
-	if (getX() <= 3)
+	if (getY() <= 3)
 		return;
-	x = x - 3;
+	y = y - 3;
 }
 
 void PLAYER::Down() {
-	if (getX() + 3 >= 37)
+	if (getY() + 3 >= 37)
 		return;
-	x = x + 3;
+	y = y + 3;
 }
 
 void PLAYER::Left() {
-	if (getY() <= LEFT_MAP)
+	if (getX() <= LEFT_MAP)
 		return;
-	y = y - 1;
+	x = x - 2;
 }
 
 void PLAYER::Right() {
-	if (getY() + 2 >= RIGHT_MAP)
+	if (getX() >= RIGHT_MAP)
 		return;
-	y = y + 1;
+	x = x + 2;
 }
 
 char** PLAYER::getPlayer() {
@@ -121,19 +121,16 @@ bool PLAYER::getCheckDead() {
 	return checkDead;
 }
 
-bool PLAYER::checkCollision(ENEMY enemy)
+bool PLAYER::checkCollision(const ENEMY &enemy)
 {
-	if (x != enemy.x)
-		return 0;
-	
-	bool xCollision = 0;
-	bool yCollision = 0;
+	if (y != enemy.y)
+		return false;
 
-	if ((enemy.x + 1 <= x && x <= enemy.x + strlen(enemy.shape[0])) || (enemy.x + 1 <= x + 5 && x + 5 <= enemy.x + strlen(enemy.shape[0])))
-		xCollision = 1;
-	
-	if ((enemy.y <= y && y <= enemy.y + 3) || (enemy.y <= y + 3 && y + 3 <= enemy.y + 3))
-		yCollision = 1;
+	int length = strlen(enemy.shape[0]);
 
-	return xCollision && yCollision;
+	if ((enemy.y <= y && y <= enemy.y + 2) || (enemy.y <= y + 2 && y + 2 <= enemy.y + 2))
+		if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 1) || (enemy.x + enemy.type <= x + 5 && x + 5 <= enemy.x + enemy.type + length - 1))
+			return true;
+
+	return false;
 }

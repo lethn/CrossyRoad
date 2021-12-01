@@ -1,41 +1,30 @@
 #include "MAP.h"
 #include "GAME.h"
 
-MAP::MAP() {
-	width = 115;
-	height = 36;
-	initializeMap();
-}
-
-void MAP::initializeMap() {
-	for (int i = 0; i <= width; ++i) {
-		map[0][i] = DOWN_BLACK_PIECE;			// First row
-		map[height + 1][i] = UP_BLACK_PIECE;	// Last row
-	}
-
-	for (int i = 1; i <= height; ++i) {
-		map[i][0] = VERTICAL_BLACK_PIECE;
-		map[i][width] = VERTICAL_BLACK_PIECE;
-
-		for (int j = 1; j < width; ++j) {
-			map[i][j] = ' ';	// Inside MAP
-		}
-	}
-	for (int i = 0; i <= height + 1; ++i)
-		map[i][width + 1] = 'A';	// Right Light
-}
-
-void MAP::printMapScreen() {
+void MAP::printMapBorder() {
 	txtColor(15);
-	gotoxy(0, 0);
-	for (int i = 0; i <= height + 1; ++i) {
-		cout << "   ";
-		for (int j = 0; j <= width + 1; ++j) {
-			cout << map[i][j];
-		}
-		cout << endl;
+
+	gotoxy(3, 0);
+	for (int i = 0; i < 117; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	for (int i = 1; i < 37; ++i) {
+		gotoxy(119, i);
+		cout << VERTICAL_BLACK_PIECE;
+	}
+	for (int i = 1; i < 37; ++i) {
+		gotoxy(3, i);
+		cout << VERTICAL_BLACK_PIECE;
 	}
 
+	gotoxy(3, 37);
+	for (int i = 0; i < 117; ++i)
+		cout << UP_BLACK_PIECE;
+}
+
+void MAP::printMap() {
+	printMapBorder();
+	
 	int x = 127;
 	int y = 6;
 	gotoxy(x, y);
@@ -65,18 +54,16 @@ void MAP::printMapScreen() {
 
 	txtColor(12); gotoxy(x + 6, y + 10); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(x + 8, 17); cout << "H: SAVE GAME" << endl;
+	gotoxy(x + 8, 17); cout << "J: SAVE GAME" << endl;
 	gotoxy(x + 8, 18); cout << "L: LOAD GAME" << endl;
 	gotoxy(x + 8, 19); cout << "P: PAUSE GAME" << endl;
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
-	if ((y + w <= 0) || (y > width))
-		return 0;
 	for (int i = 0; i < h; ++i) {
-		for (int j = max(1, y); j <= min(width, y + w - 1); ++j) {
-			gotoxy(y + j, x + i);
-			cout << shape[i][j - max(1, y)];
+		for (int j = 0; j < w; ++j) {
+			gotoxy(x + j, y + i);
+			cout << shape[i][j];
 		}
 	}
 	return 1;

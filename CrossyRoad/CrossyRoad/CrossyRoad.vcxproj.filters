@@ -42,6 +42,9 @@
     <ClCompile Include="ROAD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LEVEL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.h">

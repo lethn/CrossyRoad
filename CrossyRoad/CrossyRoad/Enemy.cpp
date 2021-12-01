@@ -1,9 +1,22 @@
 #include "ENEMY.h"
 #include "GAME.h"
 
-ENEMY::ENEMY() : shape(new char*[3]()), outOfMap(false) {}
+ENEMY::ENEMY() : shape(new char*[3]()), type(type), outOfMap(false) {}
 
-ENEMY::ENEMY(int x, int y) : shape(new char*[3]()), x(x), y(y), outOfMap(false) {}
+ENEMY::ENEMY(int x, int y, bool type) : shape(new char*[3]()), x(x), y(y), type(type), outOfMap(false) {}
+
+ENEMY::ENEMY(const ENEMY& other) : shape(new char*[3]()), x(other.x), y(other.y), type(other.type), outOfMap(other.outOfMap) 
+{
+    int n = strlen(other.shape[0]) + 1;
+    for (int i = 0; i < 3; ++i)
+    {
+        shape[i] = new char[n];
+        for (int j = 0; j < n; ++j)
+        {
+            shape[i][j] = other.shape[i][j];
+        }
+    }
+}
 
 ENEMY::~ENEMY()
 {

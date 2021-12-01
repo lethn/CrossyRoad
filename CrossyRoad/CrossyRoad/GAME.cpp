@@ -336,8 +336,15 @@ bool GAME::newGame() {
 	txtColor(15);
 	checkPauseGame = false;
 	clrscr();
-	map.printMapScreen();
+	map.printMap();
 	map.drawPlayer();
+
+	int l1 = 31;
+	LANE lane1;
+	lane1.enemies.push_back(new CAR(-7, l1, 1));
+	lane1.enemies.push_back(new TRUCK(-20, l1, 1));
+
+	int frameTime = 0;
 
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
@@ -396,25 +403,18 @@ bool GAME::newGame() {
 				}
 			}
 		}
-
-		// int l1 = 31;
-		// LANE lane1;
-		// lane1.enemies.push_back(new CAR(-7, l1));
-		// lane1.enemies.push_back(new TRUCK(-20, l1));
-		
-		// int t = 120;
-		// while (t--)
-		// 	lane1.moveEnemies();
+	
+		lane1.moveEnemies(frameTime++);
 
 		if (kbhit()) {
 			char key = _getch();
 
-			if (key == 'H' || key == 'h') {
+			if (key == 'J' || key == 'j') {
 				checkPauseGame = true;
 				// save game
 				saveGame();
 				clrscr();
-				map.printMapScreen();
+				map.printMap();
 				checkPauseGame = false;
 			}
 			if (key == 'L' || key == 'l') {
@@ -422,7 +422,7 @@ bool GAME::newGame() {
 				// load game
 				loadGame();
 				clrscr();
-				map.printMapScreen();
+				map.printMap();
 				checkPauseGame = false;
 			}
 			if (key == 'p') {
@@ -443,6 +443,13 @@ bool GAME::newGame() {
 			}
 
 			map.drawPlayer();
+			
+			for (ENEMY *&enemy : lane1.enemies) 
+			{
+				if (map.player.checkCollision(*enemy))
+					exit(0);
+			}
+
 		}
 
 	}
