@@ -344,7 +344,7 @@ bool GAME::newGame() {
 	lane1.enemies.push_back(new CAR(-7, l1));
 	lane1.enemies.push_back(new TRUCK(-20, l1));
 
-	// int frameTime = 0;
+	int frameTime = 0;
 
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
@@ -404,7 +404,7 @@ bool GAME::newGame() {
 			}
 		}
 	
-		// lane1.moveEnemies(frameTime++);
+		lane1.moveEnemies(frameTime++);
 
 		if (kbhit()) {
 			char key = _getch();
@@ -444,11 +444,11 @@ bool GAME::newGame() {
 
 			map.drawPlayer();
 			
-			// for (ENEMY *&enemy : lane1.enemies) 
-			// {
-			// 	if (map.player.checkCollision(*enemy))
-			// 		exit(0);
-			// }
+			for (ENEMY *&enemy : lane1.enemies) 
+			{
+				if (map.player.checkCollision(*enemy))
+					exit(0);
+			}
 
 		}
 
