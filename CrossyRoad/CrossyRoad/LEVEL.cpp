@@ -62,44 +62,61 @@ bool LEVEL::nextLevel() {
 	return true;
 }
 
-//ENEMY * LEVEL::randNewEnemy(cPosition pos, short direction) {
-//	if (curEnemy == maxEnemy) return NULL;
-//	if (curEnemy < (maxEnemy)) {
-//		++curEnemy;
-//		ENEMY * pEnemy = NULL;
-//		switch (direction)
-//		{
-//		case -1: {
-//			int k = rand() % 2;
-//			if( k == 0 ) {
-//				pEnemy = new DOG(pos);
-//			} /*else
-//				pEnemy = new BAT(pos); */ // Wait for BAT class
-//			break;
-//		}
-//		default:
-//			int k = rand() % 3;
-//			if( k == 0 ) {
-//				pEnemy = new TRUCK(pos);
-//			} else if( k == 1 ) {
-//				pEnemy = new CAR(pos);
-//			} /* else {
-//				pEnemy = new something // wait for Duc Anh
-//			}*/
-//			break;
-//		}
-//		return pEnemy;
-//	}
-//	return NULL;
-//}
 
 int LEVEL::randSpeed()
 {
 	int k = maxSpeed - minSpeed;
 	return rand() % minSpeed + k ;
+    
+}
+ENEMY *LEVEL::randNewEnemy(int x, int y, bool type) {
+    if (currEnemy == maxEnemy)
+        return NULL;
+
+    if (currEnemy < (maxEnemy)) {
+        ++currEnemy;
+        ENEMY * enemy = NULL;
+        
+        if (type) {
+            if (rand() % 2)
+                enemy = new CAR(x, y, type);
+
+            else
+                enemy = new TRUCK(x, y, type);
+
+        }
+        else {
+            switch (rand() % 3)
+            {
+                case 0:
+                    enemy = new DOG(x, y, type);
+                    break;
+
+                // case 1:
+                //     enemy = new BAT(x, y, type);
+                //     break;
+
+                // default:
+                //     // enemy = new (x, y, type);
+                //     break;
+            }
+        }
+        
+        return enemy;
+    }
+    
+    return NULL;
+}
+
+int LEVEL::randSpeed()
+{
+    int k = maxSpeed - minSpeed;
+    return rand() % minSpeed + k ;
+
 
 }
 
 void LEVEL::decNEnemy(int d) {
-	curEnemy -= d;
+    currEnemy -= d;
 }
+
