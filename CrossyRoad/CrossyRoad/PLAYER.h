@@ -37,7 +37,7 @@ public:
 	void setCheckDead();
 	bool getCheckDead();
 
-	bool checkCollision(ENEMY enemy);
+	bool checkCollision(const ENEMY &enemy);
 };
 
 

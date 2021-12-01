@@ -121,7 +121,7 @@ bool PLAYER::getCheckDead() {
 	return checkDead;
 }
 
-bool PLAYER::checkCollision(ENEMY enemy)
+bool PLAYER::checkCollision(const ENEMY &enemy)
 {
 	// if (y != enemy.y)
 	// 	return false;
