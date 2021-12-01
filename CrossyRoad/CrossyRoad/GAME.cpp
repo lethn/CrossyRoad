@@ -341,8 +341,8 @@ bool GAME::newGame() {
 
 	int l1 = 31;
 	LANE lane1;
-	lane1.enemies.push_back(new CAR(-7, l1));
-	lane1.enemies.push_back(new TRUCK(-20, l1));
+	lane1.enemies.push_back(new CAR(-7, l1, 1));
+	lane1.enemies.push_back(new TRUCK(-20, l1, 1));
 
 	int frameTime = 0;
 

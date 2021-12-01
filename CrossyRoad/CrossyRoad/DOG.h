@@ -8,5 +8,5 @@ private:
 
 public:
     DOG();
-    DOG(int x, int y);
+    DOG(int x, int y, bool type);
 };
