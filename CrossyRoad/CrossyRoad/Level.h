@@ -22,7 +22,7 @@ public:
 	void initialize();
 	bool newLevel(int lv);
 	bool nextLevel();
-	cEnemy * randNewEnemy(cPosition pos);
+	/*cEnemy * randNewEnemy(cPosition pos);*/
 	int randSpeed();
 	void decNEnemy(int d);
 	friend class LANE;
