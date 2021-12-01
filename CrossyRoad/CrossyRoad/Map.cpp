@@ -30,7 +30,7 @@ void MAP::printMapScreen() {
 	gotoxy(0, 0);
 	for (int i = 0; i <= height + 1; ++i) {
 		cout << "   ";
-		for (int j = 0; j <= width + 1; ++j) {
+		for (int j = 0; j <= width; ++j) {
 			cout << map[i][j];
 		}
 		cout << endl;
@@ -65,7 +65,7 @@ void MAP::printMapScreen() {
 
 	txtColor(12); gotoxy(x + 6, y + 10); cout << MIDDLE_SMALL_BLACK_PIECE << " COMMAND KEYBOARD " << endl;
 	txtColor(15);
-	gotoxy(x + 8, 17); cout << "H: SAVE GAME" << endl;
+	gotoxy(x + 8, 17); cout << "J: SAVE GAME" << endl;
 	gotoxy(x + 8, 18); cout << "L: LOAD GAME" << endl;
 	gotoxy(x + 8, 19); cout << "P: PAUSE GAME" << endl;
 }

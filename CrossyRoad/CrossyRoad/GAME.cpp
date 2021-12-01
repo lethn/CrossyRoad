@@ -407,7 +407,7 @@ bool GAME::newGame() {
 		if (kbhit()) {
 			char key = _getch();
 
-			if (key == 'H' || key == 'h') {
+			if (key == 'J' || key == 'j') {
 				checkPauseGame = true;
 				// save game
 				saveGame();
