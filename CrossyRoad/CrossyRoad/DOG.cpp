@@ -22,4 +22,3 @@ DOG::DOG(int x ,int y, bool type): ENEMY(x, y, 0) {
 	shape[2] = new char[11];
 	strcpy(shape[2], s.c_str());
 }
-
