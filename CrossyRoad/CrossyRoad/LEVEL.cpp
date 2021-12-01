@@ -101,5 +101,5 @@ int LEVEL::randSpeed()
 }
 
 void LEVEL::decNEnemy(int d) {
-	nEnemy -= d;
+	curEnemy -= d;
 }
