@@ -10,7 +10,12 @@ LANE::~LANE()
         delete enemy;
 }
 
-void LANE::moveEnemies()
+void LANE::generateEnemies(int frameTime)
+{
+
+}
+
+void LANE::moveEnemies(int frameTime)
 {
     if (redLight)
         return;
@@ -19,6 +24,5 @@ void LANE::moveEnemies()
     {
         enemy -> x += direction;
         enemy -> renderShape();
-        Sleep(speed * 100);
     }
 }

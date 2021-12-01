@@ -19,8 +19,8 @@ class LANE
         LANE(short direction, bool redLight, int speed);
         ~LANE();
 
-        void initEnemies();
-        void moveEnemies();
+        void generateEnemies(int frameTime);
+        void moveEnemies(int frameTime);
 
     friend class GAME;
 };
