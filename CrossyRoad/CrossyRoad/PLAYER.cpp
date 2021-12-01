@@ -2,7 +2,7 @@
 
 PLAYER::PLAYER() {
 	checkDead = false;
-	x = 30;
+	x = 60;
 	y = 34;
 
 	createShapelessPlayer();
