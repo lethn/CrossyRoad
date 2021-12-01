@@ -3,6 +3,8 @@
         "iosfwd": "cpp",
         "type_traits": "cpp",
         "xmemory": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp"
     }
 }
