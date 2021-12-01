@@ -62,7 +62,7 @@ void MAP::printMap() {
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
 	for (int i = 0; i < h; ++i) {
 		for (int j = 0; j < w; ++j) {
-			gotoxy(x + j, y + i);
+			gotoxy(x * 2 + j, y + i);
 			cout << shape[i][j];
 		}
 	}
