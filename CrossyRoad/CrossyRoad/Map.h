@@ -18,6 +18,8 @@ public:
 	void resetPlayer();
 	void updatePosPlayer(char key);
 	bool checkEndMap();
+
+friend class GAME;
 };
 
 
