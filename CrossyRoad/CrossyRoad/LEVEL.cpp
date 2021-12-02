@@ -2,7 +2,7 @@
 
 LEVEL::LEVEL() :
     level(1),
-    maxEnemy(5), currEnemy(0),
+    maxEnemy(15), currEnemy(0),
     minSpeed(700), maxSpeed(900),
     redLightRate(5), greenLightRate(10) {}
 
@@ -14,7 +14,7 @@ void LEVEL::generateLevel() {
     switch (level)
     {
         case 1:
-            maxEnemy = 5; // t de theo tam linh
+            maxEnemy = 15; // t de theo tam linh
             maxSpeed = 900;
             minSpeed = 700;
             redLightRate = 5;

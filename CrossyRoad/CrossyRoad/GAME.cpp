@@ -386,12 +386,11 @@ bool GAME::newGame() {
 	map.printMap();
 	map.drawPlayer();
 
-	int l1 = 31;
-	LANE lane1;
-	lane1.enemies.push_back(new CAR(-7, l1, 1));
-	lane1.enemies.push_back(new TRUCK(-20, l1, 1));
+	map.initializeLanes();
 
 	int frameTime = 0;
+
+	map.renderMAP(frameTime);
 
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
@@ -450,8 +449,6 @@ bool GAME::newGame() {
 				}
 			}
 		}
-	
-		lane1.moveEnemies(frameTime++);
 
 		if (kbhit()) {
 			char key = _getch();
@@ -492,11 +489,10 @@ bool GAME::newGame() {
 			map.drawPlayer();
 		}
 
-		for (ENEMY *&enemy : lane1.enemies) {
-			if (map.player.checkCollision(*enemy))
-				exit(0);
+		if (map.checkCollision())
+		{
+			exit(0);
 		}
-
 	}
 	return false;
 }

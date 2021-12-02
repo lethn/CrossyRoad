@@ -100,6 +100,12 @@ bool MAP::checkEndMap() {
 	return player.getCheckDead();
 }
 
+void MAP::renderMAP(int frameTime)
+{
+	for (LANE &lane : lanes)
+		lane.moveEnemies(frameTime);
+}
+
 void MAP::generateMap()
 {
 	for (LANE &lane : lanes)
@@ -108,6 +114,20 @@ void MAP::generateMap()
 		bool redLight = rand() % 2;
 		lane.speed = rand() % (level.maxSpeed - level.minSpeed + 1) + level.minSpeed;
 	}
+}
+
+bool MAP::checkCollision()
+{
+	for (LANE &lane : lanes)
+	{
+		for (ENEMY *&enemy : lane.enemies)
+		{
+			if (player.checkCollision(*enemy))
+				return true;
+		}
+	}
+	
+	return false;
 }
 
 void MAP::initializeLanes()
@@ -125,8 +145,6 @@ void MAP::initializeLanes()
 		if (newEnemy)
 			lanes[row].enemies.push_back(newEnemy);
 	}
-
-	
 }
 
 void MAP::generateLanes()

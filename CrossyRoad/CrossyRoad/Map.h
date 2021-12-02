@@ -20,10 +20,12 @@ public:
 	void updatePosPlayer(char key);
 	bool checkEndMap();
 
+    void renderMAP(int frameTime);
+	bool checkCollision();
+
 	void generateMap();
 	void initializeLanes();
 	void generateLanes();
-
 
 
 	friend class GAME;
