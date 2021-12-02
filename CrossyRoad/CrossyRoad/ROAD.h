@@ -7,9 +7,11 @@
 class ROAD
 {
     private: 
-        vector<LANE*> lanes;
+        vector<LANE> lanes;
         
     public:
+        ROAD() = default;
+        ~ROAD() = default;
 };
 
 #endif

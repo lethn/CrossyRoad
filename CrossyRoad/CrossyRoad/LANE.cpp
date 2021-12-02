@@ -10,9 +10,12 @@ LANE::~LANE()
         delete enemy;
 }
 
-void LANE::generateEnemies(int frameTime)
+void LANE::generateLane(int frameTime)
 {
+    if ((!redLight && rand() % 8 == 0) || (redLight && rand() % 20))
+        redLight = !redLight;
 
+    
 }
 
 void LANE::moveEnemies(int frameTime)

@@ -1,6 +1,8 @@
 #include "MAP.h"
 #include "GAME.h"
 
+MAP::MAP() : player(), level(), lanes(9) {}
+
 void MAP::printMapBorder() {
 	txtColor(15);
 
@@ -98,3 +100,27 @@ bool MAP::checkEndMap() {
 	return player.getCheckDead();
 }
 
+void MAP::generateMap()
+{
+	for (LANE &lane : lanes)
+	{
+		lane.direction = rand() % 2 ? 1 : -1; 
+		bool redLight = rand() % 2;
+		lane.speed = rand() % (level.maxSpeed - level.minSpeed + 1) + level.minSpeed;
+	}
+}
+
+void MAP::generateLanes()
+{
+	int xPos[9];
+	int yPos = 31;
+
+	for (LANE &lane : lanes)
+	{
+		int row = rand() % 9; 
+		xPos[row];
+
+		yPos -= 3;
+	}
+	
+}
