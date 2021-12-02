@@ -46,7 +46,7 @@ void LEVEL::generateLevel() {
             break;
         
         default:
-            maxEnemy = 11;
+            maxEnemy = 13;
             maxSpeed = 200;
             minSpeed = 100;
             redLightRate = 25;
@@ -70,7 +70,7 @@ bool LEVEL::nextLevel() {
     return true;
 }
 
-ENEMY *LEVEL::randNewEnemy(int x, int y, bool type) {
+ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
     if (currEnemy == maxEnemy)
         return NULL;
 
@@ -78,19 +78,19 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, bool type) {
         ++currEnemy;
         ENEMY * enemy = NULL;
         
-        if (type) {
+        if (direction) {
             if (rand() % 2)
-                enemy = new CAR(x, y, type);
+                enemy = new CAR(x, y, 1);
 
             else
-                enemy = new TRUCK(x, y, type);
+                enemy = new TRUCK(x, y, 1);
 
         }
         else {
             switch (rand() % 3)
             {
                 case 0:
-                    enemy = new DOG(x, y, type);
+                    enemy = new DOG(x, y, 0);
                     break;
 
                 // case 1:
