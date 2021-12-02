@@ -224,6 +224,47 @@ void GAME::logoSaveGame() {
 	}
 }
 
+void GAME::logoLoseGame() {
+	txtColor(15);
+	Nocursortype();
+	int x = 50;
+	int y = 10;
+	int z = 2;
+
+	gotoxy(x, z);		cout << " __   __  _______  __   __    ___      _______  _______  _______    __   __   __ " << endl;
+	gotoxy(x, z + 1);	cout << "|  | |  ||       ||  | |  |  |   |    |       ||       ||       |  |  | |  | |  |" << endl;
+	gotoxy(x, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||_     _|  |  | |  | |  |" << endl;
+	gotoxy(x, z + 3);	cout << "|       ||  | |  ||  |_|  |  |   |    |  | |  || |_____   |   |    |  | |  | |  |" << endl;
+	gotoxy(x, z + 4);	cout << "|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  |  |   |    |__| |__| |__|" << endl;
+	gotoxy(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
+	gotoxy(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
+
+	gotoxy(x, y);       cout << R"(                               ________________ )" << endl;
+	gotoxy(x, y + 1);   cout << R"(                          ____/ (  (    )   )  \\___ )" << endl;
+	gotoxy(x, y + 2);   cout << R"(                         /( (  (  )   _    ))  )   )\\ )" << endl;
+	gotoxy(x, y + 3);   cout << R"(                       ((     (   )(    )  )   (   )  ) )" << endl;
+	gotoxy(x, y + 4);   cout << R"(                     ((/  ( _(   )   (   _) ) (  () )  ) )" << endl;
+	gotoxy(x, y + 5);   cout << R"(                    ( (  ( (_)   ((    (   )  .((_ ) .  )_ )" << endl;
+	gotoxy(x, y + 6);   cout << R"(                   ( (  )    (      (  )    )   ) . ) (   ) )" << endl;
+	gotoxy(x, y + 7);   cout << R"(                  (  (   (  (   ) (  _  ( _) ).  ) . ) ) ( ) )" << endl;
+	gotoxy(x, y + 8);   cout << R"(                  ( (  (   ) (  )   (  ))     ) _)(   )  )  ) )" << endl;
+	gotoxy(x, y + 9);   cout << R"(                 ( (  ( \\ ) (    (_  ( ) ( )  )   ) )  )) ( ) )" << endl;
+	gotoxy(x, y + 10);  cout << R"(                  (  (   (  (   (_ ( ) ( _    )  ) (  )  )   ) )" << endl;
+	gotoxy(x, y + 11);  cout << R"(                 ( (  ( (  (  )     (_  )  ) )  _)   ) _( ( ) )" << endl;
+	gotoxy(x, y + 12);  cout << R"(                  ((  (   )(    (     _    )   _) _(_ (  (_ ) )" << endl;
+	gotoxy(x, y + 13);  cout << R"(                   (_((__(_(__(( ( ( |  ) ) ) )_))__))_)___) )" << endl;
+	gotoxy(x, y + 14);  cout << R"(                   ((__)        \\|||||||||///          \\_)) )" << endl;
+	gotoxy(x, y + 15);  cout << R"(                            (   /(/ (  )  ) )\\   ) )" << endl;
+	gotoxy(x, y + 16);  cout << R"(                          (    ( ( ( | | ) ) )\\   ) )" << endl;
+	gotoxy(x, y + 17);  cout << R"(                           (   /(| / ( )) ) ) )) ) )" << endl;
+	gotoxy(x, y + 18);  cout << R"(                         (     ( ((((_(|)_)))))     ) )" << endl;
+	gotoxy(x, y + 19);  cout << R"(                          (      ||\\(|(|)|/||     ) )" << endl;
+	gotoxy(x, y + 20);  cout << R"(                        (        |(||(||)||||        ) )" << endl;
+	gotoxy(x, y + 21);  cout << R"(                          (     //|/||||)|\\ \\     ) )" << endl;
+	gotoxy(x, y + 22);  cout << R"(                        (/ / //  /|//||||\\  \\ \\  \\ _) )" << endl;
+	gotoxy(x, y + 23);  cout << R"(--------------------------------------------------------------------------------- )" << endl;
+}
+
 void GAME::menu() {
 	while (true) {
 		clrscr();

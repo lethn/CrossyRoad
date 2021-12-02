@@ -45,6 +45,7 @@ public:
 	void logoCrossyRoad();
 	void logoLoadGame();
 	void logoSaveGame();
+	void logoLoseGame();
 	void menu();
 	bool newGame();
 	void loadGame();
