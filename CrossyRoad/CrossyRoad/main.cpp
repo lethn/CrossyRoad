@@ -6,8 +6,7 @@ int main() {
 	GAME game;
 	game.resizeConsole(1280, 720);
 	game.FixConsoleWindow();
-	
-	game.logoCrossyRoad();
+
 	game.menu();
 
 	return 0;

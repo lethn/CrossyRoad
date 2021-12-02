@@ -225,107 +225,113 @@ void GAME::logoSaveGame() {
 }
 
 void GAME::menu() {
-	//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	Nocursortype();
-	txtColor(15);
-	int x = 74;
-	int y = 18;
-	gotoxy(x + 1, y);
-	for (int i = 0; i < 20; ++i)
-		cout << UP_BLACK_PIECE;
-	for (int i = y; i < y + 9; ++i)
-	{
-		gotoxy(x, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-	for (int i = y; i < y + 9; ++i)
-	{
-		gotoxy(x + 21, i);
-		cout << VERTICAL_BLACK_PIECE;
-	}
-	gotoxy(x + 1, y + 8);
-	for (int i = 0; i < 20; ++i)
-		cout << DOWN_BLACK_PIECE;
-
-	txtColor(15);
-	gotoxy(x + 7, y + 1); cout << "NEW GAME";
-	gotoxy(x + 5, y + 3); cout << "LOADING GAME";
-	gotoxy(x + 6, y + 5); cout << "SOUND:";
-	gotoxy(x + 13, y + 5); cout << "ON";
-	gotoxy(x + 9, y + 7); cout << "EXIT";
-
-	bool sound = true;
-	int cnt = 0;
-	while (true)
-	{
-		char choice = _getch();
+	while (true) {
+		clrscr();
+		logoCrossyRoad();
+		//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		Nocursortype();
 		txtColor(15);
-		gotoxy(x + 6, y + 1); cout << " NEW GAME ";
-		gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
+		int x = 74;
+		int y = 18;
+		gotoxy(x + 1, y);
+		for (int i = 0; i < 20; ++i)
+			cout << UP_BLACK_PIECE;
+		for (int i = y; i < y + 9; ++i)
+		{
+			gotoxy(x, i);
+			cout << VERTICAL_BLACK_PIECE;
+		}
+		for (int i = y; i < y + 9; ++i)
+		{
+			gotoxy(x + 21, i);
+			cout << VERTICAL_BLACK_PIECE;
+		}
+		gotoxy(x + 1, y + 8);
+		for (int i = 0; i < 20; ++i)
+			cout << DOWN_BLACK_PIECE;
+
+		txtColor(15);
+		gotoxy(x + 7, y + 1); cout << "NEW GAME";
+		gotoxy(x + 5, y + 3); cout << "LOADING GAME";
 		gotoxy(x + 6, y + 5); cout << "SOUND:";
-		gotoxy(x + 8, y + 7); cout << " EXIT ";
+		gotoxy(x + 13, y + 5); cout << "ON";
+		gotoxy(x + 9, y + 7); cout << "EXIT";
 
-		if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
-			cnt++;
-			if (cnt > 4)
-				cnt = 1;
-		}
-		if (choice == KEY_UP || choice == 'W' || choice == 'w') {
-			cnt--;
-			if (cnt < 1)
-				cnt = 4;
-		}
-		if (choice == KEY_ESC) {
-			clrscr();
-			exit(0);
-		}
-
-		if (cnt == 1) {
-			txtColor(240);
+		bool sound = true;
+		int cnt = 0;
+		while (true)
+		{
+			char choice = _getch();
+			txtColor(15);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
-			if (choice == KEY_ENTER ) {
-				if (newGame() == true) {
+			gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
+			gotoxy(x + 6, y + 5); cout << "SOUND:";
+			gotoxy(x + 8, y + 7); cout << " EXIT ";
 
+			if (choice == KEY_DOWN || choice == 'S' || choice == 's') {
+				cnt++;
+				if (cnt > 4)
+					cnt = 1;
+			}
+			if (choice == KEY_UP || choice == 'W' || choice == 'w') {
+				cnt--;
+				if (cnt < 1)
+					cnt = 4;
+			}
+			if (choice == KEY_ESC) {
+				clrscr();
+				exit(0);
+			}
+
+			if (cnt == 1) {
+				txtColor(240);
+				gotoxy(x + 6, y + 1); cout << " NEW GAME ";
+				if (choice == KEY_ENTER) {
+					if (newGame() == true) {
+						clrscr();
+						map.printMap();
+
+						break;
+					}
+				}
+			}
+			if (cnt == 2) {
+				txtColor(240);
+				gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
+				if (choice == KEY_ENTER) {
+					loadGame();
 					break;
 				}
 			}
-		}
-		if (cnt == 2) {
-			txtColor(240);
-			gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
-			if (choice == KEY_ENTER) {
-				loadGame();
-				break;
-			}
-		}
-		if (cnt == 3) {
-			txtColor(240);
-			gotoxy(x + 6, y + 5); cout << "SOUND:";
-			if (choice == KEY_ENTER) {
-				if (sound == true)
-					sound = false;
-				else
-					sound = true;
+			if (cnt == 3) {
+				txtColor(240);
+				gotoxy(x + 6, y + 5); cout << "SOUND:";
+				if (choice == KEY_ENTER) {
+					if (sound == true)
+						sound = false;
+					else
+						sound = true;
 
-				if (sound == true) {
-					txtColor(15);
-					gotoxy(x + 13, y + 5); cout << "ON ";
-					PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-				}
-				else {
-					txtColor(15);
-					gotoxy(x + 13, y + 5); cout << "OFF";
-					PlaySound(NULL, NULL, SND_ASYNC);
+					if (sound == true) {
+						txtColor(15);
+						gotoxy(x + 13, y + 5); cout << "ON ";
+						PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+					}
+					else {
+						txtColor(15);
+						gotoxy(x + 13, y + 5); cout << "OFF";
+						PlaySound(NULL, NULL, SND_ASYNC);
+					}
 				}
 			}
-		}
-		if (cnt == 4) {
-			txtColor(240);
-			gotoxy(x + 8, y + 7); cout << " EXIT ";
-			if (choice == KEY_ENTER) {
-				txtColor(15);
-				clrscr();
-				exit(0);
+			if (cnt == 4) {
+				txtColor(240);
+				gotoxy(x + 8, y + 7); cout << " EXIT ";
+				if (choice == KEY_ENTER) {
+					txtColor(15);
+					clrscr();
+					exit(0);
+				}
 			}
 		}
 	}
@@ -445,8 +451,7 @@ bool GAME::newGame() {
 			map.drawPlayer();
 		}
 
-		for (ENEMY *&enemy : lane1.enemies) 
-		{
+		for (ENEMY *&enemy : lane1.enemies) {
 			if (map.player.checkCollision(*enemy))
 				exit(0);
 		}
