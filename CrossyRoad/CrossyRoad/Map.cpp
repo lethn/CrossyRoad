@@ -104,23 +104,44 @@ void MAP::generateMap()
 {
 	for (LANE &lane : lanes)
 	{
-		lane.direction = rand() % 2 ? 1 : -1; 
+		lane.direction = rand() % 2 ? 1 : 1;
 		bool redLight = rand() % 2;
 		lane.speed = rand() % (level.maxSpeed - level.minSpeed + 1) + level.minSpeed;
 	}
 }
 
+void MAP::initializeLanes()
+{
+	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+	ENEMY *newEnemy;
+	while (level.currEnemy < level.maxEnemy)
+	{
+		int row = rand() % 9;
+
+		xPos[row] += rand() % (RIGHT_BORDER - LEFT_BORDER + 1) + LEFT_BORDER;
+		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
+
+		if (newEnemy)
+			lanes[row].enemies.push_back(newEnemy);
+	}
+
+	
+}
+
 void MAP::generateLanes()
 {
-	int xPos[9];
-	int yPos = 31;
-
-	for (LANE &lane : lanes)
+	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	ENEMY *newEnemy;
+	while (level.currEnemy < level.maxEnemy)
 	{
-		int row = rand() % 9; 
-		xPos[row];
+		int row = rand() % 9;
 
-		yPos -= 3;
+		xPos[row] += rand() % (RIGHT_BORDER - LEFT_BORDER + 1) + LEFT_BORDER;
+		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
+
+		if (newEnemy)
+			lanes[row].enemies.push_back(newEnemy);
 	}
 	
 }

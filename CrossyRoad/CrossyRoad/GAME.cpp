@@ -443,13 +443,12 @@ bool GAME::newGame() {
 			}
 
 			map.drawPlayer();
-			
-			for (ENEMY *&enemy : lane1.enemies) 
-			{
-				if (map.player.checkCollision(*enemy))
-					exit(0);
-			}
+		}
 
+		for (ENEMY *&enemy : lane1.enemies) 
+		{
+			if (map.player.checkCollision(*enemy))
+				exit(0);
 		}
 
 	}

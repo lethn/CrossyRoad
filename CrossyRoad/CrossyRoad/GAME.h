@@ -31,6 +31,9 @@
 #define TOP_BORDER 1
 #define BOTTOM_BORDER 36
 
+#define LANE_LEFT_BORDER -30
+#define LANE_RIGHT_BORDER 150
+
 class GAME {
 private:
 	MAP map;

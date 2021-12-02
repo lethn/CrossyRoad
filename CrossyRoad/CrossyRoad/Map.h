@@ -21,6 +21,7 @@ public:
 	bool checkEndMap();
 
 	void generateMap();
+	void initializeLanes();
 	void generateLanes();
 
 

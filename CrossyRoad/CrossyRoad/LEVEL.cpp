@@ -90,7 +90,7 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
             switch (rand() % 3)
             {
                 case 0:
-                    enemy = new DOG(x, y, 0);
+                    // enemy = new DOG(x, y, 0);
                     break;
 
                 // case 1:
