@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BAT.cpp" />
     <ClCompile Include="CAR.cpp" />
+    <ClCompile Include="DOG.cpp" />
     <ClCompile Include="ENEMY.cpp" />
     <ClCompile Include="LANE.cpp" />
     <ClCompile Include="LEVEL.cpp" />
@@ -148,10 +150,13 @@
     <ClCompile Include="MAP.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="ROAD.cpp" />
+    <ClCompile Include="SHARK.cpp" />
     <ClCompile Include="TRUCK.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BAT.h" />
     <ClInclude Include="CAR.h" />
+    <ClInclude Include="DOG.h" />
     <ClInclude Include="ENEMY.h" />
     <ClInclude Include="LANE.h" />
     <ClInclude Include="PLAYER.h" />
@@ -160,6 +165,7 @@
     <ClInclude Include="Library.h" />
     <ClInclude Include="GAME.h" />
     <ClInclude Include="ROAD.h" />
+    <ClInclude Include="SHARK.h" />
     <ClInclude Include="TRUCK.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

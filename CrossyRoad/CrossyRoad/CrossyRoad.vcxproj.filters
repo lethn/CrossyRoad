@@ -45,6 +45,15 @@
     <ClCompile Include="LEVEL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DOG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BAT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SHARK.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library.h">
@@ -75,6 +84,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ROAD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DOG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BAT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SHARK.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
