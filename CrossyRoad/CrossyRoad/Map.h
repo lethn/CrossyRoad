@@ -3,6 +3,7 @@
 #include "Library.h"
 #include "PLAYER.h"
 #include "LEVEL.h"
+#include "LANE.h"
 
 class MAP {
 private:

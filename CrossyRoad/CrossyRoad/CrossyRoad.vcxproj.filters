@@ -39,9 +39,6 @@
     <ClCompile Include="TRUCK.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ROAD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LEVEL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TRUCK.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ROAD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DOG.h">

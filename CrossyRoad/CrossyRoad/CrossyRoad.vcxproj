@@ -149,7 +149,6 @@
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="MAP.cpp" />
     <ClCompile Include="PLAYER.cpp" />
-    <ClCompile Include="ROAD.cpp" />
     <ClCompile Include="SHARK.cpp" />
     <ClCompile Include="TRUCK.cpp" />
   </ItemGroup>
@@ -164,7 +163,6 @@
     <ClInclude Include="MAP.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="GAME.h" />
-    <ClInclude Include="ROAD.h" />
     <ClInclude Include="SHARK.h" />
     <ClInclude Include="TRUCK.h" />
   </ItemGroup>
