@@ -241,10 +241,9 @@ void GAME::logoSaveGame() {
 }
 
 void GAME::logoLoseGame() {
-	txtColor(15);
 	Nocursortype();
 	int x = 50;
-	int y = 10;
+	int y = 11;
 	int z = 2;
 
 	gotoxy(x, z);		cout << " __   __  _______  __   __    ___      _______  _______  _______    __   __   __ " << endl;
@@ -255,8 +254,10 @@ void GAME::logoLoseGame() {
 	gotoxy(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
 	gotoxy(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
 
-	gotoxy(x, y);       cout << R"(                               ________________ )" << endl;
-	gotoxy(x, y + 1);   cout << R"(                          ____/ (  (    )   )  \\___ )" << endl;
+	gotoxy(73, 10);		cout << "*** Press any key to continue ***";
+
+	gotoxy(x, y);       cout << R"(                               _________________ )" << endl;
+	gotoxy(x, y + 1);   cout << R"(                          ____/  (  (    )   )  \___ )" << endl;
 	gotoxy(x, y + 2);   cout << R"(                         /( (  (  )   _    ))  )   )\\ )" << endl;
 	gotoxy(x, y + 3);   cout << R"(                       ((     (   )(    )  )   (   )  ) )" << endl;
 	gotoxy(x, y + 4);   cout << R"(                     ((/  ( _(   )   (   _) ) (  () )  ) )" << endl;
@@ -460,8 +461,6 @@ bool GAME::newGame() {
 					txtColor(240);
 					gotoxy(134, 27); cout << "  EXIT  " << endl;
 					if (choice == KEY_ENTER) {
-						// Load menu again
-
 						checkPauseGame = false;
 						txtColor(0);
 						gotoxy(133, 23); cout << "             " << endl;
@@ -515,9 +514,20 @@ bool GAME::newGame() {
 			map.drawPlayer();
 		}
 
-		if (map.checkCollision())
-		{
-			gotoxy(150, 30); cout << "GAME OVER";
+		if (map.checkCollision()){
+			checkPauseGame = false;
+			txtColor(15);
+			clrscr();
+			PlaySound(TEXT("Sound\\GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			for (int i = 0; i < 16; ++i) {
+				clrscr();
+				txtColor(i);
+				logoLoseGame();
+				Sleep(140);
+			}
+			txtColor(15);
+			_getch();
+			return true;
 		}
 		else 
 			gotoxy(150, 30); cout << "         ";
