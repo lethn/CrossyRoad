@@ -1,10 +1,10 @@
 #include "LEVEL.h"
+#include "GAME.h"
 
-LEVEL::LEVEL() :
-    level(1),
-    maxEnemy(15), currEnemy(0),
-    minSpeed(700), maxSpeed(900),
-    redLightRate(5), greenLightRate(10) {}
+LEVEL::LEVEL() : level(1) 
+{
+    generateLevel();
+}
 
 LEVEL::LEVEL(int level, int currEnemy) : level(level), currEnemy(currEnemy) {
     generateLevel();
@@ -15,8 +15,8 @@ void LEVEL::generateLevel() {
     {
         case 1:
             maxEnemy = 15; // t de theo tam linh
-            maxSpeed = 900;
-            minSpeed = 700;
+            maxSpeed = 2000;
+            minSpeed = 1800;
             redLightRate = 5;
             greenLightRate = 10;
             break;
@@ -77,9 +77,13 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
     if (currEnemy < (maxEnemy)) {
         ++currEnemy;
         ENEMY * enemy = NULL;
+
+        std::mt19937 rng(getSeed());
+        std::uniform_int_distribution<unsigned> Vehicle(0, 2);
+        std::uniform_int_distribution<unsigned> Animal(0, 3);
         
         if (direction) {
-            if (rand() % 2)
+            if (Vehicle(rng))
                 enemy = new CAR(x, y, 1);
 
             else
@@ -87,7 +91,7 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
 
         }
         else {
-            switch (rand() % 3)
+            switch (Animal(rng))
             {
                 case 0:
                     // enemy = new DOG(x, y, 0);

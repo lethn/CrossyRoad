@@ -106,16 +106,6 @@ void MAP::renderMAP(int frameTime)
 		lane.moveEnemies(frameTime);
 }
 
-void MAP::generateMap()
-{
-	for (LANE &lane : lanes)
-	{
-		lane.direction = rand() % 2 ? 1 : 1;
-		bool redLight = rand() % 2;
-		lane.speed = rand() % (level.maxSpeed - level.minSpeed + 1) + level.minSpeed;
-	}
-}
-
 bool MAP::checkCollision()
 {
 	for (LANE &lane : lanes)
@@ -130,36 +120,68 @@ bool MAP::checkCollision()
 	return false;
 }
 
-void MAP::initializeLanes()
+void MAP::initializeMap()
 {
+	std::mt19937 rng(getSeed());
+	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
+	std::uniform_int_distribution<unsigned> Speed(level.minSpeed, level.maxSpeed);
+
+	for (LANE &lane : lanes)
+	{
+		lane.direction = ZeroOne(rng) ? 1 : 1;
+		lane.redLight = ZeroOne(rng);
+		lane.speed = Speed(rng);
+	}
+
+	std::uniform_int_distribution<unsigned> Row(0, 8);
+	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
+	std::uniform_int_distribution<unsigned> distance(20, 30);
+	
 	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 	ENEMY *newEnemy;
 	while (level.currEnemy < level.maxEnemy)
 	{
-		int row = rand() % 9;
+		int row = Row(rng);
 
-		xPos[row] += rand() % (RIGHT_BORDER - LEFT_BORDER + 1) + LEFT_BORDER;
+		if (xPos[row] == 0)
+			xPos[row] += Pos(rng);
+		else 
+			xPos[row] += distance(rng);
+
 		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
 
 		if (newEnemy)
 			lanes[row].enemies.push_back(newEnemy);
 	}
+
+	for (LANE &lane : lanes)
+		for (ENEMY *&enemy : lane.enemies)
+			enemy -> renderShape();
 }
 
-void MAP::generateLanes()
+void MAP::generateMap()
 {
+	std::mt19937 rng(getSeed());
+	std::uniform_int_distribution<unsigned> Row(0, 8);
+	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
+	std::uniform_int_distribution<unsigned> distance(20, 30);
+	
 	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 	ENEMY *newEnemy;
 	while (level.currEnemy < level.maxEnemy)
 	{
-		int row = rand() % 9;
+		int row = Row(rng);
 
-		xPos[row] += rand() % (RIGHT_BORDER - LEFT_BORDER + 1) + LEFT_BORDER;
+		if (xPos[row] == 0)
+			xPos[row] += Pos(rng);
+		else 
+			xPos[row] += distance(rng);
+
 		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
 
 		if (newEnemy)
 			lanes[row].enemies.push_back(newEnemy);
 	}
-	
 }

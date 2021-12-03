@@ -23,7 +23,7 @@ void LANE::moveEnemies(int frameTime)
     if (redLight)
         return;
     
-    if (frameTime % 800 != 0)
+    if (frameTime % speed != 0)
         return;
 
     for (ENEMY *&enemy : enemies)

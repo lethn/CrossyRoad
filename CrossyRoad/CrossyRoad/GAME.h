@@ -58,5 +58,6 @@ void UnNocursortype();
 void txtColor(int color);
 void clrscr();
 
+std::mt19937::result_type getSeed();
 
 #endif

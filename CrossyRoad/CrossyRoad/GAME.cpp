@@ -58,6 +58,22 @@ void GAME::FixConsoleWindow() {
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
+std::mt19937::result_type getSeed()
+{
+	std::random_device rd;
+    std::mt19937::result_type seed = rd() ^ (
+            (std::mt19937::result_type)
+            std::chrono::duration_cast<std::chrono::seconds>(
+                std::chrono::system_clock::now().time_since_epoch()
+                ).count() +
+            (std::mt19937::result_type)
+            std::chrono::duration_cast<std::chrono::microseconds>(
+                std::chrono::high_resolution_clock::now().time_since_epoch()
+                ).count() );
+	
+	return seed;
+}
+
 void GAME::logoCrossyRoad() {
 	Nocursortype();
 	txtColor(15);
@@ -386,7 +402,7 @@ bool GAME::newGame() {
 	map.printMap();
 	map.drawPlayer();
 
-	map.initializeLanes();
+	map.generateMap();
 
 	int frameTime = 0;
 
@@ -450,6 +466,8 @@ bool GAME::newGame() {
 			}
 		}
 
+		map.renderMAP(frameTime);
+
 		if (kbhit()) {
 			char key = _getch();
 
@@ -491,8 +509,12 @@ bool GAME::newGame() {
 
 		if (map.checkCollision())
 		{
-			exit(0);
+			gotoxy(150, 30); cout << "GAME OVER";
 		}
+		else 
+			gotoxy(150, 30); cout << "         ";
+		
+		++frameTime;
 	}
 	return false;
 }

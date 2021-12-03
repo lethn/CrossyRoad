@@ -23,9 +23,8 @@ public:
     void renderMAP(int frameTime);
 	bool checkCollision();
 
+	void initializeMap();
 	void generateMap();
-	void initializeLanes();
-	void generateLanes();
 
 
 	friend class GAME;
