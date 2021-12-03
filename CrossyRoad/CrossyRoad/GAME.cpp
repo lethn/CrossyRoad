@@ -285,7 +285,7 @@ void GAME::menu() {
 	while (true) {
 		clrscr();
 		logoCrossyRoad();
-		//PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		//PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		Nocursortype();
 		txtColor(15);
 		int x = 74;
@@ -374,7 +374,7 @@ void GAME::menu() {
 					if (sound == true) {
 						txtColor(15);
 						gotoxy(x + 13, y + 5); cout << "ON ";
-						PlaySound(TEXT("SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+						PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 					}
 					else {
 						txtColor(15);
@@ -476,7 +476,7 @@ bool GAME::newGame() {
 
 		map.renderMAP(frameTime++);
 
-		if (kbhit()) {
+		if (_kbhit) {
 			char key = _getch();
 
 			if (key == 'J' || key == 'j') {
