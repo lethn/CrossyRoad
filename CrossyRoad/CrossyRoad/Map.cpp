@@ -122,6 +122,12 @@ bool MAP::checkCollision()
 
 void MAP::initializeMap()
 {
+	player.~PLAYER();
+	new (&player) PLAYER();
+	
+	lanes.erase(lanes.begin(), lanes.end());
+	new (&lanes) vector<LANE> (9);
+
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
 	std::uniform_int_distribution<unsigned> Speed(level.minSpeed, level.maxSpeed);
