@@ -9,7 +9,7 @@ class CAR : public ENEMY
 {
     public:
         CAR();
-        CAR(int x, int y, bool type);
+        CAR(int x, int y);
     
     
 };

@@ -82,28 +82,28 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
         std::uniform_int_distribution<unsigned> Vehicle(0, 2);
         std::uniform_int_distribution<unsigned> Animal(0, 3);
         
-        if (direction) {
+        if (direction == 1) {
             if (Vehicle(rng))
-                enemy = new CAR(x, y, 1);
+                enemy = new CAR(x, y);
 
             else
-                enemy = new TRUCK(x, y, 1);
+                enemy = new TRUCK(x, y);
 
         }
         else {
             switch (Animal(rng))
             {
                 case 0:
-                    // enemy = new DOG(x, y, 0);
+                    enemy = new DOG(x, y);
                     break;
 
-                // case 1:
-                //     enemy = new BAT(x, y, type);
-                //     break;
+                case 1:
+                    enemy = new BAT(x, y);
+                    break;
 
-                // default:
-                //     // enemy = new (x, y, type);
-                //     break;
+                default:
+                    enemy = new SHARK(x, y);
+                    break;
             }
         }
         

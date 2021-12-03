@@ -3,7 +3,7 @@
 class SHARK : public ENEMY {
 public:
 	SHARK();
-	SHARK(int x, int y, bool type);
+	SHARK(int x, int y);
 };
 
 

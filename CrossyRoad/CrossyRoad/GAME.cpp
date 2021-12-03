@@ -402,11 +402,9 @@ bool GAME::newGame() {
 	map.printMap();
 	map.drawPlayer();
 
-	map.generateMap();
+	map.initializeMap();
 
 	int frameTime = 0;
-
-	map.renderMAP(frameTime);
 
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
@@ -466,7 +464,7 @@ bool GAME::newGame() {
 			}
 		}
 
-		map.renderMAP(frameTime);
+		map.renderMAP(frameTime++);
 
 		if (kbhit()) {
 			char key = _getch();
@@ -513,8 +511,6 @@ bool GAME::newGame() {
 		}
 		else 
 			gotoxy(150, 30); cout << "         ";
-		
-		++frameTime;
 	}
 	return false;
 }

@@ -128,7 +128,7 @@ void MAP::initializeMap()
 
 	for (LANE &lane : lanes)
 	{
-		lane.direction = ZeroOne(rng) ? 1 : 1;
+		lane.direction = ZeroOne(rng) ? 1 : -1;
 		lane.redLight = ZeroOne(rng);
 		lane.speed = Speed(rng);
 	}
