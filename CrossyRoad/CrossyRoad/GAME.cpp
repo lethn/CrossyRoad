@@ -344,6 +344,8 @@ void GAME::menu() {
 				txtColor(240);
 				gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
+					txtColor(15);
+					map.resetPlayer();
 					if (newGame() == true) {
 						clrscr();
 						map.printMap();
