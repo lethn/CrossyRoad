@@ -31,6 +31,9 @@
 #define TOP_BORDER 1
 #define BOTTOM_BORDER 36
 
+#define LANE_LEFT_BORDER -30
+#define LANE_RIGHT_BORDER 150
+
 class GAME {
 private:
 	MAP map;
@@ -42,6 +45,7 @@ public:
 	void logoCrossyRoad();
 	void logoLoadGame();
 	void logoSaveGame();
+	void logoLoseGame();
 	void menu();
 	bool newGame();
 	void loadGame();
@@ -54,5 +58,6 @@ void UnNocursortype();
 void txtColor(int color);
 void clrscr();
 
+std::mt19937::result_type getSeed();
 
 #endif

@@ -1,105 +1,125 @@
 #include "LEVEL.h"
+#include "GAME.h"
 
-LEVEL::LEVEL() {
-	level = 1;
-	curEnemy = 0;
-	initialize();
+LEVEL::LEVEL() : level(1) 
+{
+    generateLevel();
 }
 
-LEVEL::LEVEL(int level, int curEnemy) {
-	this->level = level;
-	this->curEnemy = curEnemy;
-	initialize();
+LEVEL::LEVEL(int level, int currEnemy) : level(level), currEnemy(currEnemy) {
+    generateLevel();
 }
 
-void LEVEL::initialize() {
-	switch (level)
-		{
-		case 1: {
-			maxEnemy = 5; // t de theo tam linh
-			maxSpeed = 900;  
-			minSpeed = 700; 
-			break; 
-		}
-		case 2: {
-			maxEnemy = 7; 
-			maxSpeed = 650;  
-			minSpeed = 500; 
-			break;
-		}
-		case 3: {
-			maxEnemy = 9; 
-			maxSpeed = 450;  
-			minSpeed = 300; 
-			break;
-		}
-		case 4: {
-			maxEnemy = 11; 
-			maxSpeed = 350;  
-			minSpeed = 200; 
-			break;
-		}
-		default:
-			maxEnemy = 13; 
-			maxSpeed = 200;  
-			minSpeed = 100; 
-			break;
-		}
+void LEVEL::generateLevel() {
+    switch (level)
+    {
+        case 1:
+            maxEnemy = 15; // t de theo tam linh
+            maxSpeed = 2000;
+            minSpeed = 1800;
+            redLightRate = 5;
+            greenLightRate = 10;
+            break;
+        
+        case 2:
+            maxEnemy = 7;
+            maxSpeed = 650;
+            minSpeed = 500;
+            redLightRate = 10;
+            greenLightRate = 15;
+            break;
+        
+        case 3:
+            maxEnemy = 9;
+            maxSpeed = 450;
+            minSpeed = 300;
+            redLightRate = 15;
+            greenLightRate = 15;
+            break;
+        
+        case 4:
+            maxEnemy = 11;
+            maxSpeed = 350;
+            minSpeed = 200;
+            redLightRate = 20;
+            greenLightRate = 10;
+            break;
+        
+        default:
+            maxEnemy = 13;
+            maxSpeed = 200;
+            minSpeed = 100;
+            redLightRate = 25;
+            greenLightRate = 10;
+            break;
+    }
 }
 
 bool LEVEL::newLevel(int lv) {
-	if (lv > maxLevel) return false;
-	level = lv;
-	curEnemy = 0;
-	initialize();
-	return true;
+    if (lv > maxLevel) return false;
+    level = lv;
+    currEnemy = 0;
+    generateLevel();
+    return true;
 }
 
 bool LEVEL::nextLevel() {
-	if (level == maxLevel) return false;
-	++level;
-	curEnemy = 0;
-	return true;
+    if (level == maxLevel) return false;
+    ++level;
+    currEnemy = 0;
+    return true;
 }
 
-//ENEMY * LEVEL::randNewEnemy(cPosition pos, short direction) {
-//	if (curEnemy == maxEnemy) return NULL;
-//	if (curEnemy < (maxEnemy)) {
-//		++curEnemy;
-//		ENEMY * pEnemy = NULL;
-//		switch (direction)
-//		{
-//		case -1: {
-//			int k = rand() % 2;
-//			if( k == 0 ) {
-//				pEnemy = new DOG(pos);
-//			} /*else
-//				pEnemy = new BAT(pos); */ // Wait for BAT class
-//			break;
-//		}
-//		default:
-//			int k = rand() % 3;
-//			if( k == 0 ) {
-//				pEnemy = new TRUCK(pos);
-//			} else if( k == 1 ) {
-//				pEnemy = new CAR(pos);
-//			} /* else {
-//				pEnemy = new something // wait for Duc Anh
-//			}*/
-//			break;
-//		}
-//		return pEnemy;
-//	}
-//	return NULL;
-//}
+ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
+    if (currEnemy == maxEnemy)
+        return NULL;
+
+    if (currEnemy < (maxEnemy)) {
+        ++currEnemy;
+        ENEMY * enemy = NULL;
+
+        std::mt19937 rng(getSeed());
+        std::uniform_int_distribution<unsigned> Vehicle(0, 2);
+        std::uniform_int_distribution<unsigned> Animal(0, 3);
+        
+        if (direction) {
+            if (Vehicle(rng))
+                enemy = new CAR(x, y, 1);
+
+            else
+                enemy = new TRUCK(x, y, 1);
+
+        }
+        else {
+            switch (Animal(rng))
+            {
+                case 0:
+                    // enemy = new DOG(x, y, 0);
+                    break;
+
+                // case 1:
+                //     enemy = new BAT(x, y, type);
+                //     break;
+
+                // default:
+                //     // enemy = new (x, y, type);
+                //     break;
+            }
+        }
+        
+        return enemy;
+    }
+    
+    return NULL;
+}
 
 int LEVEL::randSpeed()
 {
-	int k = maxSpeed - minSpeed;
-	return rand() % minSpeed + k ;
+    int k = maxSpeed - minSpeed;
+    return rand() % minSpeed + k ;
 
 }
 
 void LEVEL::decNEnemy(int d) {
-	curEnemy -= d;
+    currEnemy -= d;
 }

@@ -128,9 +128,8 @@ bool PLAYER::checkCollision(const ENEMY &enemy)
 
 	int length = strlen(enemy.shape[0]);
 
-	if ((enemy.y <= y && y <= enemy.y + 2) || (enemy.y <= y + 2 && y + 2 <= enemy.y + 2))
-		if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 1) || (enemy.x + enemy.type <= x + 5 && x + 5 <= enemy.x + enemy.type + length - 1))
-			return true;
+	if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 2) || (enemy.x + enemy.type <= x + 4 && x + 4 <= enemy.x + enemy.type + length - 2))
+		return true;
 
 	return false;
 }

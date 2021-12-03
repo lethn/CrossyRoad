@@ -9,18 +9,21 @@ class ENEMY
         char **shape;
         int x, y;
         bool type; //Vehicle = 1, Animal = 0;
-        bool outOfMap;
 
     public:
         ENEMY();
         ENEMY(int x, int y, bool type);
         ENEMY(const ENEMY &other);
         ~ENEMY();
+
+        bool checkOutOfBounds();
         void renderShape();
 
+
     friend class LANE;
-    friend class GAME;
     friend class PLAYER;
+    friend class GAME;
+    friend class MAP;
 };
 
 
