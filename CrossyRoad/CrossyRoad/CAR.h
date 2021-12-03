@@ -10,7 +10,8 @@ class CAR : public ENEMY
     public:
         CAR();
         CAR(int x, int y);
-    
+        
+        void sound();
     
 };
 

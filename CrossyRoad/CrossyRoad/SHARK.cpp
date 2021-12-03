@@ -12,6 +12,11 @@ SHARK::SHARK(int x, int y) : ENEMY(x,y,0) {
     shape[2] = new char[14]{ ' ',' ',' ',' ','\\','(',' ', ' ', ' ', ' ', ' ', ' ',' '};
 }
 
+void SHARK::sound()
+{
+    
+}
+
 // ___/(_____/
 //>`_ ____v--\
 //    \(

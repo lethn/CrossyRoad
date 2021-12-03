@@ -13,6 +13,7 @@ class TRUCK : public ENEMY
         TRUCK();
         TRUCK(int x, int y);
 
+        void sound();
 };
 
 

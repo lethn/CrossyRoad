@@ -18,7 +18,8 @@ class ENEMY
 
         bool checkOutOfBounds();
         void renderShape();
-
+        
+        virtual void sound() = 0;
 
     friend class LANE;
     friend class PLAYER;

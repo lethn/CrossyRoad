@@ -15,40 +15,40 @@ void LEVEL::generateLevel() {
     {
         case 1:
             maxEnemy = 15; // t de theo tam linh
-            maxSpeed = 2000;
-            minSpeed = 1800;
+            minSpeed = 2000;
+            maxSpeed = 1600;
             redLightRate = 5;
             greenLightRate = 10;
             break;
         
         case 2:
-            maxEnemy = 7;
-            maxSpeed = 650;
-            minSpeed = 500;
+            maxEnemy = 20;
+            minSpeed = 1600;
+            maxSpeed = 1200;
             redLightRate = 10;
             greenLightRate = 15;
             break;
         
         case 3:
-            maxEnemy = 9;
-            maxSpeed = 450;
-            minSpeed = 300;
+            maxEnemy = 25;
+            minSpeed = 1200;
+            maxSpeed = 800;
             redLightRate = 15;
             greenLightRate = 15;
             break;
         
         case 4:
-            maxEnemy = 11;
-            maxSpeed = 350;
-            minSpeed = 200;
+            maxEnemy = 25;
+            minSpeed = 800;
+            maxSpeed = 400;
             redLightRate = 20;
             greenLightRate = 10;
             break;
         
         default:
-            maxEnemy = 13;
-            maxSpeed = 200;
-            minSpeed = 100;
+            maxEnemy = 25;
+            minSpeed = 400;
+            maxSpeed = 100;
             redLightRate = 25;
             greenLightRate = 10;
             break;

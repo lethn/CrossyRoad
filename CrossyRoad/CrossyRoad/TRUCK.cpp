@@ -14,3 +14,8 @@ TRUCK::TRUCK(int x, int y) : ENEMY(x, y, 1)
     shape[1] = new char[13] {' ', '|', ' ', ' ', ' ', ' ', ' ', 'L', '\\', '_', ' ', ' '};
     shape[2] = new char[13] {' ', '\'', '-', 'o', '-', '-', '-', '-', '-', 'o', '-', '\''};
 }
+
+void TRUCK::sound()
+{
+    
+}

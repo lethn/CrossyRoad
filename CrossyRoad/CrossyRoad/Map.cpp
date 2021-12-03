@@ -112,7 +112,7 @@ bool MAP::checkCollision()
 	{
 		for (ENEMY *&enemy : lane.enemies)
 		{
-			if (player.checkCollision(*enemy))
+			if (player.checkCollision(enemy))
 				return true;
 		}
 	}
@@ -124,7 +124,7 @@ void MAP::initializeMap()
 {
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
-	std::uniform_int_distribution<unsigned> Speed(level.minSpeed, level.maxSpeed);
+	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
 
 	for (LANE &lane : lanes)
 	{
