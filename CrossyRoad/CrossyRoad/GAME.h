@@ -40,8 +40,8 @@
 class GAME {
 private:
 	MAP map;
-	bool checkLoadGame;
-	bool checkPauseGame;
+	bool checkLoadGame;		// default false
+	bool checkPauseGame;	// default false
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();

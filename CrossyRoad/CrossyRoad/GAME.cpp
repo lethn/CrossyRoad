@@ -397,13 +397,21 @@ void GAME::menu() {
 bool GAME::newGame() {
 	Nocursortype();
 	txtColor(15);
-	checkPauseGame = false;
+
+	if (checkLoadGame == false) {
+		map.~MAP();
+		new(&map) MAP();
+	}
+
 	clrscr();
 	map.printMap();
 	map.drawPlayer();
 
-	map.initializeMap();
+	if (checkLoadGame == false)
+		map.initializeMap();
 
+	checkLoadGame = false;
+	checkPauseGame = false;
 	int frameTime = 0;
 
 	while (!map.checkEndMap()) {
