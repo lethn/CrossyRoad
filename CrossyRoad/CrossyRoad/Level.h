@@ -13,7 +13,7 @@ class LEVEL
 {
     private:
         int level;
-        int    maxEnemy, currEnemy;
+        int maxEnemy, currEnemy;
         int minSpeed, maxSpeed;
         int redLightRate, greenLightRate;
         const int maxLevel = 5;

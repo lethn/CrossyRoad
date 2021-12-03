@@ -1,7 +1,7 @@
 #include "LEVEL.h"
 #include "GAME.h"
 
-LEVEL::LEVEL() : level(1) 
+LEVEL::LEVEL() : level(1), currEnemy(0) 
 {
     generateLevel();
 }
