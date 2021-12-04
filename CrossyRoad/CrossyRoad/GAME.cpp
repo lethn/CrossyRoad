@@ -475,7 +475,7 @@ bool GAME::newGame() {
 
 		map.renderMAP(frameTime++);
 
-		if (_kbhit) {
+		if (_kbhit()) {
 			char key = _getch();
 
 			if (key == 'J' || key == 'j') {
