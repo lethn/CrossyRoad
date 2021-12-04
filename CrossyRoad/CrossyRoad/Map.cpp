@@ -100,10 +100,14 @@ bool MAP::checkEndMap() {
 	return player.getCheckDead();
 }
 
-void MAP::renderMAP(int frameTime)
+int MAP::renderMAP(int frameTime)
 {
+	int outOfMap = 0;
+
 	for (LANE &lane : lanes)
-		lane.moveEnemies(frameTime);
+		outOfMap += lane.moveEnemies(frameTime);
+
+	return outOfMap;
 }
 
 bool MAP::checkCollision()
@@ -112,7 +116,7 @@ bool MAP::checkCollision()
 	{
 		for (ENEMY *&enemy : lane.enemies)
 		{
-			if (player.checkCollision(enemy))
+			if (player.checkCollision(*enemy))
 				return true;
 		}
 	}
@@ -125,12 +129,15 @@ void MAP::initializeMap()
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
 	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
+	
 
 	for (LANE &lane : lanes)
 	{
+		lane.speed = Speed(rng);
+		lane.redLightRate = level.redLightRate;
+		lane.greenLightRate = level.greenLightRate;
 		lane.direction = ZeroOne(rng) ? 1 : -1;
 		lane.redLight = ZeroOne(rng);
-		lane.speed = Speed(rng);
 	}
 
 	std::uniform_int_distribution<unsigned> Row(0, 8);
@@ -160,28 +167,27 @@ void MAP::initializeMap()
 			enemy -> renderShape();
 }
 
-void MAP::generateMap()
+void MAP::generateMap(int frameTime)
 {
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> Row(0, 8);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 	std::uniform_int_distribution<unsigned> distance(20, 30);
-	
-	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 	ENEMY *newEnemy;
-	while (level.currEnemy < level.maxEnemy)
+	while (level.currEnemy < level.maxEnemy - 3)
 	{
 		int row = Row(rng);
 
-		if (xPos[row] == 0)
-			xPos[row] += Pos(rng);
-		else 
-			xPos[row] += distance(rng);
+		if (lanes[row].enemies.empty() || !lanes[row].enemies.back() -> checkAtSpawn())
+		{
+			int xPos = lanes[row].direction == 1 ? -10 : 133;
+			newEnemy = level.randNewEnemy(xPos, row * 3 + 7, lanes[row].direction);
 
-		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
-
-		if (newEnemy)
-			lanes[row].enemies.push_back(newEnemy);
+			if (newEnemy)
+				lanes[row].enemies.push_back(newEnemy);
+		}
 	}
+
+	level.currEnemy -= renderMAP(frameTime);
 }

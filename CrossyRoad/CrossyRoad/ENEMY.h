@@ -16,8 +16,9 @@ class ENEMY
         ENEMY(const ENEMY &other);
         ~ENEMY();
 
-        bool checkOutOfBounds();
         void renderShape();
+        bool checkOutOfBounds();
+        bool checkAtSpawn();
         
         virtual void sound() = 0;
 

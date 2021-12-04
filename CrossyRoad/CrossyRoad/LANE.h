@@ -10,17 +10,16 @@ class LANE
 {
     private: 
         vector<ENEMY*> enemies;
+        int speed, redLightRate, greenLightRate;
         short direction;
         bool redLight;
-        int speed;
 
     public:
         LANE();
         LANE(short direction, bool redLight, int speed);
         ~LANE();
 
-        void generateLane(int frameTime);
-        void moveEnemies(int frameTime);
+        int moveEnemies(int frameTime);
 
     friend class GAME;
     friend class MAP;

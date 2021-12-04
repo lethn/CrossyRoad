@@ -28,7 +28,17 @@ ENEMY::~ENEMY()
 
 bool ENEMY::checkOutOfBounds()
 {
-    return x < LEFT_BORDER || x > RIGHT_BORDER;
+    return x < -12 || x > 135;
+}
+
+bool ENEMY::checkAtSpawn()
+{
+    if (type && -10 < x && x < 4)
+        return true;
+    else if (!type && 118 < x && x < 133)
+        return true;
+
+    return false;
 }
 
 void ENEMY::renderShape()

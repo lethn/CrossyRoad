@@ -121,18 +121,29 @@ bool PLAYER::getCheckDead() {
 	return checkDead;
 }
 
-bool PLAYER::checkCollision(ENEMY *enemy)
+bool PLAYER::checkCollision(ENEMY &enemy)
 {
-	if (y != enemy -> y)
+	if (y != enemy.y)
 		return false;
 
-	int length = strlen(enemy -> shape[0]);
+	int length = strlen(enemy.shape[0]);
 
-	if ((enemy -> x + enemy -> type <= x && x <= enemy -> x + enemy -> type + length - 2) || (enemy -> x + enemy -> type <= x + 4 && x + 4 <= enemy -> x + enemy -> type + length - 2))
+	if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 2) || (enemy.x + enemy.type <= x + 4 && x + 4 <= enemy.x + enemy.type + length - 2))
 	{
-		enemy -> sound();
+		enemy.sound();
 		return true;
 	}
+
+	// if (y != enemy -> y)
+	// 	return false;
+
+	// int length = strlen(enemy -> shape[0]);
+
+	// if ((enemy -> x + enemy -> type <= x && x <= enemy -> x + enemy -> type + length - 2) || (enemy -> x + enemy -> type <= x + 4 && x + 4 <= enemy -> x + enemy -> type + length - 2))
+	// {
+	// 	enemy -> sound();
+	// 	return true;
+	// }
 
 	return false;
 }

@@ -21,11 +21,11 @@ public:
 	void updatePosPlayer(char key);
 	bool checkEndMap();
 
-    void renderMAP(int frameTime);
+    int renderMAP(int frameTime);
 	bool checkCollision();
 
 	void initializeMap();
-	void generateMap();
+	void generateMap(int frameTime);
 
 
 	friend class GAME;

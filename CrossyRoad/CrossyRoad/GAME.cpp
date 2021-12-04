@@ -420,6 +420,9 @@ bool GAME::newGame() {
 	while (!map.checkEndMap()) {
 		if (checkPauseGame == false) {
 			// Create State Continuously
+			if (++frameTime == INT_MAX)
+				frameTime = 0;
+			map.generateMap(frameTime);
 		}
 		else if (checkPauseGame == true) {
 			txtColor(12); gotoxy(133, 23); cout << MIDDLE_SMALL_BLACK_PIECE << " PAUSE GAME " << endl;
@@ -473,9 +476,7 @@ bool GAME::newGame() {
 			}
 		}
 
-		map.renderMAP(frameTime++);
-
-		if (_kbhit) {
+		if (_kbhit()) {
 			char key = _getch();
 
 			if (key == 'J' || key == 'j') {
@@ -530,8 +531,7 @@ bool GAME::newGame() {
 			_getch();
 			return true;
 		}
-		else 
-			gotoxy(150, 30); cout << "         ";
+	
 	}
 	return false;
 }

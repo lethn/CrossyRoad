@@ -1,4 +1,5 @@
 #include "LANE.h"
+#include "GAME.h"
 
 LANE::LANE() : direction(1), redLight(0), speed(1) {}
 
@@ -10,25 +11,33 @@ LANE::~LANE()
         delete enemy;
 }
 
-void LANE::generateLane(int frameTime)
+int LANE::moveEnemies(int frameTime)
 {
-    if ((!redLight && rand() % 8 == 0) || (redLight && rand() % 20))
-        redLight = !redLight;
+    int outOfMap = 0;
 
+    // std::mt19937 rng(getSeed());
+	// std::uniform_int_distribution<unsigned> random(0, INT_MAX);
+
+    // if ((redLight && random(rng) % greenLightRate == 0) || (!redLight && random(rng) % redLightRate == 0) || frameTime == 0)
+    //     redLight = !redLight;
     
-}
-
-void LANE::moveEnemies(int frameTime)
-{
-    if (redLight)
-        return;
+    // if (redLight)
+    //     return 0;
     
     if (frameTime % speed != 0)
-        return;
+        return 0;
 
-    for (ENEMY *&enemy : enemies)
+    for (int i = 0; i < enemies.size(); ++i)
     {
-        enemy -> x += direction;
-        enemy -> renderShape();
+        enemies[i] -> x += direction;
+        if (enemies[i] -> checkOutOfBounds())
+        {
+            enemies.erase(enemies.begin() + i);
+            ++outOfMap;
+        }
+        else
+            enemies[i] -> renderShape();
     }
+
+    return outOfMap;
 }
