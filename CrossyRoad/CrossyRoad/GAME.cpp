@@ -242,7 +242,7 @@ void GAME::logoSaveGame() {
 
 void GAME::logoLoseGame() {
 	Nocursortype();
-	int x = 50;
+	int x = 45;
 	int y = 11;
 	int z = 2;
 
@@ -254,7 +254,7 @@ void GAME::logoLoseGame() {
 	gotoxy(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
 	gotoxy(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
 
-	gotoxy(73, 10);		cout << "*** Press any key to continue ***";
+	gotoxy(x + 23, 10);		cout << "*** Press any key to continue ***";
 
 	gotoxy(x, y);       cout << R"(                               _________________ )" << endl;
 	gotoxy(x, y + 1);   cout << R"(                          ____/  (  (    )   )  \___ )" << endl;
@@ -515,6 +515,7 @@ bool GAME::newGame() {
 		}
 
 		if (map.checkCollision()){
+			Sleep(1500);
 			checkPauseGame = false;
 			txtColor(15);
 			clrscr();

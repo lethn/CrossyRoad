@@ -12,7 +12,6 @@ DOG::DOG(int x, int y) : ENEMY(x, y,0) {
 	shape[2] = new char[13]{ ' ','(','_','(','_','/','-','(','_','_','/',' ' };
 }
 
-void DOG::sound()
-{
-	
+void DOG::sound() {
+	PlaySound(TEXT("Sound\\Dog.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }

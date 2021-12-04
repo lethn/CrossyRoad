@@ -15,7 +15,6 @@ TRUCK::TRUCK(int x, int y) : ENEMY(x, y, 1)
     shape[2] = new char[13] {' ', '\'', '-', 'o', '-', '-', '-', '-', '-', 'o', '-', '\''};
 }
 
-void TRUCK::sound()
-{
-    
+void TRUCK::sound() {
+    PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }

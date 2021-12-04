@@ -14,7 +14,6 @@ CAR::CAR(int x, int y) : ENEMY(x, y, 1)
     shape[2] = new char[12] {' ', '\'', '=', 'o', '-', '-', '-', '-', 'o', '-', '\''};
 }
 
-void CAR::sound()
-{
-    
+void CAR::sound() {
+    PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }

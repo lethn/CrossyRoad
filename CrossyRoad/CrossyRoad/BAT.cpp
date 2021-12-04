@@ -12,9 +12,8 @@ BAT::BAT(int x, int y) : ENEMY(x, y, 0) {
     shape[2] = new char[14]{ '/','.','-','.','\\',' ',' ','/','.','-','.','\\',' ' };
 }
 
-void BAT::sound()
-{
-    
+void BAT::sound() {
+    PlaySound(TEXT("Sound\\Bat.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
 
 //  _  ,,  _
