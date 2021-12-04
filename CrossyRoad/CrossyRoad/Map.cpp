@@ -181,7 +181,7 @@ void MAP::generateMap(int frameTime)
 
 		if (lanes[row].enemies.empty() || !lanes[row].enemies.back() -> checkAtSpawn())
 		{
-			int xPos = lanes[row].direction == 1 ? -10 : 133;
+			int xPos = lanes[row].direction == 1 ? -10 : 120;
 			newEnemy = level.randNewEnemy(xPos, row * 3 + 7, lanes[row].direction);
 
 			if (newEnemy)

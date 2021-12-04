@@ -28,14 +28,14 @@ ENEMY::~ENEMY()
 
 bool ENEMY::checkOutOfBounds()
 {
-    return x < -12 || x > 135;
+    return x < -13 || x > 123;
 }
 
 bool ENEMY::checkAtSpawn()
 {
-    if (type && -10 < x && x < 4)
+    if (type && -12 < x && x < 7)
         return true;
-    else if (!type && 118 < x && x < 133)
+    else if (!type && 103 < x && x < 122)
         return true;
 
     return false;

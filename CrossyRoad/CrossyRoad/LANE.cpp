@@ -18,11 +18,11 @@ int LANE::moveEnemies(int frameTime)
     // std::mt19937 rng(getSeed());
 	// std::uniform_int_distribution<unsigned> random(0, INT_MAX);
 
-    // if ((redLight && random(rng) % greenLightRate == 0) || (!redLight && random(rng) % redLightRate == 0) || frameTime == 0)
-    //     redLight = !redLight;
+    if ((redLight && frameTime % greenLightRate == 0) || (!redLight && frameTime % redLightRate == 0))
+        redLight = !redLight;
     
-    // if (redLight)
-    //     return 0;
+    if (redLight)
+        return 0;
     
     if (frameTime % speed != 0)
         return 0;
