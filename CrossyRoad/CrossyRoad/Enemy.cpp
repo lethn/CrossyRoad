@@ -33,12 +33,7 @@ bool ENEMY::checkOutOfMap()
 
 bool ENEMY::checkAtSpawn()
 {
-    if (type && -12 < x && x < 7)
-        return true;
-    else if (!type && 100 < x && x < 122)
-        return true;
-
-    return false;
+    return  x < 7 || x > 100;
 }
 
 void ENEMY::renderShape(int y)

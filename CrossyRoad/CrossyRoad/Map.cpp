@@ -232,7 +232,7 @@ void MAP::saveGame(string name) {
 	f << lanes.size() << endl;
 	for (int i = 0; i < lanes.size(); i++) {
 		f << lanes[i].enemies.size()<<" ";
-		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].speed << endl;
+		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].speed <<" "<< lanes[i].y<< endl;
 		for (int j = 0; j < lanes[i].enemies.size(); j++) {
 			f<< lanes[i].enemies[j]->isWhat()<<" "<< lanes[i].enemies[j]->x<<endl;
 			// bat = 1 car =2 dog =3 shark = 4 truck =5

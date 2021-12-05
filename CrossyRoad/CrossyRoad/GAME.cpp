@@ -570,7 +570,8 @@ void GAME::loadGame() {
 	UnNocursortype();
 	string file;
 	cin >> file;
-	
+	string filename = "Data/";
+	filename += file + ".txt";
 	Nocursortype();
 }
 
