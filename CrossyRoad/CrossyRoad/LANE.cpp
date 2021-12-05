@@ -16,7 +16,7 @@ void LANE::renderTrafficLight()
     txtColor(redLight ? 12 : 10);
     gotoxy(direction == 1 ? 121 : 0, y + 1);
     
-    cout << (char)254;
+    cout << VERTICAL_BLACK_PIECE << VERTICAL_BLACK_PIECE;
     txtColor(7);
 }
 

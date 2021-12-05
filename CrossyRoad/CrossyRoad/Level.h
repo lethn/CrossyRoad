@@ -20,7 +20,7 @@ class LEVEL
         void generateLevel();
 
     public:
-        LEVEL();
+        LEVEL(int level = 1);
         LEVEL(int level, int currEnemy);
         ~LEVEL() {};
         bool newLevel(int lv);

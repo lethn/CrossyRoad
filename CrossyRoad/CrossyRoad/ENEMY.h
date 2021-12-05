@@ -8,7 +8,7 @@ class ENEMY
     protected:
         char **shape;
         int x;
-        bool type; //Vehicle = 1, Animal = 0;
+        bool type; //Vehicle = 1, Animal = 0
 
     public:
         ENEMY();

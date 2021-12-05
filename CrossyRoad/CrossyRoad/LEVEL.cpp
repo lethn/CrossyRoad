@@ -1,7 +1,7 @@
 #include "LEVEL.h"
 #include "GAME.h"
 
-LEVEL::LEVEL() : level(1), currEnemy(0) 
+LEVEL::LEVEL(int level) : level(level), currEnemy(0) 
 {
     generateLevel();
 }
@@ -15,32 +15,32 @@ void LEVEL::generateLevel() {
     {
         case 1:
             maxEnemy = 15; // t de theo tam linh
-            minSpeed = 600;
-            maxSpeed = 400;
+            minSpeed = 1200;
+            maxSpeed = 800;
             break;
         
         case 2:
-            maxEnemy = 15;
-            minSpeed = 1600;
-            maxSpeed = 1200;
+            maxEnemy = 17;
+            minSpeed = 1200;
+            maxSpeed = 800;
             break;
         
         case 3:
-            maxEnemy = 25;
+            maxEnemy = 20;
             minSpeed = 1200;
             maxSpeed = 800;
             break;
         
         case 4:
-            maxEnemy = 25;
-            minSpeed = 800;
-            maxSpeed = 400;
+            maxEnemy = 20;
+            minSpeed = 1000;
+            maxSpeed = 600;
             break;
         
         default:
-            maxEnemy = 25;
-            minSpeed = 400;
-            maxSpeed = 100;
+            maxEnemy = 20;
+            minSpeed = 1000;
+            maxSpeed = 600;
             break;
     }
 }
