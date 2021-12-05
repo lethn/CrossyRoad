@@ -434,10 +434,10 @@ void GAME::newGame() {
 	int round = 1;
 
 	while (!map.checkEndMap()) {
-		txtColor(14);
-		gotoxy(142, 8); cout << round;
+		// txtColor(14);
+		// gotoxy(142, 8); cout << round;
 		
-		txtColor(15);
+		// txtColor(15);
 		if (checkPauseGame == false) {
 			if (++frameTime == INT_MAX)
 				frameTime = 0;

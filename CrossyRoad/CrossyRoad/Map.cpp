@@ -142,7 +142,7 @@ void MAP::initializeMap()
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
 	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
-	std::uniform_int_distribution<unsigned> Steps(80, 100);
+	std::uniform_int_distribution<unsigned> Steps(60, 80);
 
 	switch (level.level)
 	{
@@ -269,7 +269,7 @@ void MAP::generateMap(int frameTime)
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
-	std::uniform_int_distribution<unsigned> distance(20, 30);
+
 
 	ENEMY *newEnemy;
 	int fails = 0;

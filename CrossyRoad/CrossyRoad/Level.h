@@ -14,13 +14,14 @@ class LEVEL
         int level;
         int maxEnemy, currEnemy;
         int minSpeed, maxSpeed;
+        bool mode;
         const int maxLevel = 5;
 
         void generateLevel();
 
     public:
-        LEVEL(int level = 1);
-        LEVEL(int level, int currEnemy);
+        LEVEL(bool mode = 1, int level = 1);
+        LEVEL(bool mode, int level, int currEnemy);
         ~LEVEL() {};
         bool newLevel(int lv);
         bool nextLevel();
