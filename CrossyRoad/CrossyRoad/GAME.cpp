@@ -295,8 +295,15 @@ void GAME::logoWinGame() {
 	gotoxy(x + 5, z + 6);	cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
 }
 
+void GAME::settings() {
+
+}
+
+
 void GAME::menu() {
 	while (true) {
+		mode = true;	// true: easy, false: hard
+		checkMute = false;
 		clrscr();
 		logoCrossyRoad();
 		PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
@@ -328,7 +335,6 @@ void GAME::menu() {
 		gotoxy(x + 13, y + 5); cout << "ON";
 		gotoxy(x + 9, y + 7); cout << "EXIT";
 
-		bool sound = true;
 		int cnt = 0;
 		while (true)
 		{
@@ -376,12 +382,12 @@ void GAME::menu() {
 				txtColor(240);
 				gotoxy(x + 6, y + 5); cout << "SOUND:";
 				if (choice == KEY_ENTER) {
-					if (sound == true)
-						sound = false;
+					if (checkMute == true)
+						checkMute = false;
 					else
-						sound = true;
+						checkMute = true;
 
-					if (sound == true) {
+					if (checkMute == false) {
 						txtColor(15);
 						gotoxy(x + 13, y + 5); cout << "ON ";
 						PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
@@ -576,7 +582,8 @@ void GAME::newGame() {
 			map.initializeMap();
 			map.printMap();
 			map.drawPlayer();
-			PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+			if (checkMute == false)
+				PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		}
 	
 	}
