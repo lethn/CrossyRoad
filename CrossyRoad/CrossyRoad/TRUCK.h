@@ -11,7 +11,7 @@ class TRUCK : public ENEMY
 
     public:
         TRUCK();
-        TRUCK(int x, int y);
+        TRUCK(int x);
 
         void sound();
 };

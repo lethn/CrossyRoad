@@ -17,40 +17,30 @@ void LEVEL::generateLevel() {
             maxEnemy = 15; // t de theo tam linh
             minSpeed = 600;
             maxSpeed = 400;
-            redLightRate = maxSpeed * 90;
-            greenLightRate = maxSpeed * 90;
             break;
         
         case 2:
-            maxEnemy = 20;
+            maxEnemy = 15;
             minSpeed = 1600;
             maxSpeed = 1200;
-            redLightRate = 10;
-            greenLightRate = 15;
             break;
         
         case 3:
             maxEnemy = 25;
             minSpeed = 1200;
             maxSpeed = 800;
-            redLightRate = 15;
-            greenLightRate = 15;
             break;
         
         case 4:
             maxEnemy = 25;
             minSpeed = 800;
             maxSpeed = 400;
-            redLightRate = 20;
-            greenLightRate = 10;
             break;
         
         default:
             maxEnemy = 25;
             minSpeed = 400;
             maxSpeed = 100;
-            redLightRate = 25;
-            greenLightRate = 10;
             break;
     }
 }
@@ -70,7 +60,7 @@ bool LEVEL::nextLevel() {
     return true;
 }
 
-ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
+ENEMY *LEVEL::randNewEnemy(int x, short direction) {
     if (currEnemy == maxEnemy)
         return NULL;
 
@@ -84,25 +74,25 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
         
         if (direction == 1) {
             if (Vehicle(rng))
-                enemy = new CAR(x, y);
+                enemy = new CAR(x);
 
             else
-                enemy = new TRUCK(x, y);
+                enemy = new TRUCK(x);
 
         }
         else {
             switch (Animal(rng))
             {
                 case 0:
-                    enemy = new DOG(x, y);
+                    enemy = new DOG(x);
                     break;
 
                 case 1:
-                    enemy = new BAT(x, y);
+                    enemy = new BAT(x);
                     break;
 
                 default:
-                    enemy = new SHARK(x, y);
+                    enemy = new SHARK(x);
                     break;
             }
         }
@@ -111,15 +101,4 @@ ENEMY *LEVEL::randNewEnemy(int x, int y, short direction) {
     }
     
     return NULL;
-}
-
-int LEVEL::randSpeed()
-{
-    int k = maxSpeed - minSpeed;
-    return rand() % minSpeed + k ;
-
-}
-
-void LEVEL::decNEnemy(int d) {
-    currEnemy -= d;
 }

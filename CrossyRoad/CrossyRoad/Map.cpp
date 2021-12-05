@@ -116,7 +116,7 @@ bool MAP::checkCollision()
 	{
 		for (ENEMY *&enemy : lane.enemies)
 		{
-			if (player.checkCollision(*enemy))
+			if (player.y == lane.y && player.checkCollision(*enemy))
 				return true;
 		}
 	}
@@ -126,21 +126,42 @@ bool MAP::checkCollision()
 
 void MAP::initializeMap()
 {
+	player.~PLAYER();
+	new (&player) PLAYER();
+	lanes.clear();
+
 	std::mt19937 rng(getSeed());
 	std::uniform_int_distribution<unsigned> ZeroOne(0, 1);
 	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
-	
+	std::uniform_int_distribution<unsigned> Steps(80, 100);
 
-	for (LANE &lane : lanes)
+	if (level.level < 3)
 	{
-		lane.speed = Speed(rng);
-		lane.redLightRate = level.redLightRate;
-		lane.greenLightRate = level.greenLightRate;
-		lane.direction = ZeroOne(rng) ? 1 : -1;
-		lane.redLight = ZeroOne(rng);
+		lanes = vector<LANE>(5);
+		for (int i = 0; i < 5; ++i)
+		{
+			lanes[i].y = i * 6 + 7;
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
 	}
-
-	std::uniform_int_distribution<unsigned> Row(0, 8);
+	else
+	{
+		lanes = vector<LANE>(9);
+		for (int i = 0; i < lanes.size(); ++i)
+		{
+			lanes[i].y = i * 3 + 7;
+			lanes[i].speed = Speed(rng);
+			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+			lanes[i].redLight = ZeroOne(rng);
+		}
+	}
+	std::uniform_int_distribution<unsigned> Row(0, level.level < 3 ? 4 : 8);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 	std::uniform_int_distribution<unsigned> distance(20, 30);
 	
@@ -155,38 +176,47 @@ void MAP::initializeMap()
 			xPos[row] += Pos(rng);
 		else 
 			xPos[row] += distance(rng);
-
-		newEnemy = level.randNewEnemy(xPos[row], row * 3 + 7, lanes[row].direction);
+		
+		newEnemy = level.randNewEnemy(xPos[row], lanes[row].direction);
 
 		if (newEnemy)
 			lanes[row].enemies.push_back(newEnemy);
 	}
 
 	for (LANE &lane : lanes)
+	{
+		lane.renderTrafficLight();
 		for (ENEMY *&enemy : lane.enemies)
-			enemy -> renderShape();
+			enemy -> renderShape(lane.y);
+	}
 }
 
 void MAP::generateMap(int frameTime)
 {
+	int numberOfLane = level.level < 3 ? 4 : 8;
 	std::mt19937 rng(getSeed());
-	std::uniform_int_distribution<unsigned> Row(0, 8);
+	std::uniform_int_distribution<unsigned> Row(0, numberOfLane);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 	std::uniform_int_distribution<unsigned> distance(20, 30);
 
 	ENEMY *newEnemy;
-	while (level.currEnemy < level.maxEnemy - 3)
+	int fails = 0;
+	while (level.currEnemy < level.maxEnemy)
 	{
 		int row = Row(rng);
-
+		
 		if (lanes[row].enemies.empty() || !lanes[row].enemies.back() -> checkAtSpawn())
 		{
 			int xPos = lanes[row].direction == 1 ? -10 : 120;
-			newEnemy = level.randNewEnemy(xPos, row * 3 + 7, lanes[row].direction);
+			newEnemy = level.randNewEnemy(xPos, lanes[row].direction);
 
 			if (newEnemy)
 				lanes[row].enemies.push_back(newEnemy);
 		}
+		else 
+			if (++fails > numberOfLane)
+				break;
+		
 	}
 
 	level.currEnemy -= renderMAP(frameTime);

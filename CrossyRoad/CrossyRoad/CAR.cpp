@@ -7,7 +7,7 @@ CAR::CAR()
     shape[2] = new char[12] {' ', '\'', '=', 'o', '-', '-', '-', '-', 'o', '-', '\''};
 }
 
-CAR::CAR(int x, int y) : ENEMY(x, y, 1)
+CAR::CAR(int x) : ENEMY(x, 1)
 {
     shape[0] = new char[12] {' ', ' ', ' ', ' ', '_', '_', '_', ' ', ' ', ' ', ' '};
     shape[1] = new char[12] {' ', ' ', '_', '/', ' ', ' ', 'L', '\\', '_', '_', ' '};

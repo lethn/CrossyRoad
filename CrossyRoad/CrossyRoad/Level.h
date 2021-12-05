@@ -15,7 +15,6 @@ class LEVEL
         int level;
         int maxEnemy, currEnemy;
         int minSpeed, maxSpeed;
-        int redLightRate, greenLightRate;
         const int maxLevel = 5;
 
         void generateLevel();
@@ -26,9 +25,7 @@ class LEVEL
         ~LEVEL() {};
         bool newLevel(int lv);
         bool nextLevel();
-        ENEMY *randNewEnemy(int x, int y, short direction);
-        int randSpeed();
-        void decNEnemy(int d);
+        ENEMY *randNewEnemy(int x, short direction);
 
     friend class LANE;
     friend class MAP;

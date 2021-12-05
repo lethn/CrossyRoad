@@ -7,7 +7,7 @@ class DOG : public ENEMY
 
 public:
     DOG();
-    DOG(int x, int y);
+    DOG(int x);
 
     void sound();
 };

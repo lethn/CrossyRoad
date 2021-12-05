@@ -10,6 +10,7 @@ class LANE
 {
     private: 
         vector<ENEMY*> enemies;
+        int y;
         int speed, redLightRate, greenLightRate;
         short direction;
         bool redLight;
@@ -19,6 +20,7 @@ class LANE
         LANE(short direction, bool redLight, int speed);
         ~LANE();
 
+        void renderTrafficLight();
         int moveEnemies(int frameTime);
 
     friend class GAME;

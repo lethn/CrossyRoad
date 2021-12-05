@@ -11,16 +11,25 @@ LANE::~LANE()
         delete enemy;
 }
 
+void LANE::renderTrafficLight()
+{
+    txtColor(redLight ? 12 : 10);
+    gotoxy(direction == 1 ? 121 : 0, y + 1);
+    
+    cout << (char)254;
+    txtColor(7);
+}
+
 int LANE::moveEnemies(int frameTime)
 {
     int outOfMap = 0;
 
-    // std::mt19937 rng(getSeed());
-	// std::uniform_int_distribution<unsigned> random(0, INT_MAX);
-
     if ((redLight && frameTime % greenLightRate == 0) || (!redLight && frameTime % redLightRate == 0))
+    {
         redLight = !redLight;
-    
+        renderTrafficLight();
+    }
+        
     if (redLight)
         return 0;
     
@@ -30,13 +39,13 @@ int LANE::moveEnemies(int frameTime)
     for (int i = 0; i < enemies.size(); ++i)
     {
         enemies[i] -> x += direction;
-        if (enemies[i] -> checkOutOfBounds())
+        if (enemies[i] -> checkOutOfMap())
         {
             enemies.erase(enemies.begin() + i);
             ++outOfMap;
         }
         else
-            enemies[i] -> renderShape();
+            enemies[i] -> renderShape(y);
     }
 
     return outOfMap;

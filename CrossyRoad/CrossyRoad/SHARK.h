@@ -3,7 +3,7 @@
 class SHARK : public ENEMY {
 public:
 	SHARK();
-	SHARK(int x, int y);
+	SHARK(int x);
 
 	void sound();
 };

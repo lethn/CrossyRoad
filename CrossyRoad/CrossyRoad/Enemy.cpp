@@ -3,9 +3,9 @@
 
 ENEMY::ENEMY() : shape(new char*[3]()), type(type) {}
 
-ENEMY::ENEMY(int x, int y, bool type) : shape(new char*[3]()), x(x), y(y), type(type) {}
+ENEMY::ENEMY(int x, bool type) : shape(new char*[3]()), x(x), type(type) {}
 
-ENEMY::ENEMY(const ENEMY& other) : shape(new char*[3]()), x(other.x), y(other.y), type(other.type) 
+ENEMY::ENEMY(const ENEMY& other) : shape(new char*[3]()), x(other.x), type(other.type) 
 {
     int n = strlen(other.shape[0]) + 1;
     for (int i = 0; i < 3; ++i)
@@ -26,7 +26,7 @@ ENEMY::~ENEMY()
     delete [] shape;
 }
 
-bool ENEMY::checkOutOfBounds()
+bool ENEMY::checkOutOfMap()
 {
     return x < -13 || x > 123;
 }
@@ -35,13 +35,13 @@ bool ENEMY::checkAtSpawn()
 {
     if (type && -12 < x && x < 7)
         return true;
-    else if (!type && 103 < x && x < 122)
+    else if (!type && 100 < x && x < 122)
         return true;
 
     return false;
 }
 
-void ENEMY::renderShape()
+void ENEMY::renderShape(int y)
 {
     int leftMost = x < LEFT_BORDER ? LEFT_BORDER - x : 0;
 

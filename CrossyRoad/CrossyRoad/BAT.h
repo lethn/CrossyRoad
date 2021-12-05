@@ -5,7 +5,7 @@
 class BAT : public ENEMY {
 public:
 	BAT();
-	BAT(int x, int y);
+	BAT(int x);
 
 	void sound();
 };

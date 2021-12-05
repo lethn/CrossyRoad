@@ -123,9 +123,6 @@ bool PLAYER::getCheckDead() {
 
 bool PLAYER::checkCollision(ENEMY &enemy)
 {
-	if (y != enemy.y)
-		return false;
-
 	int length = strlen(enemy.shape[0]);
 
 	if ((enemy.x + enemy.type <= x && x <= enemy.x + enemy.type + length - 2) || (enemy.x + enemy.type <= x + 4 && x + 4 <= enemy.x + enemy.type + length - 2))

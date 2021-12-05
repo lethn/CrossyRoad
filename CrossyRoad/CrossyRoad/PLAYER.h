@@ -38,6 +38,8 @@ public:
 	bool getCheckDead();
 
 	bool checkCollision(ENEMY &enemy);
+
+	friend class MAP;
 };
 
 
