@@ -40,8 +40,10 @@
 class GAME {
 private:
 	MAP map;
-	bool checkLoadGame;		// default false
-	bool checkPauseGame;	// default false
+	bool mode; // default: true		true: easy, false: hard
+	bool checkMute;			// Mute backgound song, default: false
+	bool checkLoadGame;		// default: false
+	bool checkPauseGame;	// default: false
 public:
 	void resizeConsole(int width, int height);
 	void FixConsoleWindow();
@@ -50,6 +52,8 @@ public:
 	void logoSaveGame();
 	void logoLoseGame();
 	void logoWinGame();
+	void settings();
+
 	void menu();
 	void newGame();
 	void loadGame();
