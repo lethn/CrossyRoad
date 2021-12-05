@@ -144,35 +144,99 @@ void MAP::initializeMap()
 	std::uniform_int_distribution<unsigned> Speed(level.maxSpeed, level.minSpeed);
 	std::uniform_int_distribution<unsigned> Steps(80, 100);
 
-	if (level.level < 3)
+	switch (level.level)
 	{
-		lanes = vector<LANE>(5);
-		for (int i = 0; i < 5; ++i)
-		{
-			lanes[i].y = i * 6 + 7;
-			lanes[i].speed = Speed(rng);
-			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
-			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
-			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
-			lanes[i].redLight = ZeroOne(rng);
-		}
+		case 1:
+			lanes = vector<LANE>(5);
+
+			for (int i = 0; i < 5; ++i)
+			{
+				lanes[i].y = i * 6 + 7;
+				lanes[i].speed = Speed(rng);
+				lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+				lanes[i].redLight = ZeroOne(rng);
+			}
+
+			break;
+
+		case 2:
+			lanes = vector<LANE>(6);
+
+			for (int i = 0; i < 6; ++i)
+			{
+				if (i < 3)
+					lanes[i].y = i * 3 + 7;
+				else
+					lanes[i].y = lanes[i - 1].y + 6;
+
+				lanes[i].speed = Speed(rng);
+				lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+				lanes[i].redLight = ZeroOne(rng);
+			}
+
+			break;
+
+		case 3:
+			lanes = vector<LANE>(7);
+
+			for (int i = 0; i < 7; ++i)
+			{
+				if (i < 5)
+					lanes[i].y = i * 3 + 7;
+				else
+					lanes[i].y = lanes[i - 1].y + 6;
+
+				lanes[i].speed = Speed(rng);
+				lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+				lanes[i].redLight = ZeroOne(rng);
+			}
+			
+			break;
+
+		case 4:
+			lanes = vector<LANE>(8);
+
+			for (int i = 0; i < 8; ++i)
+			{
+				if (i < 7)
+					lanes[i].y = i * 3 + 7;
+				else
+					lanes[i].y = lanes[i - 1].y + 6;
+
+				lanes[i].speed = Speed(rng);
+				lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+				lanes[i].redLight = ZeroOne(rng);
+			}
+			
+			break;
+
+		default:
+			lanes = vector<LANE>(9);
+
+			for (int i = 0; i < 9; ++i)
+			{
+				lanes[i].y = i * 3 + 7;
+				lanes[i].speed = Speed(rng);
+				lanes[i].redLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
+				lanes[i].direction = ZeroOne(rng) ? 1 : -1;
+				lanes[i].redLight = ZeroOne(rng);
+			}
+
+			break;
 	}
-	else
-	{
-		lanes = vector<LANE>(9);
-		for (int i = 0; i < lanes.size(); ++i)
-		{
-			lanes[i].y = i * 3 + 7;
-			lanes[i].speed = Speed(rng);
-			lanes[i].redLightRate = lanes[i].speed * Steps(rng);
-			lanes[i].greenLightRate = lanes[i].speed * Steps(rng);
-			lanes[i].direction = ZeroOne(rng) ? 1 : -1;
-			lanes[i].redLight = ZeroOne(rng);
-		}
-	}
-	std::uniform_int_distribution<unsigned> Row(0, level.level < 3 ? 4 : 8);
+
+	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
-	std::uniform_int_distribution<unsigned> distance(20, 30);
+	std::uniform_int_distribution<unsigned> distance(25, 30);
 	
 	int xPos[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -202,9 +266,8 @@ void MAP::initializeMap()
 
 void MAP::generateMap(int frameTime)
 {
-	int numberOfLane = level.level < 3 ? 4 : 8;
 	std::mt19937 rng(getSeed());
-	std::uniform_int_distribution<unsigned> Row(0, numberOfLane);
+	std::uniform_int_distribution<unsigned> Row(0, lanes.size() - 1);
 	std::uniform_int_distribution<unsigned> Pos(LEFT_BORDER, RIGHT_BORDER);
 	std::uniform_int_distribution<unsigned> distance(20, 30);
 
@@ -223,7 +286,7 @@ void MAP::generateMap(int frameTime)
 				lanes[row].enemies.push_back(newEnemy);
 		}
 		else 
-			if (++fails > numberOfLane)
+			if (++fails > lanes.size())
 				break;
 		
 	}
