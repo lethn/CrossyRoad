@@ -2,7 +2,6 @@
 #define _LEVEL_H_
 
 #include "Library.h"
-#include <algorithm>
 #include "ENEMY.h"
 #include "DOG.h"
 #include "TRUCK.h"
@@ -26,6 +25,7 @@ class LEVEL
         bool newLevel(int lv);
         bool nextLevel();
         ENEMY *randNewEnemy(int x, short direction);
+        int getLevel();
 
     friend class LANE;
     friend class MAP;

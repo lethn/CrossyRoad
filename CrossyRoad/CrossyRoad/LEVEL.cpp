@@ -102,3 +102,7 @@ ENEMY *LEVEL::randNewEnemy(int x, short direction) {
     
     return NULL;
 }
+
+int LEVEL::getLevel() {
+    return level;
+}

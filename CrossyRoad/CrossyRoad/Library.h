@@ -6,6 +6,7 @@
 #include <conio.h>
 #include <vector>
 #include <chrono>
+#include <algorithm>
 #include <random>
 #include <fstream>
 

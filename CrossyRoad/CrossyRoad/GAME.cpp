@@ -254,8 +254,6 @@ void GAME::logoLoseGame() {
 	gotoxy(x, z + 5);	cout << "  |   |  |       ||       |  |       ||       | _____| |  |   |     __   __   __ " << endl;
 	gotoxy(x, z + 6);	cout << "  |___|  |_______||_______|  |_______||_______||_______|  |___|    |__| |__| |__|" << endl;
 
-	gotoxy(x + 23, 10);		cout << "*** Press any key to continue ***";
-
 	gotoxy(x, y);       cout << R"(                               _________________ )" << endl;
 	gotoxy(x, y + 1);   cout << R"(                          ____/  (  (    )   )  \___ )" << endl;
 	gotoxy(x, y + 2);   cout << R"(                         /( (  (  )   _    ))  )   )\\ )" << endl;
@@ -282,11 +280,26 @@ void GAME::logoLoseGame() {
 	gotoxy(x, y + 23);  cout << R"(--------------------------------------------------------------------------------- )" << endl;
 }
 
+void GAME::logoWinGame() {
+	Nocursortype();
+	int x = 45;
+	int y = 11;
+	int z = 2;
+
+	gotoxy(x + 5, z);		cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
+	gotoxy(x + 5, z + 1);	cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
+	gotoxy(x + 5, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
+	gotoxy(x + 5, z + 3);	cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
+	gotoxy(x + 5, z + 4);	cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
+	gotoxy(x + 5, z + 5);	cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
+	gotoxy(x + 5, z + 6);	cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+}
+
 void GAME::menu() {
 	while (true) {
 		clrscr();
 		logoCrossyRoad();
-		//PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		Nocursortype();
 		txtColor(15);
 		int x = 74;
@@ -346,13 +359,9 @@ void GAME::menu() {
 				gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
 					txtColor(15);
-					map.resetPlayer();
-					if (newGame() == true) {
-						clrscr();
-						map.printMap();
-
-						break;
-					}
+					newGame();
+					clrscr();
+					break;
 				}
 			}
 			if (cnt == 2) {
@@ -397,7 +406,7 @@ void GAME::menu() {
 	}
 }
 
-bool GAME::newGame() {
+void GAME::newGame() {
 	Nocursortype();
 	txtColor(15);
 
@@ -416,10 +425,14 @@ bool GAME::newGame() {
 	checkLoadGame = false;
 	checkPauseGame = false;
 	int frameTime = 0;
+	int round = 1;
 
 	while (!map.checkEndMap()) {
+		txtColor(14);
+		gotoxy(142, 8); cout << round;
+		
+		txtColor(15);
 		if (checkPauseGame == false) {
-			// Create State Continuously
 			if (++frameTime == INT_MAX)
 				frameTime = 0;
 			map.generateMap(frameTime);
@@ -470,7 +483,7 @@ bool GAME::newGame() {
 						gotoxy(134, 25); cout << "        " << endl;
 						gotoxy(134, 27); cout << "        " << endl;
 						txtColor(15);
-						return true;
+						return;
 					}
 				}
 			}
@@ -527,13 +540,46 @@ bool GAME::newGame() {
 				logoLoseGame();
 				Sleep(140);
 			}
+			gotoxy(68, 10);		cout << "*** Press any key to continue ***";
 			txtColor(15);
 			_getch();
-			return true;
+			return;
+		}
+
+		if (map.checkWin() == true) {
+			if (map.checkMaxLevel() == true) {
+				clrscr();
+				PlaySound(TEXT("Sound\\Victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				for (int i = 0; i < 16; ++i) {
+					clrscr();
+					txtColor(i);
+					logoWinGame();
+					Sleep(140);
+				}
+				gotoxy(68, 10);		cout << "*** Press any key to continue ***";
+				txtColor(15);
+				_getch();
+				return;
+			}
+
+			round++;
+			PlaySound(TEXT("Sound\\LevelUp.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			txtColor(14);
+			gotoxy(57, 2); cout << "LEVEL UP!!!";
+			Sleep(1000);
+			gotoxy(57, 2); cout << "            ";
+
+			txtColor(15);
+			map.fillInsideMap();
+			map.levelUp();
+			map.resetPlayer();
+			map.initializeMap();
+			map.printMap();
+			map.drawPlayer();
+			PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		}
 	
 	}
-	return false;
 }
 
 void GAME::loadGame() {

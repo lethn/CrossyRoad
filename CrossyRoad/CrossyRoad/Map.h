@@ -15,6 +15,7 @@ public:
 	MAP();
 	void printMapBorder();
 	void printMap();
+	void fillInsideMap();
 	int drawFromPosition(int x, int y, char** shape, int w, int h);
 	void drawPlayer();
 	void resetPlayer();
@@ -28,6 +29,10 @@ public:
 	void generateMap(int frameTime);
 
 	void saveGame(string name);
+
+	void levelUp();
+	bool checkMaxLevel();
+	bool checkWin();
 
 	friend class GAME;
 };

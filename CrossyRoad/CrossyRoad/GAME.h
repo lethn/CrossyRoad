@@ -49,8 +49,9 @@ public:
 	void logoLoadGame();
 	void logoSaveGame();
 	void logoLoseGame();
+	void logoWinGame();
 	void menu();
-	bool newGame();
+	void newGame();
 	void loadGame();
 	void saveGame();
 };

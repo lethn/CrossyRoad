@@ -26,7 +26,7 @@ void MAP::printMapBorder() {
 
 void MAP::printMap() {
 	printMapBorder();
-	
+
 	int x = 127;
 	int y = 6;
 	gotoxy(x, y);
@@ -45,7 +45,6 @@ void MAP::printMap() {
 		cout << UP_BLACK_PIECE;
 
 	txtColor(14);	gotoxy(x + 6, y + 2); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
-	cout << "1";
 
 	txtColor(12);	gotoxy(x + 6, y + 4); cout << MIDDLE_SMALL_BLACK_PIECE << " MOVING KEYBOARD " << endl;
 	txtColor(15);
@@ -59,6 +58,16 @@ void MAP::printMap() {
 	gotoxy(x + 8, 17); cout << "J: SAVE GAME" << endl;
 	gotoxy(x + 8, 18); cout << "L: LOAD GAME" << endl;
 	gotoxy(x + 8, 19); cout << "P: PAUSE GAME" << endl;
+}
+
+void MAP::fillInsideMap() {
+	txtColor(15);
+	for (int i = 1; i < 37; ++i) {
+		gotoxy(4, i);
+		for (int j = 0; j < 115; ++j) {
+			cout << " ";
+		}
+	}
 }
 
 int MAP::drawFromPosition(int x, int y, char** shape, int w, int h) {
@@ -239,4 +248,20 @@ void MAP::saveGame(string name) {
 		}
 	}
 	f.close();
+}
+
+void MAP::levelUp() {
+	level.nextLevel();
+}
+
+bool MAP::checkMaxLevel() {
+	if (level.getLevel() == 5)
+		return true;
+	return false;
+}
+
+bool MAP::checkWin() {
+	if (player.getY() == 4)
+		return true;
+	return false;
 }
