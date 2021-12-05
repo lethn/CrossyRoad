@@ -15,6 +15,9 @@ SHARK::SHARK(int x) : ENEMY(x, 0) {
 void SHARK::sound() {
     PlaySound(TEXT("Sound\\Shark.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+int SHARK::isWhat() {
+    return 4;
+}
 
 // ___/(_____/
 //>`_ ____v--\

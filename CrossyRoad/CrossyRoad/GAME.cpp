@@ -608,7 +608,9 @@ void GAME::saveGame() {
 	UnNocursortype();
 	string file;
 	cin >> file;
-
+	string filename = "Data/";
+	filename +=  file + ".txt";
+	map.saveGame(filename);
 	Nocursortype();
 }
 

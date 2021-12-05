@@ -19,7 +19,7 @@ class ENEMY
         void renderShape(int y);
         bool checkOutOfMap();
         bool checkAtSpawn();
-        
+        virtual int isWhat() = 0;
         virtual void sound() = 0;
 
     friend class LANE;

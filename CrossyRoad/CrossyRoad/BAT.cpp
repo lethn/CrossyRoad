@@ -16,6 +16,10 @@ void BAT::sound() {
     PlaySound(TEXT("Sound\\Bat.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
 
+
+int BAT::isWhat() {
+    return 1;
+}
 //  _  ,,  _
 // /`'=)(='`\
 ///.-.\  /.-.\

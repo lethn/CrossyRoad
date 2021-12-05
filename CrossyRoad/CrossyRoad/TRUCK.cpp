@@ -18,3 +18,6 @@ TRUCK::TRUCK(int x) : ENEMY(x, 1)
 void TRUCK::sound() {
     PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+int TRUCK::isWhat() {
+    return 5;
+}

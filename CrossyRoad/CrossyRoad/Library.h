@@ -7,6 +7,7 @@
 #include <vector>
 #include <chrono>
 #include <random>
+#include <fstream>
 
 #pragma comment (lib, "winmm.lib")
 using namespace std;

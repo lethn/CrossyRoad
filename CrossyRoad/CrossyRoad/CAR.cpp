@@ -17,3 +17,6 @@ CAR::CAR(int x) : ENEMY(x, 1)
 void CAR::sound() {
     PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+int CAR::isWhat() {
+    return 2;
+}

@@ -27,6 +27,7 @@ public:
 	void initializeMap();
 	void generateMap(int frameTime);
 
+	void saveGame(string name);
 
 	friend class GAME;
 };

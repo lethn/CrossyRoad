@@ -4,7 +4,7 @@ class SHARK : public ENEMY {
 public:
 	SHARK();
 	SHARK(int x);
-
+	int isWhat();
 	void sound();
 };
 

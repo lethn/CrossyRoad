@@ -15,3 +15,6 @@ DOG::DOG(int x) : ENEMY(x, 0) {
 void DOG::sound() {
 	PlaySound(TEXT("Sound\\Dog.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+int DOG::isWhat() {
+	return 3;
+}
