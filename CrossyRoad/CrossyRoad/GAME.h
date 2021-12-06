@@ -52,6 +52,7 @@ public:
 	void logoSaveGame();
 	void logoLoseGame();
 	void logoWinGame();
+	void fillMenu();
 	void settings();
 
 	void menu();
