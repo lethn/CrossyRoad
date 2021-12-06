@@ -15,31 +15,31 @@ void LEVEL::generateLevel() {
         switch (level)
         {   
             case 1:
-                maxEnemy = 13; // t de theo tam linh
+                maxEnemy = 10;
                 minSpeed = 1400;
                 maxSpeed = 1000;
                 break;
             
             case 2:
-                maxEnemy = 15;
+                maxEnemy = 13;
                 minSpeed = 1400;
                 maxSpeed = 1000;
                 break;
             
             case 3:
-                maxEnemy = 17;
+                maxEnemy = 15;
                 minSpeed = 1200;
                 maxSpeed = 800;
                 break;
             
             case 4:
-                maxEnemy = 17;
+                maxEnemy = 15;
                 minSpeed = 1000;
                 maxSpeed = 600;
                 break;
                 
             default:
-                maxEnemy = 20;
+                maxEnemy = 17;
                 minSpeed = 1000;
                 maxSpeed = 600;
                 break;
