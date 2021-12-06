@@ -429,7 +429,7 @@ void GAME::newGame() {
 		map.initializeMap();
 
 	map.initialRender();
-	
+
 	checkLoadGame = false;
 	checkPauseGame = false;
 	int frameTime = 0;
@@ -582,6 +582,7 @@ void GAME::newGame() {
 			map.levelUp();
 			map.resetPlayer();
 			map.initializeMap();
+			map.initialRender();
 			map.printMap();
 			map.drawPlayer();
 			if (checkMute == false)
