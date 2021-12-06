@@ -26,6 +26,7 @@ public:
 	bool checkCollision();
 
 	void initializeMap();
+	void initialRender();
 	void generateMap(int frameTime);
 
 	void saveGame(string name);

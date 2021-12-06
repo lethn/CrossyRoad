@@ -1,48 +1,82 @@
 #include "LEVEL.h"
 #include "GAME.h"
 
-LEVEL::LEVEL(int level) : level(level), currEnemy(0) 
+LEVEL::LEVEL(bool mode, int level) : mode(mode), level(level), currEnemy(0) 
 {
     generateLevel();
 }
 
-LEVEL::LEVEL(int level, int currEnemy) : level(level), currEnemy(currEnemy) {
+LEVEL::LEVEL(bool mode, int level, int currEnemy) : mode(mode), level(level), currEnemy(currEnemy) {
     generateLevel();
 }
 
 void LEVEL::generateLevel() {
-    switch (level)
-    {
-        case 1:
-            maxEnemy = 15; // t de theo tam linh
-            minSpeed = 1200;
-            maxSpeed = 800;
-            break;
-        
-        case 2:
-            maxEnemy = 17;
-            minSpeed = 1200;
-            maxSpeed = 800;
-            break;
-        
-        case 3:
-            maxEnemy = 20;
-            minSpeed = 1200;
-            maxSpeed = 800;
-            break;
-        
-        case 4:
-            maxEnemy = 20;
-            minSpeed = 1000;
-            maxSpeed = 600;
-            break;
-        
-        default:
-            maxEnemy = 20;
-            minSpeed = 1000;
-            maxSpeed = 600;
-            break;
-    }
+    if (mode)
+        switch (level)
+        {
+            case 1:
+                maxEnemy = 15; // t de theo tam linh
+                minSpeed = 1200;
+                maxSpeed = 800;
+                break;
+            
+            case 2:
+                maxEnemy = 17;
+                minSpeed = 1200;
+                maxSpeed = 800;
+                break;
+            
+            case 3:
+                maxEnemy = 20;
+                minSpeed = 1200;
+                maxSpeed = 800;
+                break;
+            
+            case 4:
+                maxEnemy = 20;
+                minSpeed = 1000;
+                maxSpeed = 600;
+                break;
+            
+            default:
+                maxEnemy = 20;
+                minSpeed = 1000;
+                maxSpeed = 600;
+                break;
+        }
+    else 
+        switch (level)
+        {
+            case 1:
+                maxEnemy = 15; // t de theo tam linh
+                minSpeed = 1000;
+                maxSpeed = 600;
+                break;
+            
+            case 2:
+                maxEnemy = 17;
+                minSpeed = 800;
+                maxSpeed = 400;
+                break;
+            
+            case 3:
+                maxEnemy = 20;
+                minSpeed = 800;
+                maxSpeed = 400;
+                break;
+            
+            case 4:
+                maxEnemy = 20;
+                minSpeed = 800;
+                maxSpeed = 400;
+                break;
+            
+            default:
+                maxEnemy = 23;
+                minSpeed = 700;
+                maxSpeed = 300;
+                break;
+        }
 }
 
 bool LEVEL::newLevel(int lv) {
