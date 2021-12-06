@@ -562,6 +562,11 @@ void GAME::newGame() {
 	int round = 1;
 	txtColor(14);
 	gotoxy(142, 8); cout << round;
+	gotoxy(152, 8);
+	if (mode == true)
+		cout << "EASY";
+	else
+		cout << "HARD";
 	txtColor(15);
 
 	while (!map.checkEndMap()) {

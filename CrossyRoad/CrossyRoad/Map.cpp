@@ -49,7 +49,9 @@ void MAP::printMap() {
 	for (int i = 0; i < 35; ++i)
 		cout << UP_BLACK_PIECE;
 
-	txtColor(14);	gotoxy(x + 6, y + 2); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
+	txtColor(14);
+	gotoxy(x + 6, y + 2); cout << MIDDLE_SMALL_BLACK_PIECE << " ROUND: ";
+	gotoxy(x + 17, y + 2); cout << "| MODE: ";
 
 	txtColor(12);	gotoxy(x + 6, y + 4); cout << MIDDLE_SMALL_BLACK_PIECE << " MOVING KEYBOARD " << endl;
 	txtColor(15);
