@@ -29,7 +29,7 @@ public:
 	void generateMap(int frameTime);
 
 	void saveGame(string name);
-
+	void loadGame(string name);
 	void levelUp();
 	bool checkMaxLevel();
 	bool checkWin();

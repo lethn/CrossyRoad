@@ -230,25 +230,6 @@ void MAP::generateMap(int frameTime)
 
 	level.currEnemy -= renderMAP(frameTime);
 }
-void MAP::saveGame(string name) {
-	ofstream f;
-	f.open(name);
-	//player
-	f << player.x << " " << player.y<<endl;
-	//level
-	f << level.level << " " << level.currEnemy<<endl;
-	//lane
-	f << lanes.size() << endl;
-	for (int i = 0; i < lanes.size(); i++) {
-		f << lanes[i].enemies.size()<<" ";
-		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].speed <<" "<< lanes[i].y<< endl;
-		for (int j = 0; j < lanes[i].enemies.size(); j++) {
-			f<< lanes[i].enemies[j]->isWhat()<<" "<< lanes[i].enemies[j]->x<<endl;
-			// bat = 1 car =2 dog =3 shark = 4 truck =5
-		}
-	}
-	f.close();
-}
 
 void MAP::levelUp() {
 	level.nextLevel();
@@ -264,4 +245,58 @@ bool MAP::checkWin() {
 	if (player.getY() == 4)
 		return true;
 	return false;
+}
+
+void MAP::loadGame(string name) {
+	ifstream f;
+	f.open(name);
+	if (f.is_open()) {
+		this->~MAP();
+		new(this) MAP();
+		f >> player.x >> player.y;
+		f >> level.level >>  level.currEnemy;
+		int lSize;
+		f >> lSize;
+		for (int i = 0; i < lSize; i++) {
+			int eSize;
+			f >> eSize;
+			f >> lanes[i].direction >> lanes[i].redLight >> lanes[i].speed >> lanes[i].y;
+			for (int j = 0; j < eSize; j++) {
+				int type,x;
+				f >> type;
+				f >> x;
+				ENEMY* temp;
+				if (type == 1) temp = new BAT(x);
+				if (type == 2) temp = new CAR(x);
+				if (type == 3) temp = new DOG(x);
+				if (type == 4) temp = new SHARK(x);
+				if (type == 5) temp = new TRUCK(x);
+				lanes[i].enemies.push_back(temp);
+			}
+		}
+	}
+	else {
+		throw(name);
+	}
+	f.close();
+}
+
+void MAP::saveGame(string name) {
+	ofstream f;
+	f.open(name);
+	//player
+	f << player.x << " " << player.y << endl;
+	//level
+	f << level.level << " " << level.currEnemy << endl;
+	//lane
+	f << lanes.size() << endl;
+	for (int i = 0; i < lanes.size(); i++) {
+		f << lanes[i].enemies.size() << " ";
+		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].speed << " " << lanes[i].y << endl;
+		for (int j = 0; j < lanes[i].enemies.size(); j++) {
+			f << lanes[i].enemies[j]->isWhat() << " " << lanes[i].enemies[j]->x << endl;
+			// bat = 1 car =2 dog =3 shark = 4 truck =5
+		}
+	}
+	f.close();
 }

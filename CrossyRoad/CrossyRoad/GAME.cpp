@@ -618,7 +618,10 @@ void GAME::loadGame() {
 	cin >> file;
 	string filename = "Data/";
 	filename += file + ".txt";
-	Nocursortype();
+
+	map.loadGame(filename);
+	checkLoadGame = true;
+	newGame();
 }
 
 void GAME::saveGame() {
