@@ -428,6 +428,8 @@ void GAME::newGame() {
 	if (checkLoadGame == false)
 		map.initializeMap();
 
+	map.initialRender();
+	
 	checkLoadGame = false;
 	checkPauseGame = false;
 	int frameTime = 0;

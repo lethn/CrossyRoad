@@ -254,8 +254,11 @@ void MAP::initializeMap()
 
 		if (newEnemy)
 			lanes[row].enemies.push_back(newEnemy);
-	}
+	}	
+}
 
+void MAP::initialRender()
+{
 	for (LANE &lane : lanes)
 	{
 		lane.renderTrafficLight();
