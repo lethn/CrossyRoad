@@ -6,6 +6,11 @@ MAP::MAP() : player(), level(), lanes(9) {}
 void MAP::printMapBorder() {
 	txtColor(15);
 
+	for (int i = 0; i < 37; ++i) {
+		gotoxy(0, i);	cout << "  ";
+		gotoxy(121, i);	cout << "  ";
+	}
+
 	gotoxy(3, 0);
 	for (int i = 0; i < 117; ++i)
 		cout << DOWN_BLACK_PIECE;

@@ -695,8 +695,8 @@ void GAME::newGame() {
 			map.levelUp();
 			map.resetPlayer();
 			map.initializeMap();
-			map.initialRender();
 			map.printMap();
+			map.initialRender();
 			map.drawPlayer();
 			if (checkMute == false)
 				PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
