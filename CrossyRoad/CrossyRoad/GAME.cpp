@@ -373,6 +373,9 @@ void GAME::settings() {
 				else
 					mode = true;
 
+				map.level.~LEVEL();
+				new(&map.level) LEVEL(mode);
+
 				if (mode == true) {
 					txtColor(15);
 					gotoxy(x + 12, y + 1); cout << "EASY";
@@ -547,8 +550,6 @@ void GAME::newGame() {
 	clrscr();
 	map.printMap();
 	map.drawPlayer();
-	
-	new(&map.level) LEVEL(mode, 1);
 
 	if (checkLoadGame == false)
 		map.initializeMap();
@@ -716,6 +717,9 @@ void GAME::newGame() {
 			map.drawPlayer();
 			if (checkMute == false)
 				PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
+			while (_kbhit())
+				_getch();
 		}
 	
 	}
