@@ -15,29 +15,29 @@ void LEVEL::generateLevel() {
         switch (level)
         {   
             case 1:
-                maxEnemy = 15; // t de theo tam linh
-                minSpeed = 1200;
-                maxSpeed = 800;
+                maxEnemy = 13; // t de theo tam linh
+                minSpeed = 1400;
+                maxSpeed = 1000;
                 break;
             
             case 2:
+                maxEnemy = 15;
+                minSpeed = 1400;
+                maxSpeed = 1000;
+                break;
+            
+            case 3:
                 maxEnemy = 17;
                 minSpeed = 1200;
                 maxSpeed = 800;
                 break;
             
-            case 3:
-                maxEnemy = 20;
-                minSpeed = 1200;
-                maxSpeed = 800;
-                break;
-            
             case 4:
-                maxEnemy = 20;
+                maxEnemy = 17;
                 minSpeed = 1000;
                 maxSpeed = 600;
                 break;
-            
+                
             default:
                 maxEnemy = 20;
                 minSpeed = 1000;
@@ -48,31 +48,31 @@ void LEVEL::generateLevel() {
         switch (level)
         {
             case 1:
-                maxEnemy = 15; // t de theo tam linh
+                maxEnemy = 17; // t de theo tam linh
                 minSpeed = 1000;
                 maxSpeed = 600;
                 break;
             
             case 2:
-                maxEnemy = 17;
+                maxEnemy = 20;
                 minSpeed = 800;
                 maxSpeed = 400;
                 break;
             
             case 3:
-                maxEnemy = 20;
+                maxEnemy = 23;
                 minSpeed = 800;
                 maxSpeed = 400;
                 break;
             
             case 4:
-                maxEnemy = 20;
+                maxEnemy = 25;
                 minSpeed = 800;
                 maxSpeed = 400;
                 break;
             
             default:
-                maxEnemy = 23;
+                maxEnemy = 28;
                 minSpeed = 700;
                 maxSpeed = 300;
                 break;
