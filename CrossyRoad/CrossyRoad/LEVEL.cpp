@@ -13,7 +13,7 @@ LEVEL::LEVEL(bool mode, int level, int currEnemy) : mode(mode), level(level), cu
 void LEVEL::generateLevel() {
     if (mode)
         switch (level)
-        {
+        {   
             case 1:
                 maxEnemy = 15; // t de theo tam linh
                 minSpeed = 1200;

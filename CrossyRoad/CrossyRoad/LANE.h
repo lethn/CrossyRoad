@@ -14,7 +14,6 @@ class LANE
         int speed, redLightRate, greenLightRate;
         short direction;
         bool redLight;
-
     public:
         LANE();
         LANE(short direction, bool redLight, int speed);

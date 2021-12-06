@@ -5,9 +5,8 @@ using namespace std;
 int main() {
 	GAME game;
 	game.resizeConsole(1280, 720);
-	game.FixConsoleWindow();
+	//game.FixConsoleWindow();
 
 	game.menu();
-
 	return 0;
 }
