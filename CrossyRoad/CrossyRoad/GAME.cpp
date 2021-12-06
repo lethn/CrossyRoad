@@ -717,6 +717,9 @@ void GAME::newGame() {
 			map.drawPlayer();
 			if (checkMute == false)
 				PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
+			while (_kbhit())
+				_getch();
 		}
 	
 	}
