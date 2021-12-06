@@ -330,9 +330,19 @@ void GAME::settings() {
 
 	txtColor(15);
 	gotoxy(x + 6, y + 1); cout << "MODE:";
-	gotoxy(x + 12, y + 1); cout << "EASY";
+	if (mode == true) {
+		gotoxy(x + 12, y + 1); cout << "EASY";
+	}
+	else {
+		gotoxy(x + 12, y + 1); cout << "HARD";
+	}
 	gotoxy(x + 6, y + 3); cout << "SOUND:";
-	gotoxy(x + 13, y + 3); cout << "ON";
+	if (checkMute == false) {
+		gotoxy(x + 13, y + 3); cout << "ON";
+	}
+	else {
+		gotoxy(x + 13, y + 3); cout << "OFF";
+	}
 	gotoxy(x + 9, y + 5); cout << "BACK";
 
 	int cnt = 0;
@@ -362,6 +372,9 @@ void GAME::settings() {
 					mode = false;
 				else
 					mode = true;
+
+				map.level.~LEVEL();
+				new(&map.level) LEVEL(mode);
 
 				if (mode == true) {
 					txtColor(15);
@@ -431,11 +444,10 @@ void GAME::settings() {
 
 void GAME::menu() {
 	while (true) {
-		mode = true;	// true: easy, false: hard
-		checkMute = false;
 		clrscr();
 		logoCrossyRoad();
-		PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		if (checkMute == false)
+			PlaySound(TEXT("Sound\\SugarCookie.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		Nocursortype();
 		txtColor(15);
 		int x = 74;

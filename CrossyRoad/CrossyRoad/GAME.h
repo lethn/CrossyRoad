@@ -40,8 +40,8 @@
 class GAME {
 private:
 	MAP map;
-	bool mode; // default: true		true: easy, false: hard
-	bool checkMute;			// Mute backgound song, default: false
+	bool mode = true; // default: true		true: easy, false: hard
+	bool checkMute = false;			// Mute backgound song, default: false
 	bool checkLoadGame;		// default: false
 	bool checkPauseGame;	// default: false
 public:
