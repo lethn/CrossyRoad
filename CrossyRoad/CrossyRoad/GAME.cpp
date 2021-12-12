@@ -305,6 +305,41 @@ void GAME::fillMenu() {
 	}
 }
 
+void GAME::loadingBar() {
+	txtColor(15);
+	Nocursortype();
+
+	int x = 51;
+	int y = 18;
+	for (int i = 18; i < 28; ++i) {
+		gotoxy(40, i);
+		for (int j = 0; j < 60; ++j) {
+			cout << " ";
+		}
+	}
+
+	y = 20;
+	gotoxy(80, y - 1);	cout << "LOADING...";
+	gotoxy(x - 1, y);
+	for (int i = 0; i < 70; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	gotoxy(x - 1, y + 2);
+	for (int i = 0; i < 70; ++i)
+		cout << UP_BLACK_PIECE;
+
+	gotoxy(x - 1, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+	gotoxy(x + 68, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+
+	gotoxy(x, y + 1);
+	for (int i = 0; i < 68; ++i) {
+		Sleep(20);
+		cout << char(178);
+	}
+}
+
 void GAME::settings() {
 	Nocursortype();
 	txtColor(15);
@@ -501,6 +536,7 @@ void GAME::menu() {
 				txtColor(240);
 				gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
+					loadingBar();
 					txtColor(15);
 					newGame();
 					clrscr();
@@ -536,6 +572,8 @@ void GAME::menu() {
 }
 
 void GAME::newGame() {
+	while (_kbhit())
+		_getch();
 	Nocursortype();
 	txtColor(15);
 
