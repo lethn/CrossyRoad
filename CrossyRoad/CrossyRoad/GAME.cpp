@@ -282,17 +282,42 @@ void GAME::logoLoseGame() {
 
 void GAME::logoWinGame() {
 	Nocursortype();
-	int x = 45;
-	int y = 11;
-	int z = 2;
+	int x = 42;
+	int y = 8;
 
-	gotoxy(x + 5, z);		cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
-	gotoxy(x + 5, z + 1);	cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 3);	cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 4);	cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
-	gotoxy(x + 5, z + 5);	cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
-	gotoxy(x + 5, z + 6);	cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+	gotoxy(x + 34, y + 6);   cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
+	gotoxy(x + 34, y + 7);	 cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 8);	 cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 9);   cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 10);	 cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
+	gotoxy(x + 34, y + 11);	 cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
+	gotoxy(x + 34, y + 12);	 cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+
+	gotoxy(x - 20, y);       cout << R"(                 .__.--"""-,)" << endl;
+	gotoxy(x - 20, y + 1);   cout << R"(               .'         `\)" << endl;
+	gotoxy(x - 20, y + 2);   cout << R"(              /   _         \)" << endl;
+	gotoxy(x - 20, y + 3);   cout << R"( .-""-.       |  (O\.--.-.-/O)          .-""-.)" << endl;
+	gotoxy(x - 20, y + 4);   cout << R"(/ O O  \      .\|(_._.__._.__)         /  O O \)" << endl;
+	gotoxy(x - 20, y + 5);   cout << R"(|O .-.  \    (   )   0 _ 0   \        /  .-. O|)" << endl;
+	gotoxy(x - 20, y + 6);   cout << R"(\ (   )  '.   `-|     (_)     |     .'  (   ) /)" << endl;
+	gotoxy(x - 20, y + 7);   cout << R"( '.`-'     '-./`|             |`\.-'     '-'.')" << endl;
+	gotoxy(x - 20, y + 8);   cout << R"(   \         |  \   \     /   /  |         /)" << endl;
+	gotoxy(x - 20, y + 9);   cout << R"(    \        \   '.  '._.'  .'   /        /)" << endl;
+	gotoxy(x - 20, y + 10);  cout << R"(     \        '.   `'-----'`   .'        /)" << endl;
+	gotoxy(x - 20, y + 11);  cout << R"(      \   .'    '-._        .-'\   '.   /)" << endl;
+	gotoxy(x - 20, y + 12);  cout << R"(       |/`          `'''''')    )    `\|)" << endl;
+	gotoxy(x - 20, y + 13);  cout << R"(       /                  (    (      ,\)" << endl;
+	gotoxy(x - 20, y + 14);  cout << R"(      ;                    \    '-..-'/ ;)" << endl;
+	gotoxy(x - 20, y + 15);  cout << R"(      |                     '.       /  |)" << endl;
+	gotoxy(x - 20, y + 16);  cout << R"(      |                       `'---'`   |)" << endl;
+	gotoxy(x - 20, y + 17);  cout << R"(      ;                                 ;)" << endl;
+	gotoxy(x - 20, y + 18);  cout << R"(       \                               /)" << endl;
+	gotoxy(x - 20, y + 19);  cout << R"(        `.                           .')" << endl;
+	gotoxy(x - 20, y + 20);  cout << R"(          '-._                   _.-')" << endl;
+	gotoxy(x - 20, y + 21);  cout << R"(           __/`"  '  - - -  ' "`` \__)" << endl;
+	gotoxy(x - 20, y + 22);  cout << R"(         /`            /^\           `\)" << endl;
+	gotoxy(x - 20, y + 23);  cout << R"(         \(          .'   '.         )/)" << endl;
+	gotoxy(x - 20, y + 24);  cout << R"(          '.(__(__.-'       '.__)__).')" << endl;
 }
 
 void GAME::fillMenu() {
@@ -735,7 +760,7 @@ void GAME::newGame() {
 				}
 				while (_kbhit())
 					_getch();
-				gotoxy(68, 10);		cout << "*** Press any key to continue ***";
+				gotoxy(94, 22);		cout << "*** Press any key to continue ***";
 				txtColor(15);
 				_getch();
 				return;
