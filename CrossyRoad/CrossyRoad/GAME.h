@@ -54,6 +54,7 @@ public:
 	void logoWinGame();
 	void fillMenu();
 	void settings();
+	void loadingBar();
 
 	void menu();
 	void newGame();

@@ -29,8 +29,8 @@ public:
 	void initialRender();
 	void generateMap(int frameTime);
 
-	void saveGame(string name);
-	void loadGame(string name);
+	void saveGame(string name,bool mode);
+	void loadGame(string name, bool &mode);
 	void levelUp();
 	bool checkMaxLevel();
 	bool checkWin();

@@ -282,17 +282,42 @@ void GAME::logoLoseGame() {
 
 void GAME::logoWinGame() {
 	Nocursortype();
-	int x = 45;
-	int y = 11;
-	int z = 2;
+	int x = 42;
+	int y = 8;
 
-	gotoxy(x + 5, z);		cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
-	gotoxy(x + 5, z + 1);	cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 2);	cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 3);	cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
-	gotoxy(x + 5, z + 4);	cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
-	gotoxy(x + 5, z + 5);	cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
-	gotoxy(x + 5, z + 6);	cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+	gotoxy(x + 34, y + 6);   cout << " __   __  _______  __   __    _     _  ___   __    _    __   __   __ " << endl;
+	gotoxy(x + 34, y + 7);	 cout << "|  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 8);	 cout << "|  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 9);   cout << "|       ||  | |  ||  |_|  |  |       ||   | |       |  |  | |  | |  |" << endl;
+	gotoxy(x + 34, y + 10);	 cout << "|_     _||  |_|  ||       |  |       ||   | |  _    |  |__| |__| |__|" << endl;
+	gotoxy(x + 34, y + 11);	 cout << "  |   |  |       ||       |  |   _   ||   | | | |   |   __   __   __ " << endl;
+	gotoxy(x + 34, y + 12);	 cout << "  |___|  |_______||_______|  |__| |__||___| |_|  |__|  |__| |__| |__|" << endl;
+
+	gotoxy(x - 20, y);       cout << R"(                 .__.--"""-,)" << endl;
+	gotoxy(x - 20, y + 1);   cout << R"(               .'         `\)" << endl;
+	gotoxy(x - 20, y + 2);   cout << R"(              /   _         \)" << endl;
+	gotoxy(x - 20, y + 3);   cout << R"( .-""-.       |  (O\.--.-.-/O)          .-""-.)" << endl;
+	gotoxy(x - 20, y + 4);   cout << R"(/ O O  \      .\|(_._.__._.__)         /  O O \)" << endl;
+	gotoxy(x - 20, y + 5);   cout << R"(|O .-.  \    (   )   0 _ 0   \        /  .-. O|)" << endl;
+	gotoxy(x - 20, y + 6);   cout << R"(\ (   )  '.   `-|     (_)     |     .'  (   ) /)" << endl;
+	gotoxy(x - 20, y + 7);   cout << R"( '.`-'     '-./`|             |`\.-'     '-'.')" << endl;
+	gotoxy(x - 20, y + 8);   cout << R"(   \         |  \   \     /   /  |         /)" << endl;
+	gotoxy(x - 20, y + 9);   cout << R"(    \        \   '.  '._.'  .'   /        /)" << endl;
+	gotoxy(x - 20, y + 10);  cout << R"(     \        '.   `'-----'`   .'        /)" << endl;
+	gotoxy(x - 20, y + 11);  cout << R"(      \   .'    '-._        .-'\   '.   /)" << endl;
+	gotoxy(x - 20, y + 12);  cout << R"(       |/`          `'''''')    )    `\|)" << endl;
+	gotoxy(x - 20, y + 13);  cout << R"(       /                  (    (      ,\)" << endl;
+	gotoxy(x - 20, y + 14);  cout << R"(      ;                    \    '-..-'/ ;)" << endl;
+	gotoxy(x - 20, y + 15);  cout << R"(      |                     '.       /  |)" << endl;
+	gotoxy(x - 20, y + 16);  cout << R"(      |                       `'---'`   |)" << endl;
+	gotoxy(x - 20, y + 17);  cout << R"(      ;                                 ;)" << endl;
+	gotoxy(x - 20, y + 18);  cout << R"(       \                               /)" << endl;
+	gotoxy(x - 20, y + 19);  cout << R"(        `.                           .')" << endl;
+	gotoxy(x - 20, y + 20);  cout << R"(          '-._                   _.-')" << endl;
+	gotoxy(x - 20, y + 21);  cout << R"(           __/`"  '  - - -  ' "`` \__)" << endl;
+	gotoxy(x - 20, y + 22);  cout << R"(         /`            /^\           `\)" << endl;
+	gotoxy(x - 20, y + 23);  cout << R"(         \(          .'   '.         )/)" << endl;
+	gotoxy(x - 20, y + 24);  cout << R"(          '.(__(__.-'       '.__)__).')" << endl;
 }
 
 void GAME::fillMenu() {
@@ -302,6 +327,41 @@ void GAME::fillMenu() {
 		for (int j = 0; j < 22; ++j) {
 			cout << " ";
 		}
+	}
+}
+
+void GAME::loadingBar() {
+	txtColor(15);
+	Nocursortype();
+
+	int x = 51;
+	int y = 18;
+	for (int i = 18; i < 28; ++i) {
+		gotoxy(40, i);
+		for (int j = 0; j < 60; ++j) {
+			cout << " ";
+		}
+	}
+
+	y = 20;
+	gotoxy(80, y - 1);	cout << "LOADING...";
+	gotoxy(x - 1, y);
+	for (int i = 0; i < 70; ++i)
+		cout << DOWN_BLACK_PIECE;
+
+	gotoxy(x - 1, y + 2);
+	for (int i = 0; i < 70; ++i)
+		cout << UP_BLACK_PIECE;
+
+	gotoxy(x - 1, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+	gotoxy(x + 68, y + 1);
+	cout << VERTICAL_BLACK_PIECE;
+
+	gotoxy(x, y + 1);
+	for (int i = 0; i < 68; ++i) {
+		Sleep(20);
+		cout << char(178);
 	}
 }
 
@@ -501,6 +561,7 @@ void GAME::menu() {
 				txtColor(240);
 				gotoxy(x + 6, y + 1); cout << " NEW GAME ";
 				if (choice == KEY_ENTER) {
+					loadingBar();
 					txtColor(15);
 					newGame();
 					clrscr();
@@ -536,19 +597,20 @@ void GAME::menu() {
 }
 
 void GAME::newGame() {
+	while (_kbhit())
+		_getch();
 	Nocursortype();
 	txtColor(15);
 
 	if (checkLoadGame == false) {
 		map.~MAP();
 		new(&map) MAP();
+		new(&map.level) LEVEL(mode, 1);
 	}
 
 	clrscr();
 	map.printMap();
 	map.drawPlayer();
-
-	new(&map.level) LEVEL(mode, 1);
 
 	if (checkLoadGame == false)
 		map.initializeMap();
@@ -558,7 +620,7 @@ void GAME::newGame() {
 	checkLoadGame = false;
 	checkPauseGame = false;
 	int frameTime = 0;
-	int round = 1;
+	int round = map.level.getLevel();
 	txtColor(14);
 	gotoxy(142, 8); cout << round;
 	gotoxy(152, 8);
@@ -697,7 +759,7 @@ void GAME::newGame() {
 				}
 				while (_kbhit())
 					_getch();
-				gotoxy(68, 10);		cout << "*** Press any key to continue ***";
+				gotoxy(94, 22);		cout << "*** Press any key to continue ***";
 				txtColor(15);
 				_getch();
 				return;
@@ -765,7 +827,7 @@ void GAME::loadGame() {
 	string filename = "Data/";
 	filename += file + ".txt";
 
-	map.loadGame(filename);
+	map.loadGame(filename,mode);
 	checkLoadGame = true;
 	newGame();
 }
@@ -806,7 +868,7 @@ void GAME::saveGame() {
 	cin >> file;
 	string filename = "Data/";
 	filename +=  file + ".txt";
-	map.saveGame(filename);
+	map.saveGame(filename,mode);
 	Nocursortype();
 }
 

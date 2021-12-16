@@ -320,20 +320,23 @@ bool MAP::checkWin() {
 	return false;
 }
 
-void MAP::loadGame(string name) {
+void MAP::loadGame(string name, bool &mode) {
 	ifstream f;
 	f.open(name);
 	if (f.is_open()) {
 		this->~MAP();
 		new(this) MAP();
+		f >> mode;
 		f >> player.x >> player.y;
 		f >> level.level >>  level.currEnemy;
 		int lSize;
 		f >> lSize;
+		lanes.clear();
 		for (int i = 0; i < lSize; i++) {
+			LANE tempL;
 			int eSize;
 			f >> eSize;
-			f >> lanes[i].direction >> lanes[i].redLight >> lanes[i].speed >> lanes[i].y;
+			f >> tempL.direction >> tempL.redLight >> tempL.speed >> tempL.y;
 			for (int j = 0; j < eSize; j++) {
 				int type,x;
 				f >> type;
@@ -344,8 +347,9 @@ void MAP::loadGame(string name) {
 				if (type == 3) temp = new DOG(x);
 				if (type == 4) temp = new SHARK(x);
 				if (type == 5) temp = new TRUCK(x);
-				lanes[i].enemies.push_back(temp);
+				tempL.enemies.push_back(temp);
 			}
+			lanes.push_back(tempL);
 		}
 	}
 	else {
@@ -354,10 +358,11 @@ void MAP::loadGame(string name) {
 	f.close();
 }
 
-void MAP::saveGame(string name) {
+void MAP::saveGame(string name,bool mode) {
 	ofstream f;
 	f.open(name);
 	//player
+	f << mode << endl;
 	f << player.x << " " << player.y << endl;
 	//level
 	f << level.level << " " << level.currEnemy << endl;
