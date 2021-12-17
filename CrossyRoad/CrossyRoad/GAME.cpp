@@ -852,19 +852,27 @@ void GAME::loadGame() {
 	cin >> file;
 	string filename = "Data/";
 	filename += file + ".bin";
-	Nocursortype();
-	Sleep(50);
-	while (_kbhit())
-		_getch();
+	
 
 	if (map.loadGame(filename, mode) == false) {
 		checkLoadGame = false;
+		gotoxy(x + 20, y + 3);
+		cout << "Error! Please try again later!";
+
+		Nocursortype();
+		Sleep(800);
+		while (_kbhit())
+			_getch();
 		return;
 	}
 	else {
 		checkLoadGame = true;
 	}
 
+	Nocursortype();
+	Sleep(50);
+	while (_kbhit())
+		_getch();
 }
 
 void GAME::saveGame() {
