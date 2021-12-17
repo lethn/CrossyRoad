@@ -320,65 +320,68 @@ bool MAP::checkWin() {
 	return false;
 }
 
-void MAP::loadGame(string name, bool &mode) {
+bool MAP::loadGame(string name, bool &mode) {
 	ifstream f;
 	f.open(name);
-	if (f.is_open()) {
-		this->~MAP();
-		new(this) MAP();
+	if (!f.is_open())
+		return false;
 
-		f.read((char*)& mode, sizeof(mode));
-		f.read((char*)& player.x, sizeof(player.x));
-		f.read((char*)& player.y, sizeof(player.y));
-		f.read((char*)& level.level, sizeof(level.level));
-		f.read((char*)& level.currEnemy, sizeof(level.currEnemy));
+	this->~MAP();
+	new(this) MAP();
 
-		int lSize;
-		f.read((char*)& lSize, sizeof(lSize));
+	f.read((char*)& mode, sizeof(mode));
+	f.read((char*)& player.x, sizeof(player.x));
+	f.read((char*)& player.y, sizeof(player.y));
+	f.read((char*)& level.level, sizeof(level.level));
+	f.read((char*)& level.currEnemy, sizeof(level.currEnemy));
 
-		lanes.clear();
-		lanes = vector<LANE>(lSize);
+	int lSize;
+	f.read((char*)& lSize, sizeof(lSize));
 
-		for (int i = 0; i < lSize; i++) {
-			int eSize;
-			f.read((char*)& eSize, sizeof(eSize));
-			f.read((char*)& lanes[i].direction, sizeof(lanes[i].direction));
-			f.read((char*)& lanes[i].redLight, sizeof(lanes[i].redLight));
-			f.read((char*)& lanes[i].redLightRate, sizeof(lanes[i].redLightRate));
-			f.read((char*)& lanes[i].greenLightRate, sizeof(lanes[i].greenLightRate));
-			f.read((char*)& lanes[i].speed, sizeof(lanes[i].speed));
-			f.read((char*)& lanes[i].y, sizeof(lanes[i].y));
+	lanes.clear();
+	lanes = vector<LANE>(lSize);
 
-			for (int j = 0; j < eSize; j++) {
-				int type, x;
-				f.read((char*)& type, sizeof(type));
-				f.read((char*)& x, sizeof(x));
+	for (int i = 0; i < lSize; i++) {
+		int eSize;
+		f.read((char*)& eSize, sizeof(eSize));
+		f.read((char*)& lanes[i].direction, sizeof(lanes[i].direction));
+		f.read((char*)& lanes[i].redLight, sizeof(lanes[i].redLight));
+		f.read((char*)& lanes[i].redLightRate, sizeof(lanes[i].redLightRate));
+		f.read((char*)& lanes[i].greenLightRate, sizeof(lanes[i].greenLightRate));
+		f.read((char*)& lanes[i].speed, sizeof(lanes[i].speed));
+		f.read((char*)& lanes[i].y, sizeof(lanes[i].y));
 
-				ENEMY* temp = NULL;
-				if (type == 1)
-					temp = new BAT(x);
-				if (type == 2)
-					temp = new CAR(x);
-				if (type == 3)
-					temp = new DOG(x);
-				if (type == 4)
-					temp = new SHARK(x);
-				if (type == 5)
-					temp = new TRUCK(x);
+		for (int j = 0; j < eSize; j++) {
+			int type, x;
+			f.read((char*)& type, sizeof(type));
+			f.read((char*)& x, sizeof(x));
 
-				lanes[i].enemies.push_back(temp);
-			}
+			ENEMY* temp = NULL;
+			if (type == 1)
+				temp = new BAT(x);
+			if (type == 2)
+				temp = new CAR(x);
+			if (type == 3)
+				temp = new DOG(x);
+			if (type == 4)
+				temp = new SHARK(x);
+			if (type == 5)
+				temp = new TRUCK(x);
+
+			lanes[i].enemies.push_back(temp);
 		}
 	}
-	else {
-		throw(name);
-	}
+
 	f.close();
+	return true;
 }
 
 void MAP::saveGame(string name,bool mode) {
 	ofstream f;
 	f.open(name, ios::binary);
+	if (!f.is_open())
+		return;
+
 	//player
 	f.write((char*)& mode, sizeof(mode));
 	f.write((char*)& player.x, sizeof(player.x));

@@ -338,7 +338,7 @@ void GAME::loadingBar() {
 	int y = 18;
 	for (int i = 18; i < 28; ++i) {
 		gotoxy(40, i);
-		for (int j = 0; j < 60; ++j) {
+		for (int j = 0; j < 100; ++j) {
 			cout << " ";
 		}
 	}
@@ -536,8 +536,7 @@ void GAME::menu() {
 		gotoxy(x + 9, y + 7); cout << "EXIT";
 
 		int cnt = 0;
-		while (true)
-		{
+		while (true) {
 			char choice = _getch();
 			txtColor(15);
 			gotoxy(x + 6, y + 1); cout << " NEW GAME ";
@@ -567,7 +566,6 @@ void GAME::menu() {
 					loadingBar();
 					txtColor(15);
 					newGame();
-					clrscr();
 					break;
 				}
 			}
@@ -595,6 +593,12 @@ void GAME::menu() {
 					exit(0);
 				}
 			}
+		}
+		while (true) {
+			if (checkLoadGame == true)
+				newGame();
+			else
+				break;
 		}
 	}
 }
@@ -697,6 +701,8 @@ void GAME::newGame() {
 				// save game
 				saveGame();
 				clrscr();
+				map.printMap();
+				map.initialRender();
 				txtColor(14);
 				gotoxy(142, 8); cout << round;
 				gotoxy(152, 8);
@@ -705,16 +711,27 @@ void GAME::newGame() {
 				else
 					cout << "HARD";
 				txtColor(15);
-				map.printMap();
 				checkPauseGame = false;
 			}
 			if (key == 'L' || key == 'l') {
+				checkLoadGame = false;
 				checkPauseGame = true;
 				// load game
 				loadGame();
 				clrscr();
 				map.printMap();
+				map.initialRender();
+				txtColor(14);
+				gotoxy(142, 8); cout << round;
+				gotoxy(152, 8);
+				if (mode == true)
+					cout << "EASY";
+				else
+					cout << "HARD";
+				txtColor(15);
 				checkPauseGame = false;
+				if (checkLoadGame == true)
+					return;
 			}
 			if (key == 'p') {
 				checkPauseGame = true;
@@ -835,10 +852,19 @@ void GAME::loadGame() {
 	cin >> file;
 	string filename = "Data/";
 	filename += file + ".bin";
+	Nocursortype();
+	Sleep(50);
+	while (_kbhit())
+		_getch();
 
-	map.loadGame(filename,mode);
-	checkLoadGame = true;
-	newGame();
+	if (map.loadGame(filename, mode) == false) {
+		checkLoadGame = false;
+		return;
+	}
+	else {
+		checkLoadGame = true;
+	}
+
 }
 
 void GAME::saveGame() {
@@ -877,7 +903,11 @@ void GAME::saveGame() {
 	cin >> file;
 	string filename = "Data/";
 	filename +=  file + ".bin";
-	map.saveGame(filename, mode);
 	Nocursortype();
+	Sleep(50);
+	while (_kbhit())
+		_getch();
+
+	map.saveGame(filename, mode);
 }
 
