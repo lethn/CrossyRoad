@@ -5,18 +5,18 @@ ENEMY::ENEMY() : shape(new char*[3]()), type(type) {}
 
 ENEMY::ENEMY(int x, bool type) : shape(new char*[3]()), x(x), type(type) {}
 
-ENEMY::ENEMY(const ENEMY& other) : shape(new char*[3]()), x(other.x), type(other.type) 
-{
-    int n = strlen(other.shape[0]) + 1;
-    for (int i = 0; i < 3; ++i)
-    {
-        shape[i] = new char[n];
-        for (int j = 0; j < n; ++j)
-        {
-            shape[i][j] = other.shape[i][j];
-        }
-    }
-}
+// ENEMY::ENEMY(const ENEMY& other) : shape(new char*[3]()), x(other.x), type(other.type) 
+// {
+//     int n = strlen(other.shape[0]) + 1;
+//     for (int i = 0; i < 3; ++i)
+//     {
+//         shape[i] = new char[n];
+//         for (int j = 0; j < n; ++j)
+//         {
+//             shape[i][j] = other.shape[i][j];
+//         }
+//     }
+// }
 
 ENEMY::~ENEMY()
 {

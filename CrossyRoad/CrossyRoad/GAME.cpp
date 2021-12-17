@@ -363,6 +363,9 @@ void GAME::loadingBar() {
 		Sleep(20);
 		cout << char(178);
 	}
+
+	while (_kbhit())
+		_getch();
 }
 
 void GAME::settings() {
@@ -597,8 +600,6 @@ void GAME::menu() {
 }
 
 void GAME::newGame() {
-	while (_kbhit())
-		_getch();
 	Nocursortype();
 	txtColor(15);
 
@@ -696,6 +697,14 @@ void GAME::newGame() {
 				// save game
 				saveGame();
 				clrscr();
+				txtColor(14);
+				gotoxy(142, 8); cout << round;
+				gotoxy(152, 8);
+				if (mode == true)
+					cout << "EASY";
+				else
+					cout << "HARD";
+				txtColor(15);
 				map.printMap();
 				checkPauseGame = false;
 			}

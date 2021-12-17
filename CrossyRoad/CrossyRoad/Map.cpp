@@ -332,24 +332,23 @@ void MAP::loadGame(string name, bool &mode) {
 		int lSize;
 		f >> lSize;
 		lanes.clear();
+		lanes = vector<LANE>(lSize);
 		for (int i = 0; i < lSize; i++) {
-			LANE tempL;
 			int eSize;
 			f >> eSize;
-			f >> tempL.direction >> tempL.redLight >> tempL.speed >> tempL.y;
+			f >> lanes[i].direction >> lanes[i].redLight >> lanes[i].redLightRate >> lanes[i].greenLightRate >> lanes[i].speed >> lanes[i].y;
 			for (int j = 0; j < eSize; j++) {
 				int type,x;
 				f >> type;
 				f >> x;
-				ENEMY* temp;
+				ENEMY* temp = NULL;
 				if (type == 1) temp = new BAT(x);
 				if (type == 2) temp = new CAR(x);
 				if (type == 3) temp = new DOG(x);
 				if (type == 4) temp = new SHARK(x);
 				if (type == 5) temp = new TRUCK(x);
-				tempL.enemies.push_back(temp);
+				lanes[i].enemies.push_back(temp);
 			}
-			lanes.push_back(tempL);
 		}
 	}
 	else {
@@ -370,7 +369,7 @@ void MAP::saveGame(string name,bool mode) {
 	f << lanes.size() << endl;
 	for (int i = 0; i < lanes.size(); i++) {
 		f << lanes[i].enemies.size() << " ";
-		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].speed << " " << lanes[i].y << endl;
+		f << lanes[i].direction << " " << lanes[i].redLight << " " << lanes[i].redLightRate << " " << lanes[i].greenLightRate << " " << lanes[i].speed << " " << lanes[i].y << endl;
 		for (int j = 0; j < lanes[i].enemies.size(); j++) {
 			f << lanes[i].enemies[j]->isWhat() << " " << lanes[i].enemies[j]->x << endl;
 			// bat = 1 car =2 dog =3 shark = 4 truck =5

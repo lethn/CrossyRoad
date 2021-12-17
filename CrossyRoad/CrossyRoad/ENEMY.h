@@ -13,7 +13,7 @@ class ENEMY
     public:
         ENEMY();
         ENEMY(int x, bool type);
-        ENEMY(const ENEMY &other);
+        // ENEMY(const ENEMY &other);
         ~ENEMY();
 
         void renderShape(int y);
