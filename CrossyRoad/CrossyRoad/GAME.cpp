@@ -834,7 +834,7 @@ void GAME::loadGame() {
 	string file;
 	cin >> file;
 	string filename = "Data/";
-	filename += file + ".txt";
+	filename += file + ".bin";
 
 	map.loadGame(filename,mode);
 	checkLoadGame = true;
@@ -876,8 +876,8 @@ void GAME::saveGame() {
 	string file;
 	cin >> file;
 	string filename = "Data/";
-	filename +=  file + ".txt";
-	map.saveGame(filename,mode);
+	filename +=  file + ".bin";
+	map.saveGame(filename, mode);
 	Nocursortype();
 }
 
