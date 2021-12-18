@@ -536,6 +536,7 @@ void GAME::menu() {
 		gotoxy(x + 9, y + 7); cout << "EXIT";
 
 		int cnt = 0;
+		checkLoadGame = false;
 		while (true) {
 			char choice = _getch();
 			txtColor(15);
@@ -574,6 +575,7 @@ void GAME::menu() {
 				gotoxy(x + 4, y + 3); cout << " LOADING GAME ";
 				if (choice == KEY_ENTER) {
 					loadGame();
+
 					break;
 				}
 			}
@@ -595,8 +597,13 @@ void GAME::menu() {
 			}
 		}
 		while (true) {
-			if (checkLoadGame == true)
+			if (checkLoadGame == true) {
+				clrscr();
+				logoCrossyRoad();
+				loadingBar();
+				txtColor(15);
 				newGame();
+			}
 			else
 				break;
 		}
@@ -718,20 +725,23 @@ void GAME::newGame() {
 				checkPauseGame = true;
 				// load game
 				loadGame();
-				clrscr();
-				map.printMap();
-				map.initialRender();
-				txtColor(14);
-				gotoxy(142, 8); cout << round;
-				gotoxy(152, 8);
-				if (mode == true)
-					cout << "EASY";
-				else
-					cout << "HARD";
-				txtColor(15);
+				
 				checkPauseGame = false;
 				if (checkLoadGame == true)
 					return;
+				else {
+					clrscr();
+					map.printMap();
+					map.initialRender();
+					txtColor(14);
+					gotoxy(142, 8); cout << round;
+					gotoxy(152, 8);
+					if (mode == true)
+						cout << "EASY";
+					else
+						cout << "HARD";
+					txtColor(15);
+				}
 			}
 			if (key == 'p') {
 				checkPauseGame = true;
@@ -917,5 +927,12 @@ void GAME::saveGame() {
 		_getch();
 
 	map.saveGame(filename, mode);
+	gotoxy(x + 22, y + 3);
+	cout << "Save File Successfully!";
+
+	Nocursortype();
+	Sleep(800);
+	while (_kbhit())
+		_getch();
 }
 
