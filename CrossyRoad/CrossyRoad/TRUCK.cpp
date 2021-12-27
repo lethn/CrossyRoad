@@ -1,5 +1,7 @@
 #include "TRUCK.h"
 
+
+
 TRUCK::TRUCK()
 {
     shape[0] = new char[13] {' ', ' ', '_', '_', '_', '_', '_', '_', ' ', ' ', ' ', ' '};
@@ -18,6 +20,7 @@ TRUCK::TRUCK(int x) : ENEMY(x, 1)
 void TRUCK::sound() {
     PlaySound(TEXT("Sound\\Car.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+
 int TRUCK::isWhat() {
     return 5;
 }
