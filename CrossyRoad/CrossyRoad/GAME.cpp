@@ -59,6 +59,7 @@ void GAME::FixConsoleWindow() {
 }
 
 std::mt19937::result_type getSeed()
+
 {
 	std::random_device rd;
     std::mt19937::result_type seed = rd() ^ (
