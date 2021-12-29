@@ -38,5 +38,4 @@ public:
 	friend class GAME;
 };
 
-
 #endif
