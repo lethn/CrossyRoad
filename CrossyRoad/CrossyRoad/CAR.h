@@ -15,5 +15,4 @@ class CAR : public ENEMY
     
 };
 
-
 #endif
