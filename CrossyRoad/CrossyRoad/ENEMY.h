@@ -28,5 +28,4 @@ class ENEMY
     friend class MAP;
 };
 
-
 #endif

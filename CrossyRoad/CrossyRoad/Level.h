@@ -31,5 +31,4 @@ class LEVEL
     friend class LANE;
     friend class MAP;
 };
-
 #endif
