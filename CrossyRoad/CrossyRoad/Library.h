@@ -12,5 +12,4 @@
 
 #pragma comment (lib, "winmm.lib")
 using namespace std;
-
 #endif
